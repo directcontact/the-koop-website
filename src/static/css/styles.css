@@ -66,6 +66,9 @@ body {
 .u-margin-top-huge {
   margin-top: 10rem !important; }
 
+.list-inline {
+  margin-bottom: 0; }
+
 .menu {
   color: #000; }
   .menu__icon {
@@ -93,5 +96,22 @@ body {
       justify-content: space-between;
       width: 75%; }
 
-.list-inline {
-  margin-bottom: 0; }
+.main {
+  margin: 15rem;
+  padding: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column; }
+  .main__header {
+    font-size: 10rem; }
+    .main__header::selection {
+      background: none; }
+    .main__header:hover {
+      cursor: default; }
+  .main__subheader {
+    font-size: 2.5rem; }
+    .main__subheader::selection {
+      background: none; }
+    .main__subheader:hover {
+      cursor: default; }
