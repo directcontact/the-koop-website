@@ -1,7 +1,8 @@
 {
   "apps": [
       {
-          "name": "api",
+          "name": "koop-website",
+          "script": "pm2 app.js",
           "merge_logs": true,
           "max_restarts": 20,
           "instances": 4,

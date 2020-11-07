@@ -5,8 +5,10 @@
   "main": "app.js",
   "scripts": {
     "pm2": "pm2 start processes.json --no-daemon",
-    "start": "node app",
-    "build": "next build"
+    "compile:sass": "node-sass sass/main.scss css/style.css -w",
+    "dev": "concurrently \"node-sass sass/main.scss src/static/css/styles.css -w\" \"node app\"",
+    "build": "next build",
+    "start": "node app"
   },
   "repository": {
     "type": "git",
@@ -19,19 +21,27 @@
   },
   "homepage": "https://github.com/kimjeff49/the-koop-website#readme",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.32",
+    "@fortawesome/free-brands-svg-icons": "^5.15.1",
+    "@fortawesome/free-solid-svg-icons": "^5.15.1",
+    "@fortawesome/react-fontawesome": "^0.1.12",
     "body-parser": "^1.19.0",
+    "bootstrap": "^4.5.3",
     "cors": "^2.8.5",
     "crypto-random-string": "^3.3.0",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
+    "framer-motion": "^2.9.4",
     "helmet": "^4.1.1",
     "morgan": "^1.10.0",
     "next": "^9.5.5",
-    "next-page-transitions": "^1.0.0-beta.2",
     "node-sass": "^4.14.1",
     "pm2": "^4.5.0",
     "react": "^16.14.0",
-    "react-bootstrap": "^1.4.0",
     "react-dom": "^16.14.0"
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0",
+    "nodemon": "^2.0.6"
   }
 }

@@ -1,6 +1,8 @@
 import App from 'next/app';
 import React from 'react';
-import { PageTransition } from 'next-page-transitions';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../static/css/styles.css';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default class MyApp extends App {
   static async getInitialProps({ Component, router, ctx }) {
@@ -14,29 +16,31 @@ export default class MyApp extends App {
   }
 
   render() {
-    const { Component, pageProps } = this.props;
+    const { Component, pageProps, router } = this.props;
     return (
-      <>
-        <PageTransition timeout={300} classNames="page-transition">
-          <Component {...pageProps} key={this.props.router.route} />
-        </PageTransition>
-        <style jsx global>{`
-          .page-transition-enter {
-            opacity: 0;
-          }
-          .page-transition-enter-active {
-            opacity: 1;
-            transition: opacity 1000ms;
-          }
-          .page-transition-exit {
-            opacity: 1;
-          }
-          .page-transition-exit-active {
-            opacity: 0;
-            transition: opacity 1000ms;
-          }
-        `}</style>
-      </>
+      <AnimatePresence exitBeforeEnter>
+        <motion.div
+          key={router.route}
+          initial="pageInitial"
+          animate="pageAnimate"
+          exit="pageExit"
+          transition={{ duration: 1 }}
+          variants={{
+            pageInitial: {
+              opacity: 0,
+            },
+            pageAnimate: {
+              opacity: 1,
+            },
+            pageExit: {
+              backgroundColor: 'white',
+              opacity: 0,
+            },
+          }}
+        >
+          <Component {...pageProps} />
+        </motion.div>
+      </AnimatePresence>
     );
   }
 }

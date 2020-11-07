@@ -32,6 +32,12 @@ server
     app.use(
       helmet({
         contentSecurityPolicy: false,
+        // contentSecurityPolicy: {
+        //   directives: {
+        //     defaultSrc: ["'self'"],
+        //     scriptSrc: ["'self'", 'cdn.bootstrap.com'],
+        //   },
+        // },
       })
     );
 

@@ -1,11 +1,14 @@
 import Header from './Header';
-import { Container, Row, Col } from 'react-bootstrap';
+import Nav from './Nav';
 
 const Layout = (props) => {
   return (
     <>
       <Header />
-      <Container fluid="md">{props.children}</Container>
+      <Nav />
+      <div className="cover-container d-flex h-100 p-3 mx-auto flex-column">
+        {props.children}
+      </div>
     </>
   );
 };
