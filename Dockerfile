@@ -18,4 +18,4 @@ RUN npm run build
 EXPOSE 80
 
 # Running the app
-CMD "npm" "run" "start"
+CMD "npm" "run" "pm2"
