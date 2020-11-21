@@ -4,7 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: inherit;
-  color: inherit !important;
+  color: inherit;
 }
 
 html {
@@ -33,4 +33,8 @@ body {
   @include respond(tab-port) {
     padding: 0;
   }
+}
+
+.max-height {
+  height: 85vh;
 }

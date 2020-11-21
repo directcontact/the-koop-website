@@ -41,6 +41,15 @@ server
       })
     );
 
+    app.get('/api/menu/items', (req, res) => {
+      res.send([
+        {
+          name: 'Garlic Chicken',
+          src: '/static/images/food-image1.jpg',
+        },
+      ]);
+    });
+
     app.get('*', (req, res) => {
       return handle(req, res);
     });

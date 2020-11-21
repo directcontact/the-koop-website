@@ -1,54 +1,62 @@
 import React from 'react';
 import Link from 'next/link';
+import { connect } from 'react-redux';
+import { setActive } from '../../redux/actions/button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
-const Nav = () => {
+const Nav = (props) => {
+  const { setActive, button } = props;
   return (
     <>
-      <div className="row menu">
-        <div className="col-md-2 menu__block">
-          <h2 className="menu__item-header">
-            <Link className="menu__header-link" href="/">
-              <a className="menu__item-header-link">LOGO</a>
+      <div className="row nav">
+        <div className="col-md-2 nav__block">
+          <h2 className="nav__item-header">
+            <Link className="nav__header-link" href="/">
+              <a className="nav__item-header-link">LOGO</a>
             </Link>
           </h2>
         </div>
-        <div className="col-md-8 menu__block">
-          <ul className="list-inline menu__block-nav">
-            <li className="list-inline-item menu__item">
-              <h2 className="menu__item-header">
-                <Link href="/menu">
-                  <a className="menu__item-header-link">MENU</a>
+        <div className="col-md-8 nav__block">
+          <ul className="list-inline nav__block-list">
+            <li className="list-inline-item nav__item">
+              <h2 className="nav__item-header">
+                <Link href="/">
+                  <a
+                    onClick={() => setActive(!button.active)}
+                    className="nav__item-header-link"
+                  >
+                    MENU
+                  </a>
                 </Link>
               </h2>
             </li>
-            <li className="list-inline-item menu__item">
-              <h2 className="menu__item-header">
+            <li className="list-inline-item nav__item">
+              <h2 className="nav__item-header">
                 <Link href="/location">
-                  <a className="menu__item-header-link">LOCATIONS</a>
+                  <a className="nav__item-header-link">LOCATIONS</a>
                 </Link>
               </h2>
             </li>
-            <li className="list-inline-item menu__item">
-              <h2 className="menu__item-header">
+            <li className="list-inline-item nav__item">
+              <h2 className="nav__item-header">
                 <Link href="/story">
-                  <a className="menu__item-header-link">OUR STORY</a>
+                  <a className="nav__item-header-link">OUR STORY</a>
                 </Link>
               </h2>
             </li>
-            <li className="list-inline-item menu__item">
-              <h2 className="menu__item-header">
+            <li className="list-inline-item nav__item">
+              <h2 className="nav__item-header">
                 <Link href="/catering">
-                  <a className="menu__item-header-link">CATERING</a>
+                  <a className="nav__item-header-link">CATERING</a>
                 </Link>
               </h2>
             </li>
           </ul>
         </div>
-        <div className="col-md-2 menu__block">
-          <div className="menu__icon">
-            <a className="menu__icon-link">
+        <div className="col-md-2 nav__block">
+          <div className="nav__icon">
+            <a className="nav__icon-link">
               <FontAwesomeIcon icon={faShoppingCart} />
             </a>
           </div>
@@ -58,4 +66,12 @@ const Nav = () => {
   );
 };
 
-export default Nav;
+export const mapStateToProps = (state) => ({
+  button: state.button,
+});
+
+export const mapDispatchToProps = {
+  setActive: setActive,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Nav);

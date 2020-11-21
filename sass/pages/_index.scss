@@ -1,12 +1,12 @@
 .main {
-  margin: 15rem;
-  padding: 5rem;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  height: 100%;
   &__header {
     font-size: 10rem;
+    text-align: center;
     &::selection {
       background: none;
     }
@@ -18,12 +18,36 @@
 
   &__subheader {
     font-size: 2.5rem;
+    margin-bottom: 7rem;
     &::selection {
       background: none;
     }
 
     &:hover {
       cursor: default;
+    }
+  }
+
+  &__btn {
+    background-color: $color-black;
+    color: $color-white;
+    padding: 1.5rem 4rem;
+    border-radius: 10rem;
+    border: none;
+    font-size: 2rem;
+    font-weight: 600;
+
+    &:link,
+    &:visited {
+      color: $color-white;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    &:hover,
+    &:active {
+      text-decoration: none;
+      color: $color-white;
+      cursor: pointer;
     }
   }
 }
