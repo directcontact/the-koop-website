@@ -7,8 +7,30 @@ import Layout from '../components/Layout';
 
 export default class IndexPage extends React.Component {
   static async getInitialProps(ctx) {
-    const res = await fetch('http://localhost:3000/api/menu/items');
-    const items = await res.json();
+    //const res = await fetch('http://localhost:3000/api/menu/items');
+    //const items = await res.json();
+    const items = [
+      {
+        name: 'Garlic Chicken',
+        src: '/static/images/food-image1.jpg',
+      },
+      {
+        name: 'Garlic Chicken',
+        src: '/static/images/food-image1.jpg',
+      },
+      {
+        name: 'Garlic Chicken',
+        src: '/static/images/food-image1.jpg',
+      },
+      {
+        name: 'Garlic Chicken',
+        src: '/static/images/food-image1.jpg',
+      },
+      {
+        name: 'Garlic Chicken',
+        src: '/static/images/food-image1.jpg',
+      },
+    ];
     const state = ctx.store.getState();
     return {
       items,
