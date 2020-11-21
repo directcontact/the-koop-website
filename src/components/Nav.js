@@ -1,9 +1,10 @@
 import React from 'react';
 import Link from 'next/link';
 import { connect } from 'react-redux';
-import { setActive } from '../../redux/actions/button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+
+import { setActive } from '../../redux/actions/button';
 
 const Nav = (props) => {
   const { setActive, button } = props;
@@ -13,7 +14,12 @@ const Nav = (props) => {
         <div className="col-md-2 nav__block">
           <h2 className="nav__item-header">
             <Link className="nav__header-link" href="/">
-              <a className="nav__item-header-link">LOGO</a>
+              <a
+                onClick={() => setActive(false)}
+                className="nav__item-header-link"
+              >
+                LOGO
+              </a>
             </Link>
           </h2>
         </div>
@@ -23,7 +29,7 @@ const Nav = (props) => {
               <h2 className="nav__item-header">
                 <Link href="/">
                   <a
-                    onClick={() => setActive(!button.active)}
+                    onClick={() => setActive(true)}
                     className="nav__item-header-link"
                   >
                     MENU

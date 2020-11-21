@@ -1,12 +1,15 @@
 import App from 'next/app';
 import React from 'react';
+import withRedux from 'next-redux-wrapper';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Provider } from 'react-redux';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../public/static/css/styles.css';
-import { motion, AnimatePresence } from 'framer-motion';
+import 'normalize.css/normalize.css';
+
 import Nav from '../components/Nav';
 import Header from '../components/Header';
-import { Provider } from 'react-redux';
-import withRedux from 'next-redux-wrapper';
 import store from '../../redux/store';
 
 class MyApp extends App {

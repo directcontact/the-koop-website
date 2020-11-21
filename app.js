@@ -31,18 +31,35 @@ server
     );
     app.use(
       helmet({
-        contentSecurityPolicy: false,
-        // contentSecurityPolicy: {
-        //   directives: {
-        //     defaultSrc: ["'self'"],
-        //     scriptSrc: ["'self'", 'cdn.bootstrap.com'],
-        //   },
-        // },
+        // contentSecurityPolicy: false,
+        contentSecurityPolicy: {
+          directives: {
+            defaultSrc: ["'self'"],
+            scriptSrc: ["'self'"],
+            styleSrc: ["'self'", "'unsafe-inline'"],
+          },
+        },
       })
     );
 
     app.get('/api/menu/items', (req, res) => {
       res.send([
+        {
+          name: 'Garlic Chicken',
+          src: '/static/images/food-image1.jpg',
+        },
+        {
+          name: 'Garlic Chicken',
+          src: '/static/images/food-image1.jpg',
+        },
+        {
+          name: 'Garlic Chicken',
+          src: '/static/images/food-image1.jpg',
+        },
+        {
+          name: 'Garlic Chicken',
+          src: '/static/images/food-image1.jpg',
+        },
         {
           name: 'Garlic Chicken',
           src: '/static/images/food-image1.jpg',

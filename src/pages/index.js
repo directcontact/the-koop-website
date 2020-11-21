@@ -1,6 +1,9 @@
 import React from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { chunk } from 'lodash';
+
+import MenuItem from '../components/MenuItem';
 import Layout from '../components/Layout';
-import { motion } from 'framer-motion';
 
 export default class IndexPage extends React.Component {
   static async getInitialProps(ctx) {
@@ -13,43 +16,92 @@ export default class IndexPage extends React.Component {
     };
   }
 
-  renderMenu() {
+  renderMenu(button) {
     const menuItems = this.props.items;
-    const jsx = '';
-    if (menuItems) {
-      jsx = menuItems.map((item, idx) => {
-        return (
-          <div className="row mb-3 mt-3" key={idx}>
-            <MenuItem item={item} />
-          </div>
-        );
-      });
-    } else {
-      jsx = <div>Loading</div>;
-    }
+    const sections = chunk(menuItems, 3);
+    const divVariant = {
+      active: {
+        opacity: 1,
+      },
+      inactive: {
+        opacity: 0,
+      },
+    };
     return (
-      <Layout>
-        <div className="menu__container">
-          <div className="menu__list">{jsx}</div>
-        </div>
-      </Layout>
+      <AnimatePresence>
+        <motion.div
+          className="menu"
+          variants={divVariant}
+          initial={{ opacity: 0 }}
+          exit={{ opacity: 0 }}
+          transition={{
+            delay: 0.3,
+            ease: 'easeInOut',
+            duration: 0.3,
+          }}
+          animate={button.active ? 'active' : 'inactive'}
+        >
+          <div className="menu__container">
+            <div className="menu__list">
+              {sections.map((divs, idx) => (
+                <motion.div
+                  key={idx}
+                  variants={divVariant}
+                  initial={{ opacity: 0 }}
+                  exit={{ opacity: 0 }}
+                  transition={{
+                    delay: 0.3,
+                    ease: 'easeInOut',
+                    duration: 0.3,
+                  }}
+                  animate={button.active ? 'active' : 'inactive'}
+                  className="row mb-3 mt-3"
+                >
+                  {divs.map((item, idx) => (
+                    <MenuItem item={item} idx={idx} />
+                  ))}
+                  ;
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+      </AnimatePresence>
     );
   }
 
-  renderHomeScreen() {}
+  renderHomeScreen(button) {
+    const divVariant = {
+      active: {
+        boxShadow: '0 0 0 rgba(0, 0, 0, 0)',
+        y: -100,
+        opacity: 0,
+      },
+      inactive: {
+        boxShadow: '0 0 0 rgba(0, 0, 0, 0)',
+        y: 0,
+        opacity: 1,
+      },
+    };
 
-  render() {
-    const { button } = this.props;
+    const aVariant = {
+      active: {
+        display: 'inline-block',
+        boxShadow: '0 0 0 rgba(0, 0, 0, 0)',
+        y: -225,
+      },
+      inactive: {
+        boxShadow: '0 0 0 rgba(0, 0, 0, 0)',
+        y: 0,
+      },
+    };
     return (
-      <Layout>
+      <>
         <div className="main">
           <motion.div
+            variants={divVariant}
             transition={{ ease: 'easeInOut', duration: 0.3 }}
-            animate={{
-              boxShadow: '0 0 0 rgba(0, 0, 0, 0)',
-              y: button.active ? -100 : 0,
-              opacity: button.active ? 0 : 1,
-            }}
+            animate={button.active ? 'active' : 'inactive'}
           >
             <h1 className="main__header">THE KOOP</h1>
             <h2 className="main__subheader">
@@ -57,17 +109,21 @@ export default class IndexPage extends React.Component {
             </h2>
           </motion.div>
           <motion.a
+            variants={aVariant}
             transition={{ ease: 'easeInOut', duration: 0.3 }}
-            animate={{
-              boxShadow: '0 0 0 rgba(0, 0, 0, 0)',
-              y: button.active ? -250 : 0,
-            }}
+            animate={button.active ? 'active' : 'inactive'}
             className="main__btn"
           >
             ORDER
           </motion.a>
         </div>
-      </Layout>
+        {button.active ? this.renderMenu(button) : null}
+      </>
     );
+  }
+
+  render() {
+    const { button } = this.props;
+    return <Layout>{this.renderHomeScreen(button)}</Layout>;
   }
 }
