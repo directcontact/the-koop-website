@@ -2,7 +2,6 @@ const express = require('express');
 const next = require('next');
 const helmet = require('helmet');
 const morgan = require('morgan');
-const cors = require('cors');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const cryptoRandomString = require('crypto-random-string');
