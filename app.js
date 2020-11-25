@@ -6,6 +6,8 @@ const session = require('express-session');
 const bodyParser = require('body-parser');
 const cryptoRandomString = require('crypto-random-string');
 
+const { emailSender } = require('./util/email');
+
 const dev = process.env.NODE_ENV !== 'production';
 const server = next({ dev });
 const handle = server.getRequestHandler();
@@ -64,6 +66,12 @@ server
           src: '/static/images/food-image1.jpg',
         },
       ]);
+    });
+
+    app.post('/api/email', (req, res) => {
+      const email = req.body.value;
+      emailSender(email);
+      res.sendStatus(200);
     });
 
     app.get('*', (req, res) => {

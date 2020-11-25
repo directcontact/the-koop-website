@@ -7,7 +7,7 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { setActive } from '../../redux/actions/button';
 
 const Nav = (props) => {
-  const { setActive, button } = props;
+  const { setActive } = props;
   return (
     <>
       <div className="row nav">

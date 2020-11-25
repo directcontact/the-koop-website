@@ -1,11 +1,16 @@
-import React from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { chunk } from 'lodash';
+import { chunk } from '../../util/helper';
 
 import MenuItem from '../components/MenuItem';
 import Layout from '../components/Layout';
 
 export default class IndexPage extends React.Component {
+  constructor() {
+    super();
+
+    // this.handleEmailButton = this.handleEmailButton.bind(this);
+  }
+
   static async getInitialProps(ctx) {
     //const res = await fetch('http://localhost:3000/api/menu/items');
     //const items = await res.json();
@@ -37,6 +42,20 @@ export default class IndexPage extends React.Component {
       ...state,
     };
   }
+
+  // handleEmailButton() {
+  //   const value = document.querySelector('.main__input').value;
+  //   fetch('/api/email', {
+  //     method: 'POST',
+  //     credentials: 'same-origin',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify({
+  //       value: value,
+  //     }),
+  //   });
+  // }
 
   renderMenu(button) {
     const menuItems = this.props.items;
@@ -139,6 +158,13 @@ export default class IndexPage extends React.Component {
             ORDER
           </motion.a>
         </div>
+        {/* <input placeholder="Input your email here" className="main__input" />
+        <button
+          className="main__button"
+          onClick={() => this.handleEmailButton()}
+        >
+          Send email
+        </button> */}
         {button.active ? this.renderMenu(button) : null}
       </>
     );
