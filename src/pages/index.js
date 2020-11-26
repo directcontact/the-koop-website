@@ -2,7 +2,6 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { chunk } from '../../util/helper';
 
 import MenuItem from '../components/MenuItem';
-import Layout from '../components/Layout';
 
 export default class IndexPage extends React.Component {
   constructor() {
@@ -16,24 +15,28 @@ export default class IndexPage extends React.Component {
     //const items = await res.json();
     const items = [
       {
-        name: 'Garlic Chicken',
-        src: '/static/images/food-image1.jpg',
+        name: 'SOY GARLIC',
+        src: '/static/images/soygarlic-1.jpg',
       },
       {
-        name: 'Garlic Chicken',
-        src: '/static/images/food-image1.jpg',
+        name: 'SPICY SOY GARLIC',
+        src: '/static/images/soygarlic-5.jpg',
       },
       {
-        name: 'Garlic Chicken',
-        src: '/static/images/food-image1.jpg',
+        name: 'EXTRA SPICY',
+        src: '/static/images/sweet_spicy-2.jpg',
       },
       {
-        name: 'Garlic Chicken',
-        src: '/static/images/food-image1.jpg',
+        name: 'SWEET & SPICY',
+        src: '/static/images/sweet_spicy-3.jpg',
       },
       {
-        name: 'Garlic Chicken',
-        src: '/static/images/food-image1.jpg',
+        name: 'HONEY GARLIC',
+        src: '/static/images/honeygarlic-4.jpg',
+      },
+      {
+        name: 'MILD',
+        src: '/static/images/mild-5.jpg',
       },
     ];
     const state = ctx.store.getState();
@@ -83,7 +86,7 @@ export default class IndexPage extends React.Component {
           animate={button.active ? 'active' : 'inactive'}
         >
           <div className="menu__container">
-            <div className="menu__list">
+            <div className="menu__list col-md-12">
               {sections.map((divs, idx) => (
                 <motion.div
                   key={idx}
@@ -96,12 +99,11 @@ export default class IndexPage extends React.Component {
                     duration: 0.3,
                   }}
                   animate={button.active ? 'active' : 'inactive'}
-                  className="row mb-3 mt-3"
+                  className="menu__list-row col-md-12"
                 >
                   {divs.map((item, idx) => (
                     <MenuItem item={item} idx={idx} />
                   ))}
-                  ;
                 </motion.div>
               ))}
             </div>
@@ -138,6 +140,16 @@ export default class IndexPage extends React.Component {
     };
     return (
       <>
+        <style jsx global>{`
+          .page-main {
+            background-image: linear-gradient(
+                rgba(0, 0, 0, 0.4),
+                rgba(0, 0, 0, 0.4)
+              ),
+              url('static/images/koop-6.jpg');
+            background-size: 100% 100%;
+          }
+        `}</style>
         <div className="main">
           <motion.div
             variants={divVariant}
@@ -172,6 +184,6 @@ export default class IndexPage extends React.Component {
 
   render() {
     const { button } = this.props;
-    return <Layout>{this.renderHomeScreen(button)}</Layout>;
+    return <>{this.renderHomeScreen(button)}</>;
   }
 }

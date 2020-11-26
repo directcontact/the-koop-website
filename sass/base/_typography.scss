@@ -1,0 +1,54 @@
+@include font(
+  'Oswald',
+  url('#{$oswald-font-path}/Oswald-ExtraLight.ttf'),
+  200,
+  'extra-light'
+);
+
+@include font(
+  'Oswald',
+  url('#{$oswald-font-path}/Oswald-Light.ttf'),
+  300,
+  'light'
+);
+
+@include font(
+  'Oswald',
+  url('#{$oswald-font-path}/Oswald-Regular.ttf'),
+  400,
+  'regular'
+);
+
+@include font(
+  'Oswald',
+  url('#{$oswald-font-path}/Oswald-Medium.ttf'),
+  500,
+  'medium'
+);
+
+@include font(
+  'Oswald',
+  url('#{$oswald-font-path}/Oswald-SemiBold.ttf'),
+  600,
+  'semi-bold'
+);
+
+* {
+  font-family: 'Oswald', Arial, Helvetica, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: 'Oswald', Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  font-weight: 600;
+}
+
+h2 {
+  font-weight: 400;
+}

@@ -1,0 +1,15 @@
+.menuitem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 2rem;
+  height: 100%;
+  &__title {
+    display: flex;
+    text-align: left;
+  }
+  &__img {
+    width: 66%;
+  }
+}

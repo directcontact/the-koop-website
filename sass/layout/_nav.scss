@@ -1,8 +1,11 @@
 .nav {
-  color: $color-black;
+  color: $color-white;
+  position: absolute;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+  padding-top: 5vh;
+  width: 100%;
   &__icon {
     font-size: 2.5rem;
     @include respond(tab-land) {
@@ -12,18 +15,18 @@
       font-size: 2rem;
     }
     &-link {
-      color: $color-black;
+      color: $color-white;
 
       &:link,
       &:visited {
-        color: $color-black;
+        color: $color-white;
         text-decoration: none;
         text-transform: uppercase;
         transition: all 0.4s;
       }
       &:hover,
       &:active {
-        color: $color-black;
+        color: $color-white;
         text-decoration: none;
         opacity: 0.5;
       }
@@ -43,14 +46,14 @@
         text-decoration: none;
         &:link,
         &:visited {
-          color: $color-black;
+          color: $color-white;
           text-decoration: none;
           text-transform: uppercase;
           transition: all 0.4s;
         }
         &:hover,
         &:active {
-          color: $color-black;
+          color: $color-white;
           text-decoration: none;
           opacity: 0.5;
         }

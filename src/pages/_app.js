@@ -29,30 +29,33 @@ class MyApp extends App {
       <>
         <Provider store={store}>
           <Header />
-          <Nav />
-          <AnimatePresence exitBeforeEnter>
-            <motion.div
-              key={router.route}
-              initial="pageInitial"
-              animate="pageAnimate"
-              exit="pageExit"
-              transition={{ duration: 0.3 }}
-              variants={{
-                pageInitial: {
-                  opacity: 0,
-                },
-                pageAnimate: {
-                  opacity: 1,
-                },
-                pageExit: {
-                  backgroundColor: 'white',
-                  opacity: 0,
-                },
-              }}
-            >
-              <Component {...pageProps} />
-            </motion.div>
-          </AnimatePresence>
+          <div className="page-cover page-main">
+            <Nav />
+            <AnimatePresence exitBeforeEnter>
+              <motion.div
+                key={router.route}
+                initial="pageInitial"
+                animate="pageAnimate"
+                exit="pageExit"
+                transition={{ duration: 0.3 }}
+                variants={{
+                  pageInitial: {
+                    opacity: 0,
+                  },
+                  pageAnimate: {
+                    opacity: 1,
+                  },
+                  pageExit: {
+                    backgroundColor: 'white',
+                    opacity: 0,
+                  },
+                }}
+                className="max-height"
+              >
+                <Component {...pageProps} />
+              </motion.div>
+            </AnimatePresence>
+          </div>
         </Provider>
       </>
     );

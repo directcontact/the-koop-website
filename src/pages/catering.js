@@ -1,5 +1,3 @@
-import Layout from '../components/Layout';
-
 export default class CateringPage extends React.Component {
   constructor() {
     super();
@@ -7,6 +5,6 @@ export default class CateringPage extends React.Component {
   }
 
   render() {
-    return <Layout>Hello</Layout>;
+    return <div>Hello</div>;
   }
 }
