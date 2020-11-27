@@ -20,9 +20,14 @@ class MyApp extends App {
       pageProps = await Component.getInitialProps(ctx);
     }
 
-    let path = router.pathname;
-    if (path === '/' && pageProps.button.active) {
-      path = '/menu';
+    return { pageProps, router };
+  }
+
+  getMainClass(path, pageProps) {
+    if (path === '/') {
+      if ('button' in pageProps && pageProps.button.active) {
+        path = '/menu';
+      }
     }
 
     let mainClass = '';
@@ -34,30 +39,36 @@ class MyApp extends App {
       case '/menu':
         mainClass = 'menu__page';
         break;
-      case '/locations':
+      case '/location':
         mainClass = 'location__page';
+        break;
+      case '/story':
+        mainClass = 'story__page';
+        break;
+      case '/catering':
+        mainClass = 'catering__page';
         break;
       default:
         mainClass = 'main__page';
         break;
     }
 
-    return { pageProps, router, mainClass };
+    return mainClass;
   }
 
   render() {
-    const { Component, pageProps, router, mainClass } = this.props;
+    const { Component, pageProps, router } = this.props;
+
+    const mainClass = this.getMainClass(router.pathname, pageProps);
+
     return (
       <>
-        {/* <style jsx global>{`
-          }
-        `}</style> */}
         <Provider store={store}>
           <Header />
           <div className="page-cover">
             <div className={`${mainClass}`}>
               <Nav />
-              <AnimatePresence exitBeforeEnter>
+              <AnimatePresence>
                 <motion.div
                   key={router.route}
                   initial="pageInitial"

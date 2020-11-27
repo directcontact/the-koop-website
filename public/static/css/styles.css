@@ -219,6 +219,7 @@ h2 {
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    transition: all 0.4s;
     height: 100%; }
   .main + .nav {
     background-color: #000; }
@@ -275,8 +276,24 @@ h2 {
     background-attachment: fixed;
     transition: all 0.5s;
     height: 50%; }
+  .menu__header {
+    text-align: center;
+    font-weight: 200;
+    font-size: 2rem; }
   .menu__list-row {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center; }
+
+.location__page {
+  background-color: #000;
+  height: 100%; }
+
+.story__page {
+  background-color: #000;
+  height: 100%; }
+
+.catering__page {
+  background-color: #000;
+  height: 100%; }

@@ -12,6 +12,12 @@
     height: 50%;
   }
 
+  &__header {
+    text-align: center;
+    font-weight: 200;
+    font-size: 2rem;
+  }
+
   &__list {
     &-row {
       display: flex;

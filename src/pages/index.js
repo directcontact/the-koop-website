@@ -59,16 +59,18 @@ export default class IndexPage extends React.Component {
   // }
 
   renderText() {
-    <div className="menu__header">
-      <p className="menu__header-text">
-        Want to order by call?
-        <br />
-        Check your nearest locations for numbers
-      </p>
-      <p className="menu__header-text u-margin-top-small">
-        If not, begin your order here
-      </p>
-    </div>;
+    return (
+      <div className="menu__header">
+        <p className="menu__header-text">
+          Want to order by call?
+          <br />
+          Check your nearest locations for numbers
+        </p>
+        <p className="menu__header-text u-margin-top-small">
+          If not, begin your order here
+        </p>
+      </div>
+    );
   }
 
   renderMenu(button) {
@@ -141,33 +143,23 @@ export default class IndexPage extends React.Component {
       },
     };
 
-    const aVariant = {
-      active: {
-        display: 'inline-block',
-        boxShadow: '0 0 0 rgba(0, 0, 0, 0)',
-        y: -100,
-      },
-      inactive: {
-        boxShadow: '0 0 0 rgba(0, 0, 0, 0)',
-        y: 0,
-      },
-    };
     return (
       <>
         <div className="main max-height">
-          <motion.div
-            variants={divVariant}
-            transition={{ ease: 'easeInOut', duration: 0.3 }}
-            animate={button.active ? 'active' : 'inactive'}
-          >
-            <h1 className="main__header">THE KOOP</h1>
-            <h2 className="main__subheader u-margin-bottom-massive">
-              KOREAN CHICKEN | KOREAN CUISINE | JOKBAL
-            </h2>
-          </motion.div>
+          {!button.active ? (
+            <motion.div
+              variants={divVariant}
+              transition={{ ease: 'easeInOut', duration: 0.3 }}
+              animate={button.active ? 'active' : 'inactive'}
+            >
+              <h1 className="main__header">THE KOOP</h1>
+              <h2 className="main__subheader u-margin-bottom-massive">
+                KOREAN CHICKEN | KOREAN CUISINE | JOKBAL
+              </h2>
+            </motion.div>
+          ) : null}
           {button.active ? this.renderText() : null}
           <motion.a
-            variants={aVariant}
             transition={{ ease: 'easeInOut', duration: 0.3 }}
             animate={button.active ? 'active' : 'inactive'}
             className="main__btn"
