@@ -20,41 +20,68 @@ class MyApp extends App {
       pageProps = await Component.getInitialProps(ctx);
     }
 
-    return { pageProps };
+    let path = router.pathname;
+    if (path === '/' && pageProps.button.active) {
+      path = '/menu';
+    }
+
+    let mainClass = '';
+
+    switch (path) {
+      case '/':
+        mainClass = 'main__page';
+        break;
+      case '/menu':
+        mainClass = 'menu__page';
+        break;
+      case '/locations':
+        mainClass = 'location__page';
+        break;
+      default:
+        mainClass = 'main__page';
+        break;
+    }
+
+    return { pageProps, router, mainClass };
   }
 
   render() {
-    const { Component, pageProps, router } = this.props;
+    const { Component, pageProps, router, mainClass } = this.props;
     return (
       <>
+        {/* <style jsx global>{`
+          }
+        `}</style> */}
         <Provider store={store}>
           <Header />
-          <div className="page-cover page-main">
-            <Nav />
-            <AnimatePresence exitBeforeEnter>
-              <motion.div
-                key={router.route}
-                initial="pageInitial"
-                animate="pageAnimate"
-                exit="pageExit"
-                transition={{ duration: 0.3 }}
-                variants={{
-                  pageInitial: {
-                    opacity: 0,
-                  },
-                  pageAnimate: {
-                    opacity: 1,
-                  },
-                  pageExit: {
-                    backgroundColor: 'white',
-                    opacity: 0,
-                  },
-                }}
-                className="max-height"
-              >
-                <Component {...pageProps} />
-              </motion.div>
-            </AnimatePresence>
+          <div className="page-cover">
+            <div className={`${mainClass}`}>
+              <Nav />
+              <AnimatePresence exitBeforeEnter>
+                <motion.div
+                  key={router.route}
+                  initial="pageInitial"
+                  animate="pageAnimate"
+                  exit="pageExit"
+                  transition={{ duration: 0.3 }}
+                  variants={{
+                    pageInitial: {
+                      opacity: 0,
+                    },
+                    pageAnimate: {
+                      opacity: 1,
+                    },
+                    pageExit: {
+                      backgroundColor: 'white',
+                      opacity: 0,
+                    },
+                  }}
+                  className="max-height"
+                >
+                  <Component {...pageProps} />
+                </motion.div>
+              </AnimatePresence>
+            </div>
           </div>
         </Provider>
       </>

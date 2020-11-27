@@ -1,4 +1,17 @@
 .menu {
+  width: 100%;
+
+  &__page {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+      url('../images/honeygarlic-7.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    transition: all 0.5s;
+    height: 50%;
+  }
+
   &__list {
     &-row {
       display: flex;
