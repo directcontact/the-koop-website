@@ -1,7 +1,6 @@
 const express = require('express');
 const next = require('next');
 const helmet = require('helmet');
-const morgan = require('morgan');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const cryptoRandomString = require('crypto-random-string');
@@ -21,7 +20,11 @@ server
 
     const session_secret = cryptoRandomString({ length: 10, type: 'base64' });
 
-    app.use(morgan('common'));
+    if (dev) {
+      const morgan = require('morgan');
+      app.use(morgan('common'));
+    }
+
     app.use(bodyParser.json());
     app.use(
       session({
@@ -32,14 +35,7 @@ server
     );
     app.use(
       helmet({
-        // contentSecurityPolicy: false,
-        contentSecurityPolicy: {
-          directives: {
-            defaultSrc: ["'self'"],
-            scriptSrc: ["'self'"],
-            styleSrc: ["'self'", "'unsafe-inline'"],
-          },
-        },
+        contentSecurityPolicy: false,
       })
     );
 
