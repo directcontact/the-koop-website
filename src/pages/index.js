@@ -79,11 +79,18 @@ export default class IndexPage extends React.Component {
     const divVariant = {
       active: {
         opacity: 1,
+        transition: {
+          delay: 0.6,
+          ease: [0.6, -0.05, 0.01, 0.99],
+          staggerChildren: 0.1,
+          duration: 0.3,
+        },
       },
       inactive: {
         opacity: 0,
       },
     };
+
     return (
       <AnimatePresence exitBeforeEnter>
         <motion.div
@@ -91,11 +98,6 @@ export default class IndexPage extends React.Component {
           variants={divVariant}
           initial={{ opacity: 0 }}
           exit={{ opacity: 0 }}
-          transition={{
-            delay: 0.3,
-            ease: 'easeInOut',
-            duration: 0.3,
-          }}
           animate={button.active ? 'active' : 'inactive'}
         >
           <div className="menu__container">
@@ -106,11 +108,6 @@ export default class IndexPage extends React.Component {
                   variants={divVariant}
                   initial={{ opacity: 0 }}
                   exit={{ opacity: 0 }}
-                  transition={{
-                    delay: 0.3,
-                    ease: 'easeInOut',
-                    duration: 0.3,
-                  }}
                   animate={button.active ? 'active' : 'inactive'}
                   className="menu__list-row col-md-12"
                 >
@@ -162,7 +159,7 @@ export default class IndexPage extends React.Component {
           <motion.a
             transition={{ ease: 'easeInOut', duration: 0.3 }}
             animate={button.active ? 'active' : 'inactive'}
-            className="main__btn"
+            className="btn"
           >
             ORDER
           </motion.a>
