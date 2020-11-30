@@ -44,16 +44,18 @@
         font-size: 2rem;
       }
       &-link {
+        position: relative;
         text-decoration: none;
-        &::after {
+        &::before {
           content: '';
+          position: absolute;
           width: 0;
-          height: 0.3rem;
-          display: block;
-          margin-top: 0.1rem;
-          right: 0;
-          background: #fff;
-          transition: width 0.3s ease;
+          height: 2px;
+          bottom: 0;
+          left: 0;
+          background-color: #fff;
+          visibility: hidden;
+          transition: all 0.3s ease-in-out;
         }
 
         &:link,
@@ -63,10 +65,9 @@
         &:hover,
         &:active {
           text-decoration: none;
-          &::after {
+          &::before {
+            visibility: visible;
             width: 100%;
-            left: 0;
-            background: #fff;
           }
           color: $color-white;
         }

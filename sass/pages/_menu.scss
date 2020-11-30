@@ -25,4 +25,30 @@
       justify-content: center;
     }
   }
+
+  &__nav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    padding-top: 5vh;
+    width: 100%;
+    &-list {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 65%;
+      text-decoration: none;
+      list-style-type: none;
+      &--item {
+        font-size: 2rem;
+        cursor: pointer;
+        transition: opacity 0.3s ease-in-out, font-weight 0.1s ease-in-out;
+        &:hover {
+          opacity: 0.7;
+        }
+      }
+    }
+  }
 }
