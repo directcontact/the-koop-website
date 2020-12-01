@@ -126,6 +126,31 @@ h2 {
 .max-height {
   height: 100%; }
 
+.selected {
+  font-weight: bold; }
+
+.btn {
+  background-color: #e02c4b;
+  color: #fff;
+  padding: 0.75rem 4rem;
+  border-radius: 10rem;
+  border: none;
+  font-size: 2rem;
+  font-weight: 200;
+  transition: color 0.4s; }
+  .btn:link, .btn:visited {
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase; }
+  .btn:hover, .btn:active {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.5);
+    cursor: pointer; }
+  @media only screen and (max-width: 37.5em) {
+    .btn {
+      padding: 0.5rem 2rem;
+      font-size: 1rem; } }
+
 .menuitem {
   display: flex;
   align-items: center;
@@ -177,16 +202,26 @@ h2 {
       .nav__item-header {
         font-size: 2rem; } }
     .nav__item-header-link {
+      position: relative;
       text-decoration: none; }
+      .nav__item-header-link::before {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: #fff;
+        visibility: hidden;
+        transition: all 0.3s ease-in-out; }
       .nav__item-header-link:link, .nav__item-header-link:visited {
-        color: #fff;
-        text-decoration: none;
-        text-transform: uppercase;
-        transition: all 0.4s; }
+        color: #fff; }
       .nav__item-header-link:hover, .nav__item-header-link:active {
-        color: #fff;
         text-decoration: none;
-        opacity: 0.5; }
+        color: #fff; }
+        .nav__item-header-link:hover::before, .nav__item-header-link:active::before {
+          visibility: visible;
+          width: 100%; }
   .nav__block {
     display: flex;
     align-items: center;
@@ -219,7 +254,6 @@ h2 {
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    transition: all 0.4s;
     height: 100%; }
   .main + .nav {
     background-color: #000; }
@@ -244,27 +278,6 @@ h2 {
       .main__subheader {
         margin-bottom: 4rem;
         font-size: 1.25rem; } }
-  .main__btn {
-    background-color: #e02c4b;
-    color: #fff;
-    padding: 0.75rem 4rem;
-    border-radius: 10rem;
-    border: none;
-    font-size: 2rem;
-    font-weight: 200;
-    transition: color 0.4s; }
-    .main__btn:link, .main__btn:visited {
-      color: #fff;
-      text-decoration: none;
-      text-transform: uppercase; }
-    .main__btn:hover, .main__btn:active {
-      text-decoration: none;
-      color: rgba(255, 255, 255, 0.5);
-      cursor: pointer; }
-    @media only screen and (max-width: 37.5em) {
-      .main__btn {
-        padding: 0.5rem 2rem;
-        font-size: 1rem; } }
 
 .menu {
   width: 100%; }
@@ -274,7 +287,6 @@ h2 {
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    transition: all 0.5s;
     height: 50%; }
   .menu__header {
     text-align: center;
@@ -285,6 +297,27 @@ h2 {
     flex-direction: row;
     align-items: center;
     justify-content: center; }
+  .menu__nav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    padding-top: 5vh;
+    width: 100%; }
+    .menu__nav-list {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 65%;
+      text-decoration: none;
+      list-style-type: none; }
+      .menu__nav-list--item {
+        font-size: 2rem;
+        cursor: pointer;
+        transition: opacity 0.3s ease-in-out, font-weight 0.1s ease-in-out; }
+        .menu__nav-list--item:hover {
+          opacity: 0.7; }
 
 .location__page {
   background-color: #4D4D4D;
@@ -353,6 +386,20 @@ h2 {
         margin-bottom: 4rem;
         font-size: 1.25rem; } }
 
-.catering__page {
-  background-color: #000;
-  height: 100%; }
+.catering {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column; }
+  .catering__page {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../images/koop-5.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100%; }
+  .catering__header {
+    color: #fff;
+    font-weight: 400;
+    font-size: 3rem; }

@@ -10,7 +10,7 @@ import 'normalize.css/normalize.css';
 
 import Nav from '../components/Nav';
 import Header from '../components/Header';
-import store from '../../redux/store';
+import store from '../redux/store';
 
 class MyApp extends App {
   static async getInitialProps({ Component, router, ctx }) {
@@ -65,10 +65,10 @@ class MyApp extends App {
       <>
         <Provider store={store}>
           <Header />
-          <div className="page-cover">
-            <div className={`${mainClass}`}>
-              <Nav />
-              <AnimatePresence>
+          <AnimatePresence>
+            <motion.div transition={{ duration: 0.5 }} className="page-cover">
+              <div className={`${mainClass}`}>
+                <Nav />
                 <motion.div
                   key={router.route}
                   initial="pageInitial"
@@ -91,9 +91,9 @@ class MyApp extends App {
                 >
                   <Component {...pageProps} />
                 </motion.div>
-              </AnimatePresence>
-            </div>
-          </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
         </Provider>
       </>
     );
@@ -107,4 +107,5 @@ export function reportWebVitals(metric) {
 }
 
 const makeStore = () => store;
+
 export default withRedux(makeStore)(MyApp);

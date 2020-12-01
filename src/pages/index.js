@@ -5,6 +5,21 @@ export default class IndexPage extends React.Component {
   constructor() {
     super();
 
+    this.state = {
+      navActive: {
+        item: 'chicken',
+        active: 'selected',
+      },
+      navItems: [
+        'CHICKEN',
+        'APPETIZERS',
+        'RICE DISHES',
+        'TROTTER',
+        'SOUPS',
+        'SIDES',
+      ],
+    };
+
     // this.handleEmailButton = this.handleEmailButton.bind(this);
   }
 
@@ -14,26 +29,32 @@ export default class IndexPage extends React.Component {
     const items = [
       {
         name: 'SOY GARLIC',
+        type: 'chicken',
         src: '/static/images/soygarlic-1.jpg',
       },
       {
         name: 'SPICY SOY GARLIC',
+        type: 'chicken',
         src: '/static/images/soygarlic-5.jpg',
       },
       {
         name: 'EXTRA SPICY',
+        type: 'chicken',
         src: '/static/images/sweet_spicy-2.jpg',
       },
       {
         name: 'SWEET & SPICY',
+        type: 'chicken',
         src: '/static/images/sweet_spicy-3.jpg',
       },
       {
         name: 'HONEY GARLIC',
+        type: 'chicken',
         src: '/static/images/honeygarlic-4.jpg',
       },
       {
         name: 'MILD',
+        type: 'chicken',
         src: '/static/images/mild-5.jpg',
       },
     ];
@@ -76,14 +97,24 @@ export default class IndexPage extends React.Component {
   renderMenu(button) {
     const menuItems = this.props.items;
     const sections = chunk(menuItems, 3);
+    const navActive = this.state.navActive;
+    const navItems = this.state.navItems;
+    console.log(this.state);
     const divVariant = {
       active: {
         opacity: 1,
+        transition: {
+          delay: 0.6,
+          ease: [0.6, -0.05, 0.01, 0.99],
+          staggerChildren: 0.1,
+          duration: 0.3,
+        },
       },
       inactive: {
         opacity: 0,
       },
     };
+
     return (
       <AnimatePresence exitBeforeEnter>
         <motion.div
@@ -91,13 +122,30 @@ export default class IndexPage extends React.Component {
           variants={divVariant}
           initial={{ opacity: 0 }}
           exit={{ opacity: 0 }}
-          transition={{
-            delay: 0.3,
-            ease: 'easeInOut',
-            duration: 0.3,
-          }}
           animate={button.active ? 'active' : 'inactive'}
         >
+          <div className="menu__nav">
+            <ul className="menu__nav-list">
+              {navItems.map((item, idx) => {
+                let active = '';
+                let strup = navActive.item.toUpperCase();
+                if (strup === item) {
+                  active = navActive.active;
+                }
+                return (
+                  <motion.li
+                    className={`menu__nav-list--item ${active}`}
+                    key={idx}
+                    onClick={() =>
+                      this.setState({ navActive: { item, active: 'selected' } })
+                    }
+                  >
+                    {item}
+                  </motion.li>
+                );
+              })}
+            </ul>
+          </div>
           <div className="menu__container">
             <div className="menu__list col-md-12">
               {sections.map((divs, idx) => (
@@ -106,11 +154,6 @@ export default class IndexPage extends React.Component {
                   variants={divVariant}
                   initial={{ opacity: 0 }}
                   exit={{ opacity: 0 }}
-                  transition={{
-                    delay: 0.3,
-                    ease: 'easeInOut',
-                    duration: 0.3,
-                  }}
                   animate={button.active ? 'active' : 'inactive'}
                   className="menu__list-row col-md-12"
                 >
@@ -162,7 +205,7 @@ export default class IndexPage extends React.Component {
           <motion.a
             transition={{ ease: 'easeInOut', duration: 0.3 }}
             animate={button.active ? 'active' : 'inactive'}
-            className="main__btn"
+            className="btn"
           >
             ORDER
           </motion.a>
