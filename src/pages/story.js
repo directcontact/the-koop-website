@@ -50,13 +50,13 @@ export default class StoryPage extends React.Component {
           <br />
           <div className="story__title">FRANCHISE</div>
           <br />
-          WE ARE LOOKING FOR CANDIDATES WHO ARE ENTHUSIASTIC TO START THEIR OWN CHICKEN KOOP.
+          WE ARE LOOKING FOR CANDIDATES WHO ARE ENTHUSIASTIC TO START THEIR OWN
+          CHICKEN KOOP.
           <br />
           PLEASE CONTACT STACY LEE AT 717-471-1602
         </div>
       </div>
-
-    )
+    );
   }
 
   render() {
@@ -66,12 +66,8 @@ export default class StoryPage extends React.Component {
           {this.renderHeader()}
           {this.renderAbout()}
         </div>
-        <div className="story max-height">
-          {this.renderFranchise()}
-        </div>
+        <div className="story max-height">{this.renderFranchise()}</div>
       </>
-      
     );
   }
-
 }

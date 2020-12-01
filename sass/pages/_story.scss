@@ -1,5 +1,4 @@
 .story {
-
   min-height: 75%;
   overflow: hidden;
   transition: height 0.66s ease-out;
@@ -19,11 +18,11 @@
     background-repeat: no-repeat;
     transition: all 0.5s;
     height: 90%;
-    background-color: #4D4D4D;
+    background-color: #4d4d4d;
   }
 
   &__greyBack {
-    background-color: #4D4D4D;
+    background-color: #4d4d4d;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
