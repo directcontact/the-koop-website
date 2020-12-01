@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
-import { setActive } from '../../redux/actions/button';
+import { setActive } from '../redux/actions/button';
 
 const Nav = (props) => {
   const { setActive } = props;
