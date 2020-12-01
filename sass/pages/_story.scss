@@ -10,18 +10,6 @@
   flex-grow: 1;
   color: $color-white;
 
-
-  // &__page {
-  //   background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-  //     url('../images/koop-7.jpg');
-  //   background-size: cover;
-  //   background-position: center;
-  //   background-attachment: fixed;
-  //   transition: all 0.5s;
-  //   height: 90%;
-  //   background-color: #4D4D4D;
-  // }
-
   &__page {
     background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
       url('../images/koop-7.jpg');
@@ -96,13 +84,4 @@
       font-size: 1.25rem;
     }
   }
-
-  // &__list {
-  //   &-row {
-  //     display: flex;
-  //     flex-direction: row;
-  //     align-items: center;
-  //     justify-content: center;
-  //   }
-  // }
 }
