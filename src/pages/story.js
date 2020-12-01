@@ -6,19 +6,19 @@ export default class StoryPage extends React.Component {
 
   renderHeader() {
     return (
-      <div>
+      <>
         <br />
           <h1 className="story__header">THE KOOP</h1>
           <p className="story__subheader u-margin-bottom-medium">
               KOREAN CHICKEN | KOREAN CUISINE | JOKBAL
           </p>
-      </div>
+      </>
     );
   }
 
   renderAbout() {
     return (
-      <div>
+      <>
           <div className="story__text u-margin-bottom-medium">
             <div className="story__title">NOT ALL FRIED CHICKENS ARE CREATED EQUAL</div>
 
@@ -39,7 +39,7 @@ export default class StoryPage extends React.Component {
             SPICY FOR THE ADVENTUROUS<br />
             AUTHENTIC FOR THE DARING
           </div>
-      </div>
+      </>
     )
   }
 
