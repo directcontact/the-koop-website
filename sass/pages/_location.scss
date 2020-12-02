@@ -2,5 +2,6 @@
   &__page {
     background-color: #4d4d4d;
     height: 100%;
+    transition: height 0.66s ease-in-out;
   }
 }

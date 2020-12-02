@@ -1,8 +1,5 @@
 .menu {
-  width: 100%;
-  flex-grow: 1;
-  overflow: hidden;
-  min-height: 50%;
+  transition: height 0.66s ease-in-out;
 
   &__page {
     background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
