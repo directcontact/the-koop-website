@@ -1,5 +1,8 @@
 .menu {
   width: 100%;
+  flex-grow: 1;
+  overflow: hidden;
+  min-height: 50%;
 
   &__page {
     background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
@@ -8,7 +11,9 @@
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    height: 50%;
+    height: 75%;
+    min-height: 50%;
+    transition: height 0.66s ease-in-out;
   }
 
   &__header {
@@ -44,7 +49,7 @@
       &--item {
         font-size: 2rem;
         cursor: pointer;
-        transition: opacity 0.3s ease-in-out, font-weight 0.1s ease-in-out;
+        transition: opacity 0.3s ease-in-out, font-weight 0.2s ease-in-out;
         &:hover {
           opacity: 0.7;
         }

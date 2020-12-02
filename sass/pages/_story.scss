@@ -1,7 +1,6 @@
 .story {
   min-height: 75%;
   overflow: hidden;
-  transition: height 0.66s ease-out;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -27,9 +26,9 @@
     background-position: center top;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    transition: all 0.5s;
     height: 90%;
     background-color: #4d4d4d;
+    transition: height 0.66s ease-in-out;
   }
 
   &__greyBack {
@@ -37,9 +36,9 @@
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    transition: all 0.5s;
     height: 100%;
     width: 100%;
+    transition: height 0.66s ease-in-out;
   }
 
   &__title {
