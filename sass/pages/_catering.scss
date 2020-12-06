@@ -12,6 +12,7 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
     height: 100%;
+    transition: height 0.66s ease-in-out;
   }
 
   &__header {

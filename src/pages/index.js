@@ -106,7 +106,6 @@ export default class IndexPage extends React.Component {
         transition: {
           delay: 0.6,
           ease: [0.6, -0.05, 0.01, 0.99],
-          staggerChildren: 0.1,
           duration: 0.3,
         },
       },
@@ -116,59 +115,53 @@ export default class IndexPage extends React.Component {
     };
 
     return (
-      <AnimatePresence exitBeforeEnter>
-        <motion.div
-          className="menu"
-          variants={divVariant}
-          initial={{ opacity: 0 }}
-          exit={{ opacity: 0 }}
-          animate={button.active ? 'active' : 'inactive'}
-        >
-          <div className="menu__nav">
-            <ul className="menu__nav-list">
-              {navItems.map((item, idx) => {
-                let active = '';
-                let strup = navActive.item.toUpperCase();
-                if (strup === item) {
-                  active = navActive.active;
-                }
-                return (
-                  <motion.li
-                    className={`menu__nav-list--item ${active}`}
-                    key={idx}
-                    onClick={() =>
-                      this.setState({ navActive: { item, active: 'selected' } })
-                    }
-                  >
-                    {item}
-                  </motion.li>
-                );
-              })}
-            </ul>
-          </div>
-          <div className="menu__container">
-            <div className="menu__list col-md-12">
-              {sections.map((divs, idx) => (
-                <motion.div
+      <motion.div
+        className="menu"
+        variants={divVariant}
+        animate={button.active ? 'active' : 'inactive'}
+      >
+        <div className="menu__nav">
+          <ul className="menu__nav-list u-margin-bottom-small">
+            {navItems.map((item, idx) => {
+              let active = '';
+              let strup = navActive.item.toUpperCase();
+              if (strup === item) {
+                active = navActive.active;
+              }
+              return (
+                <li
+                  className={`menu__nav-list--item ${active}`}
                   key={idx}
-                  variants={divVariant}
-                  initial={{ opacity: 0 }}
-                  exit={{ opacity: 0 }}
-                  animate={button.active ? 'active' : 'inactive'}
-                  className="menu__list-row col-md-12"
+                  onClick={() =>
+                    this.setState({ navActive: { item, active: 'selected' } })
+                  }
                 >
-                  {divs.map((item, idx) => (
-                    <div className="menuitem col-md-4" key={idx}>
-                      <h3 className="menuitem__title">{item.name}</h3>
-                      <img src={item.src} className="menuitem__img" />
-                    </div>
-                  ))}
-                </motion.div>
-              ))}
-            </div>
+                  {item}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+        <div className="menu__container">
+          <div className="menu__list col-md-12">
+            {sections.map((divs, idx) => (
+              <motion.div
+                key={idx}
+                variants={divVariant}
+                animate={button.active ? 'active' : 'inactive'}
+                className="menu__list-row col-md-12"
+              >
+                {divs.map((item, idx) => (
+                  <div className="menuitem col-md-4" key={idx}>
+                    <h3 className="menuitem__title">{item.name}</h3>
+                    <img src={item.src} className="menuitem__img" />
+                  </div>
+                ))}
+              </motion.div>
+            ))}
           </div>
-        </motion.div>
-      </AnimatePresence>
+        </div>
+      </motion.div>
     );
   }
 
@@ -196,7 +189,7 @@ export default class IndexPage extends React.Component {
               animate={button.active ? 'active' : 'inactive'}
             >
               <h1 className="main__header">THE KOOP</h1>
-              <h2 className="main__subheader u-margin-bottom-massive">
+              <h2 className="main__subheader u-margin-bottom-huge">
                 KOREAN CHICKEN | KOREAN CUISINE | JOKBAL
               </h2>
             </motion.div>
@@ -205,7 +198,7 @@ export default class IndexPage extends React.Component {
           <motion.a
             transition={{ ease: 'easeInOut', duration: 0.3 }}
             animate={button.active ? 'active' : 'inactive'}
-            className="btn"
+            className="btn u-margin-top-small"
           >
             ORDER
           </motion.a>
