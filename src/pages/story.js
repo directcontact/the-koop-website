@@ -20,16 +20,16 @@ export default class StoryPage extends React.Component {
     return (
       <>
           <div className="story__text u-margin-bottom-medium">
-            <div className="story__title">NOT ALL FRIED CHICKENS ARE CREATED EQUAL</div>
-
+            <h3 className="story__title">NOT ALL FRIED CHICKENS ARE CREATED EQUAL</h3>
             NEVER FROZEN - SPECIAL MARINADE - SPECIAL UNIQUE BATTER MIX<br />
             COOKED THE SAME WAY, EACH AND EVERY TIME TO DUPLICATE THE SAME TASTE
             UNIQUE BATTER MIX CREATE A BARRIER TO KEEP THE MEAT MOIST AND CRISPY OUT
             LOWER PRICES THAN COMPETITION: BRAND-NAME MEALS AT NO-FRILLS PRICES
             LARGER PORTIONS THAN THE COMPETITION<br /><br />
+          </div>
 
-            <div className="story__title">PHENOMENAL TASTE</div>
-
+          <div className="story__text u-margin-botttom-medium">
+            <h3 className="story__title">PHENOMENAL TASTE</h3>
             IT IS DELICIOUS HOT, STILL GREAT THE NEXT DAY<br />
             ONE BITE, YOU WILL BE HOOKED<br />
             THE KOOP HAS DIVERSE MENU ITEMS TO SATISFY EVERY PALLET<br /><br />
