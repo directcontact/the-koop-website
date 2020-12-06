@@ -153,7 +153,9 @@ export default class IndexPage extends React.Component {
               >
                 {divs.map((item, idx) => (
                   <div className="menuitem col-md-4" key={idx}>
-                    <h3 className="menuitem__title">{item.name}</h3>
+                    <h3 className="menuitem__title u-margin-bottom-small">
+                      {item.name}
+                    </h3>
                     <img src={item.src} className="menuitem__img" />
                   </div>
                 ))}
@@ -187,9 +189,10 @@ export default class IndexPage extends React.Component {
               variants={divVariant}
               transition={{ ease: 'easeInOut', duration: 0.3 }}
               animate={button.active ? 'active' : 'inactive'}
+              className="main__container"
             >
-              <h1 className="main__header">THE KOOP</h1>
-              <h2 className="main__subheader u-margin-bottom-huge">
+              <h1 className="main__container-header">THE KOOP</h1>
+              <h2 className="main__container-subheader u-margin-bottom-huge">
                 KOREAN CHICKEN | KOREAN CUISINE | JOKBAL
               </h2>
             </motion.div>
