@@ -347,35 +347,6 @@ h2 {
       padding: 2rem;
       height: 60%;
       width: 100%; }
-  .location__text-first {
-    color: #fff;
-    flex-direction: column;
-    text-align: center;
-    font-weight: 250;
-    font-size: 2.75rem; }
-    .location__text-first_map {
-      display: flex;
-      flex-direction: row;
-      text-align: center;
-      font-size: 2.75rem; }
-  .location__text-second {
-    color: #4d4d4d;
-    flex-direction: column;
-    text-align: center;
-    font-weight: 250;
-    font-size: 2.75rem; }
-    .location__text-second_map {
-      display: flex;
-      flex-direction: row;
-      text-align: center;
-      font-size: 2.75rem;
-      color: #4d4d4d; }
-  .location__display-right {
-    position: absolute;
-    left: 70%;
-    font-weight: 250;
-    font-size: 2rem;
-    margin-right: 5rem; }
   .location__map {
     display: flex;
     flex-direction: row;
