@@ -20,7 +20,6 @@ export default class StoryPage extends React.Component {
     return (
       <>
         <div className="story__text-row col-md-12">
-          {/* <div className="u-margin-bottom-medium col-md-6"> */}
           <div className="col-md-6">
             <h3 className="story__text-title">NOT ALL FRIED CHICKENS ARE CREATED EQUAL</h3>
             <div className="story__text-content">
@@ -33,7 +32,6 @@ export default class StoryPage extends React.Component {
             </div>
           </div>
 
-          {/* <div className="u-margin-botttom-medium col-md-6"> */}
           <div className="col-md-6">
             <h3 className="story__text-title">PHENOMENAL TASTE</h3>
             <div className="story__text-content">
