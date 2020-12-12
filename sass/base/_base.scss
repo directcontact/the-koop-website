@@ -28,6 +28,7 @@ html {
 
 body {
   box-sizing: border-box;
+  background-color: $color-off-white;
 
   @include respond(tab-port) {
     padding: 0;

@@ -1,24 +1,13 @@
 import Link from 'next/link';
-import { connect } from 'react-redux';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
-import { setActive } from '../redux/actions/button';
-
-const Nav = (props) => {
-  const { setActive } = props;
+const Nav = () => {
   return (
     <>
       <div className="row nav">
         <div className="col-md-2 nav__block">
           <h2 className="nav__item-header">
             <Link className="nav__header-link" href="/">
-              <a
-                onClick={() => setActive(false)}
-                className="nav__item-header-link"
-              >
-                LOGO
-              </a>
+              <a className="nav__item-header-link">LOGO</a>
             </Link>
           </h2>
         </div>
@@ -26,13 +15,8 @@ const Nav = (props) => {
           <ul className="list-inline nav__block-list">
             <li className="list-inline-item nav__item">
               <h2 className="nav__item-header">
-                <Link href="/">
-                  <a
-                    onClick={() => setActive(true)}
-                    className="nav__item-header-link"
-                  >
-                    MENU
-                  </a>
+                <Link href="/menu">
+                  <a className="nav__item-header-link">MENU</a>
                 </Link>
               </h2>
             </li>
@@ -61,9 +45,7 @@ const Nav = (props) => {
         </div>
         <div className="col-md-2 nav__block">
           <div className="nav__icon">
-            <a className="nav__icon-link">
-              <FontAwesomeIcon icon={faShoppingCart} />
-            </a>
+            <a className="btn u-margin-top-small">ORDER ONLINE</a>
           </div>
         </div>
       </div>
@@ -71,12 +53,4 @@ const Nav = (props) => {
   );
 };
 
-export const mapStateToProps = (state) => ({
-  button: state.button,
-});
-
-export const mapDispatchToProps = {
-  setActive: setActive,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Nav);
+export default Nav;

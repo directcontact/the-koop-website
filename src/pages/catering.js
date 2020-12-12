@@ -1,11 +1,4 @@
 export default class CateringPage extends React.Component {
-  static async getInitialProps(ctx) {
-    const state = ctx.store.getState();
-    return {
-      ...state,
-    };
-  }
-
   render() {
     return (
       <div className="catering">
