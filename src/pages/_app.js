@@ -4,7 +4,7 @@ import withRedux from 'next-redux-wrapper';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Provider } from 'react-redux';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap-grid.min.css';
 import '../../public/static/css/styles.css';
 import 'normalize.css/normalize.css';
 
@@ -65,35 +65,24 @@ class MyApp extends App {
       <>
         <Provider store={store}>
           <Header />
-          <AnimatePresence>
-            <motion.div transition={{ duration: 0.5 }} className="page-cover">
-              <div className={`${mainClass}`}>
-                <Nav />
+
+          <motion.div className="page-cover">
+            <div className={`${mainClass}`}>
+              <Nav />
+              <AnimatePresence exitBeforeEnter>
                 <motion.div
-                  key={router.route}
-                  initial="pageInitial"
-                  animate="pageAnimate"
-                  exit="pageExit"
+                  key={mainClass}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
                   transition={{ duration: 0.3 }}
-                  variants={{
-                    pageInitial: {
-                      opacity: 0,
-                    },
-                    pageAnimate: {
-                      opacity: 1,
-                    },
-                    pageExit: {
-                      backgroundColor: 'white',
-                      opacity: 0,
-                    },
-                  }}
                   className="max-height"
                 >
                   <Component {...pageProps} />
                 </motion.div>
-              </div>
-            </motion.div>
-          </AnimatePresence>
+              </AnimatePresence>
+            </div>
+          </motion.div>
         </Provider>
       </>
     );

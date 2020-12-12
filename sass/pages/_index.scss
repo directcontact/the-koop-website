@@ -1,12 +1,8 @@
 .main {
-  min-height: 75%;
-  overflow: hidden;
-  transition: height 0.66s ease-out;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  flex-grow: 1;
   color: $color-white;
 
   &__page {
@@ -17,6 +13,7 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
     height: 100%;
+    transition: height 0.66s ease-in-out;
   }
 
   & + .nav {

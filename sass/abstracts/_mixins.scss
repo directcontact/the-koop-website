@@ -19,6 +19,7 @@
     src: $font-file;
     font-weight: $font-weight;
     font-style: $font-style;
+    font-display: swap;
   }
 }
 
@@ -36,7 +37,7 @@ $breakpoint arguement choices:
 - tab-land
 - big-desktop
 
-ORDER: Base + typography > general layout + grid > page layout > components
+ORDER: Base + typography > general layout > page layout > components
 
 1em = 16px
 */
