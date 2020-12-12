@@ -318,38 +318,58 @@ h2 {
   display: flex;
   color: #ffffff; }
   .location__page {
-    background-color: #4d4d4d;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../images/soygarlic-3.jpg");
+    background-size: cover;
+    background-position: center bottom;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
     height: 60%; }
-  .location__greybg {
-    text-align: center;
-    font-weight: 250;
-    font-size: 2.75rem;
-    color: #fff;
+  .location__block {
     display: flex;
-    justify-content: center;
-    padding: 2rem;
     flex-direction: row;
-    height: 60%;
-    width: 50%;
+    text-align: center;
     margin-top: 10rem; }
-  .location_text {
+    .location__block-first {
+      text-align: center;
+      font-weight: 250;
+      font-size: 2.75rem;
+      color: #fff;
+      justify-content: center;
+      padding: 2rem;
+      height: 60%;
+      width: 100%; }
+    .location__block-second {
+      text-align: center;
+      font-weight: 250;
+      font-size: 2.75rem;
+      color: #4d4d4d;
+      justify-content: center;
+      padding: 2rem;
+      height: 60%;
+      width: 100%; }
+  .location__text-first {
+    color: #fff;
     flex-direction: column;
     text-align: center;
     font-weight: 250;
     font-size: 2.75rem; }
-  .location__whitebg {
+    .location__text-first_map {
+      display: flex;
+      flex-direction: row;
+      text-align: center;
+      font-size: 2.75rem; }
+  .location__text-second {
+    color: #4d4d4d;
+    flex-direction: column;
     text-align: center;
     font-weight: 250;
-    font-size: 2.75rem;
-    background-color: #fff;
-    color: #4d4d4d;
-    display: flex;
-    justify-content: center;
-    padding: 2rem;
-    flex-direction: row;
-    height: 60%;
-    width: 50%;
-    margin-top: 10rem; }
+    font-size: 2.75rem; }
+    .location__text-second_map {
+      display: flex;
+      flex-direction: row;
+      text-align: center;
+      font-size: 2.75rem;
+      color: #4d4d4d; }
   .location__display-right {
     position: absolute;
     left: 70%;
@@ -357,7 +377,9 @@ h2 {
     font-size: 2rem;
     margin-right: 5rem; }
   .location__map {
-    display: flex; }
+    display: flex;
+    flex-direction: row;
+    text-align: center; }
 
 .story {
   min-height: 75%;
@@ -377,12 +399,12 @@ h2 {
     height: 85%;
     background-color: #4d4d4d;
     transition: height 0.66s ease-in-out; }
-  .story__greyBack {
-    background-color: #4d4d4d;
+  .story__franchise {
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url("../images/paper.png");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    height: 100%;
+    height: 85%;
     width: 100%;
     transition: height 0.66s ease-in-out; }
   .story__text {
@@ -402,13 +424,16 @@ h2 {
       display: flex;
       text-align: center;
       justify-content: center;
-      flex-direction: column; }
+      flex-direction: column;
+      margin: 0 auto;
+      padding: 3rem; }
     .story__text-title {
       text-align: center;
       font-weight: 400;
       font-size: 3rem;
       margin: 0 auto;
-      justify-content: center; }
+      justify-content: center;
+      margin-top: 3rem; }
     .story__text-content {
       text-align: center;
       justify-content: center;
@@ -431,7 +456,7 @@ h2 {
   .story__subheader {
     font-size: 1.5rem;
     text-align: center;
-    padding-bottom: 5rem; }
+    padding-bottom: 2rem; }
     .story__subheader::selection {
       background: none; }
     .story__subheader:hover {

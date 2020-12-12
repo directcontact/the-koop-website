@@ -25,9 +25,10 @@ export default class StoryPage extends React.Component {
             <div className="story__text-content">
               <br />
               NEVER FROZEN - SPECIAL MARINADE - SPECIAL UNIQUE BATTER MIX<br />
-              COOKED THE SAME WAY, EACH AND EVERY TIME TO DUPLICATE THE SAME TASTE
-              UNIQUE BATTER MIX CREATE A BARRIER TO KEEP THE MEAT MOIST AND CRISPY OUT
-              LOWER PRICES THAN COMPETITION: BRAND-NAME MEALS AT NO-FRILLS PRICES
+              COOKED THE SAME WAY, EACH AND EVERY TIME TO DUPLICATE THE SAME TASTE<br />
+              UNIQUE BATTER MIX CREATE A BARRIER TO KEEP THE MEAT MOIST AND CRISPY OUT <br/><br />
+              LOWER PRICES THAN COMPETITION: <br />
+              BRAND-NAME MEALS AT NO-FRILLS PRICES <br />
               LARGER PORTIONS THAN THE COMPETITION
             </div>
           </div>
@@ -53,7 +54,7 @@ export default class StoryPage extends React.Component {
 
   renderFranchise() {
     return (
-      <div className="story__greyBack col-md-12">
+      <div className="story__franchise col-md-12">
         <div className="story__text-column col-md-12">
           <br />
           <div className="story__text-title">FRANCHISE</div>
