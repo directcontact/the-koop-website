@@ -53,20 +53,23 @@
       justify-content: center;
       flex-direction: row;
       margin: 0 auto;
-    };
+    }
+
     &-column {
       display: flex;
       text-align: center;
       justify-content: center;
       flex-direction: column;
-    };
+    }
+
     &-title {
       text-align: center;
       font-weight: 400;
       font-size: 3rem;
       margin: 0 auto;
       justify-content: center;
-    };
+    }
+
     &-content {
       text-align: center;
       justify-content: center;
