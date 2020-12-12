@@ -43,9 +43,17 @@
       @include respond(tab-port) {
         font-size: 2rem;
       }
+
+      &--logo {
+        cursor: pointer;
+        width: 100%;
+        margin-left: 3rem;
+      }
+
       &-link {
         position: relative;
         text-decoration: none;
+
         &::before {
           content: '';
           position: absolute;

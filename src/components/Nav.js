@@ -6,8 +6,11 @@ const Nav = () => {
       <div className="row nav">
         <div className="col-md-2 nav__block">
           <h2 className="nav__item-header">
-            <Link className="nav__header-link" href="/">
-              <a className="nav__item-header-link">LOGO</a>
+            <Link href="/">
+              <img
+                src="/static/images/the-koop-logo.png"
+                className="nav__item-header--logo"
+              />
             </Link>
           </h2>
         </div>

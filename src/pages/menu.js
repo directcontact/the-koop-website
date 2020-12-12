@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { chunk } from '../../util/helper';
+import Image from 'next/image';
 
 export default class MenuPage extends React.Component {
   constructor() {
@@ -110,16 +111,32 @@ export default class MenuPage extends React.Component {
               })}
             </ul>
           </div>
+          <hr className="solid u-margin-top-small" />
           <div className="menu__container">
             <div className="menu__list col-md-12">
               {sections.map((divs, idx) => (
-                <motion.div key={idx} className="menu__list-row col-md-12">
+                <motion.div
+                  key={idx}
+                  className="menu__list-row col-md-12"
+                  transition={{
+                    staggerChildren: 0.5,
+                    ease: 'easeInOut',
+                    delay: 0.5,
+                  }}
+                >
                   {divs.map((item, idx) => (
                     <div className="menuitem col-md-4" key={idx}>
                       <h3 className="menuitem__title u-margin-bottom-small">
                         {item.name}
                       </h3>
-                      <img src={item.src} className="menuitem__img" />
+                      <Image
+                        src={item.src}
+                        objectFit={'cover'}
+                        width={300}
+                        height={300}
+                        loading="eager"
+                        className="menuitem__img"
+                      />
                     </div>
                   ))}
                 </motion.div>
