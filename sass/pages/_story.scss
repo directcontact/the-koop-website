@@ -12,10 +12,10 @@
     background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
       url('../images/koop-7.jpg');
     background-size: cover;
-    background-position: center top;
+    background-position: center bottom;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    height: 90%;
+    height: 85%;
     background-color: #4d4d4d;
     transition: height 0.66s ease-in-out;
   }
@@ -30,26 +30,56 @@
     transition: height 0.66s ease-in-out;
   }
 
-  &__title {
-    text-align: center;
-    font-weight: 400;
-    font-size: 3rem;
-    margin: 0 auto;
-  }
+  // &__title {
+  //   text-align: center;
+  //   font-weight: 400;
+  //   font-size: 3rem;
+  //   margin: 0 auto;
+  // }
 
   &__text {
+    display: flex;
     text-align: center;
+    justify-content: center;
     font-weight: 250;
     font-size: 2rem;
-    margin-right: 15rem;
-    margin-left: 15rem;
-    flex-direction: row;
+    margin: 0 auto;
+    // margin-top: 10rem;
+    // margin-right: 15rem;
+    // margin-left: 15rem;
+    &-row {
+      display: flex;
+      text-align: center;
+      justify-content: center;
+      flex-direction: row;
+      margin: 0 auto;
+    };
+    &-column {
+      display: flex;
+      text-align: center;
+      justify-content: center;
+      flex-direction: column;
+    };
+    &-title {
+      text-align: center;
+      font-weight: 400;
+      font-size: 3rem;
+      margin: 0 auto;
+      justify-content: center;
+    };
+    &-content {
+      text-align: center;
+      justify-content: center;
+      font-weight: 250;
+      font-size: 2rem;
+    }
   }
 
   &__header {
     font-size: 7rem;
+    justify-content: center;
     text-align: center;
-    padding-top: 5rem;
+    padding-top: 40rem;
     margin: 0 auto;
     &::selection {
       background: none;
@@ -62,12 +92,14 @@
     @include respond(phone) {
       // width < 1200?
       font-size: 5rem;
+      padding-top: 10rem;
     }
   }
 
   &__subheader {
     font-size: 1.5rem;
     text-align: center;
+    padding-bottom: 5rem;
     &::selection {
       background: none;
     }
