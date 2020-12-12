@@ -1,8 +1,5 @@
 import { combineReducers } from 'redux';
-import button from './button';
 
-const rootReducer = combineReducers({
-  button: button,
-});
+const rootReducer = combineReducers({});
 
 export default rootReducer;

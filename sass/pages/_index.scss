@@ -1,12 +1,12 @@
 .main {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-end;
+  justify-content: flex-end;
   flex-direction: column;
   color: $color-white;
 
   &__page {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
       url('../images/koop-6.jpg');
     background-size: cover;
     background-position: center;
@@ -14,6 +14,7 @@
     background-attachment: fixed;
     height: 100%;
     transition: height 0.66s ease-in-out;
+    box-shadow: 0 0 30rem rgba(0, 0, 0, 1) inset;
   }
 
   & + .nav {
@@ -25,10 +26,13 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    padding: 5rem 5rem;
+    margin-right: 10rem;
     &-header {
       font-size: 11.5rem;
       text-align: center;
       margin: 0 auto;
+      text-shadow: 0 0.5rem 1rem rgba($color-black, 0.5);
       &::selection {
         background: none;
       }
@@ -46,6 +50,7 @@
     &-subheader {
       display: inline-block;
       font-size: 2.75rem;
+      text-shadow: 0 0.5rem 1rem rgba($color-black, 0.5);
       &::selection {
         background: none;
       }

@@ -1,4 +1,5 @@
 .menu {
+  height: 100%;
   transition: height 0.66s ease-in-out;
 
   &__page {
@@ -14,9 +15,15 @@
   }
 
   &__header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
+    flex-direction: column;
+    color: white;
     font-weight: 200;
     font-size: 2rem;
+    height: 100%;
   }
 
   &__list {

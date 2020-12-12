@@ -1,11 +1,4 @@
 export default class CartPage extends React.Component {
-  static async getInitialProps(ctx) {
-    const state = ctx.store.getState();
-    return {
-      ...state,
-    };
-  }
-
   render() {
     return (
       <div className="cart">
