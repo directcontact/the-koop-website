@@ -43,8 +43,8 @@
     "nodemailer": "^6.4.16",
     "normalize.css": "^8.0.1",
     "pm2": "^4.5.0",
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
     "react-redux": "^7.2.2",
     "redux": "^4.0.5",
     "stripe": "^8.126.0"
