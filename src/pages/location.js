@@ -15,10 +15,10 @@ export default class LocationPage extends React.Component {
       <>
         <div className="location__block col-md-12">
           <div className="location__block-first col-md-6">
-              <strong>The Koop @ State College</strong>
+              <strong>THE KOOP @ STATE COLLEGE</strong><br /><br/>
               <div>
-                129 Locust Ln, State College, PA 16801  <br />
-                814-954-7807<br />
+                129 Locust Ln, State College, PA 16801  <br /><br />
+                814-954-7807<br /><br />
                 <strong>Sun - Thurs</strong>: 11am - 9pm <br/>
                 <strong>Fri - Sat</strong>: 11am - 10pm
               </div>
@@ -48,10 +48,10 @@ export default class LocationPage extends React.Component {
           </div>  
             
           <div className="location__block-second col-md-6">
-            <strong>The Koop @ Camp Hill</strong>
+            <strong>THE KOOP @ CAMP HILL</strong><br /><br />
             <div>
-              5 South 35th St, Camp Hill, PA 17011<br />
-              717-695-7930<br />
+              5 South 35th St, Camp Hill, PA 17011<br /><br />
+              717-695-7930<br /><br />
               <strong>Sun - Thurs</strong>: 11am - 9pm <br/>
               <strong>Fri - Sat</strong>: 11am - 10pm
             </div>

@@ -3,7 +3,7 @@
   overflow: hidden;
   transition: height 0.66s ease-out;
   display: flex;
-  // background-color: #4d4d4d;
+  // background-color: #fefef1;
   color: $color-white;
 
   &__page {
@@ -28,6 +28,7 @@
       font-size: 2.75rem;
       color: #fff;
       justify-content: center;
+      margin-top: 5rem;
       padding: 2rem;
       height: 60%;
       width: 100%;
@@ -37,6 +38,7 @@
         justify-content: center;
         text-align: center;
         font-size: 2.75rem;
+        margin-top: 5rem;
       }
     };
     &-second {
@@ -55,6 +57,7 @@
         text-align: center;
         font-size: 2.75rem;
         color: #4d4d4d;
+        margin-top: 1rem;
       };
     };
   }
