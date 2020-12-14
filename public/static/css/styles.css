@@ -382,7 +382,8 @@ h2 {
     font-size: 2rem;
     margin-right: 5rem; }
   .location__map {
-    display: flex; }
+    display: flex;
+    height: 30rem; }
 
 .story {
   min-height: 75%;

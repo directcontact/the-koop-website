@@ -18,28 +18,28 @@ const Nav = () => {
           <ul className="list-inline nav__block-list">
             <li className="list-inline-item nav__item">
               <h2 className="nav__item-header">
-                <Link href="/menu">
+                <Link href="/menu" prefetch={false}>
                   <a className="nav__item-header-link">MENU</a>
                 </Link>
               </h2>
             </li>
             <li className="list-inline-item nav__item">
               <h2 className="nav__item-header">
-                <Link href="/location">
+                <Link href="/location" prefetch={false}>
                   <a className="nav__item-header-link">LOCATIONS</a>
                 </Link>
               </h2>
             </li>
             <li className="list-inline-item nav__item">
               <h2 className="nav__item-header">
-                <Link href="/story">
+                <Link href="/story" prefetch={false}>
                   <a className="nav__item-header-link">OUR STORY</a>
                 </Link>
               </h2>
             </li>
             <li className="list-inline-item nav__item">
               <h2 className="nav__item-header">
-                <Link href="/catering">
+                <Link href="/catering" prefetch={false}>
                   <a className="nav__item-header-link">CATERING</a>
                 </Link>
               </h2>

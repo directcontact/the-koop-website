@@ -39,27 +39,52 @@ server
       })
     );
 
-    app.get('/api/menu/items', (req, res) => {
+    app.get('/api/menu/chicken/items', (req, res) => {
       res.send([
         {
-          name: 'Garlic Chicken',
-          src: '/static/images/food-image1.jpg',
+          name: 'soy garlic',
+          type: 'chicken',
+          src: '/static/images/soygarlic-1.jpg',
         },
         {
-          name: 'Garlic Chicken',
-          src: '/static/images/food-image1.jpg',
+          name: 'spicy soy garlic',
+          type: 'chicken',
+          src: '/static/images/soygarlic-5.jpg',
         },
         {
-          name: 'Garlic Chicken',
-          src: '/static/images/food-image1.jpg',
+          name: 'extra spicy',
+          type: 'chicken',
+          src: '/static/images/sweet_spicy-2.jpg',
         },
         {
-          name: 'Garlic Chicken',
-          src: '/static/images/food-image1.jpg',
+          name: 'sweet & spicy',
+          type: 'chicken',
+          src: '/static/images/sweet_spicy-3.jpg',
         },
         {
-          name: 'Garlic Chicken',
-          src: '/static/images/food-image1.jpg',
+          name: 'honey garlic',
+          type: 'chicken',
+          src: '/static/images/honeygarlic-4.jpg',
+        },
+        {
+          name: 'mild',
+          type: 'chicken',
+          src: '/static/images/mild-5.jpg',
+        },
+      ]);
+    });
+
+    app.get('/api/menu/side/items', (req, res) => {
+      res.send([
+        {
+          name: 'white rice',
+          type: 'side',
+          src: '',
+        },
+        {
+          name: 'pickled radish',
+          type: 'side',
+          src: '',
         },
       ]);
     });

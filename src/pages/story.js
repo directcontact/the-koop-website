@@ -1,24 +1,12 @@
-export default class StoryPage extends React.Component {
-  constructor() {
-    super();
-    this.state = {};
-  }
-
-  renderHeader() {
-    return (
-      <>
+function StoryPage() {
+  return (
+    <>
+      <div className="story max-height">
         <br />
         <h1 className="story__header">THE KOOP</h1>
         <div className="story__subheader u-margin-bottom-medium">
           KOREAN CHICKEN | KOREAN CUISINE | JOKBAL
         </div>
-      </>
-    );
-  }
-
-  renderAbout() {
-    return (
-      <>
         <div className="story__text-row col-md-12">
           {/* <div className="u-margin-bottom-medium col-md-6"> */}
           <div className="col-md-6">
@@ -58,37 +46,25 @@ export default class StoryPage extends React.Component {
             </div>
           </div>
         </div>
-      </>
-    );
-  }
-
-  renderFranchise() {
-    return (
-      <div className="story__greyBack col-md-12">
-        <div className="story__text-column col-md-12">
-          <br />
-          <div className="story__text-title">FRANCHISE</div>
-          <div className="story__text-content">
+      </div>
+      <div className="story max-height">
+        {' '}
+        <div className="story__greyBack col-md-12">
+          <div className="story__text-column col-md-12">
             <br />
-            WE ARE LOOKING FOR CANDIDATES WHO ARE ENTHUSIASTIC TO START THEIR
-            OWN CHICKEN KOOP.
-            <br />
-            PLEASE CONTACT STACY LEE AT 717-471-1602
+            <div className="story__text-title">FRANCHISE</div>
+            <div className="story__text-content">
+              <br />
+              WE ARE LOOKING FOR CANDIDATES WHO ARE ENTHUSIASTIC TO START THEIR
+              OWN CHICKEN KOOP.
+              <br />
+              PLEASE CONTACT STACY LEE AT 717-471-1602
+            </div>
           </div>
         </div>
       </div>
-    );
-  }
-
-  render() {
-    return (
-      <>
-        <div className="story max-height">
-          {this.renderHeader()}
-          {this.renderAbout()}
-        </div>
-        <div className="story max-height">{this.renderFranchise()}</div>
-      </>
-    );
-  }
+    </>
+  );
 }
+
+export default StoryPage;

@@ -5,11 +5,11 @@ const ChickenMenu = (props) => {
   const sections = props.sections;
   return (
     <div className="menu__container">
-      <div className="menu__list col-md-12">
+      <div className="menu__list col-md-6">
         {sections.map((divs, idx) => (
           <motion.div
             key={idx}
-            className="menu__list-row col-md-12"
+            className="menu__list-row col-md-6"
             transition={{
               staggerChildren: 0.5,
               ease: 'easeInOut',
@@ -17,7 +17,7 @@ const ChickenMenu = (props) => {
             }}
           >
             {divs.map((item, idx) => (
-              <div className="menuitem col-md-4" key={idx}>
+              <div className="menuitem col-md-3" key={idx}>
                 <h3 className="menuitem__title u-margin-bottom-small">
                   {item.name}
                 </h3>

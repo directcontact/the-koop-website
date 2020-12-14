@@ -1,3 +1,4 @@
+import React from 'react';
 import { chunk } from '../../util/helper';
 import ChickenMenu from '../components/chicken-menu';
 
@@ -25,14 +26,13 @@ export default class MenuPage extends React.Component {
 
   renderMenuComponent(sections, navActive) {
     if (navActive.item === 'chicken') {
-      console.log('hi');
       return <ChickenMenu sections={sections} />;
     }
   }
 
   renderMenu() {
     const menuItems = this.props.items;
-    const sections = chunk(menuItems, 3);
+    const sections = chunk(menuItems, 2);
     const navActive = this.state.navActive;
     const navItems = this.state.navItems;
 
@@ -82,42 +82,102 @@ export default class MenuPage extends React.Component {
 export async function getStaticProps(ctx) {
   //const res = await fetch('http://localhost:3000/api/menu/items');
   //const items = await res.json();
-  const items = [
+  const chickenItems = [
     {
-      name: 'SOY GARLIC',
+      name: 'soy garlic',
       type: 'chicken',
       src: '/static/images/soygarlic-1.jpg',
     },
     {
-      name: 'SPICY SOY GARLIC',
+      name: 'spicy soy garlic',
       type: 'chicken',
       src: '/static/images/soygarlic-5.jpg',
     },
     {
-      name: 'EXTRA SPICY',
+      name: 'extra spicy',
       type: 'chicken',
       src: '/static/images/sweet_spicy-2.jpg',
     },
     {
-      name: 'SWEET & SPICY',
+      name: 'sweet & spicy',
       type: 'chicken',
       src: '/static/images/sweet_spicy-3.jpg',
     },
     {
-      name: 'HONEY GARLIC',
+      name: 'honey garlic',
       type: 'chicken',
       src: '/static/images/honeygarlic-4.jpg',
     },
     {
-      name: 'MILD',
+      name: 'mild',
       type: 'chicken',
       src: '/static/images/mild-5.jpg',
     },
   ];
 
+  const sideItems = [
+    {
+      name: 'white rice',
+      type: 'side',
+      src: '',
+    },
+    {
+      name: 'pickled radish',
+      type: 'side',
+      src: '',
+    },
+  ];
+
+  const prices = [
+    {
+      chicken: {
+        whole: {
+          small: {
+            price: 9.95,
+            size: '7-8',
+          },
+          large: {
+            price: 18.95,
+            size: '14-16',
+          },
+        },
+        wings: {
+          small: {
+            price: 11.95,
+            size: '8',
+          },
+          large: {
+            price: 20.95,
+            size: '16',
+          },
+        },
+        drumsticks: {
+          small: {
+            price: 11.95,
+            size: '5',
+          },
+          large: {
+            price: 20.95,
+            size: '10',
+          },
+        },
+        boneless: {
+          small: {
+            price: 9.95,
+            size: '450g',
+          },
+          large: {
+            price: 18.95,
+            size: '900g',
+          },
+        },
+      },
+    },
+  ];
+
   return {
     props: {
-      items,
+      chickenItems,
     },
   };
 }
