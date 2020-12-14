@@ -1,92 +1,65 @@
+import dynamic from 'next/dynamic';
+
+const MapComponent = dynamic(() => import('../components/map'), {
+  ssr: false,
+});
+
 export default class LocationPage extends React.Component {
   constructor() {
     super();
-    this.state = {
-      locations: [
-        {
-          title: "The Koop @ State College",
-          address: "129 Locust Ln, State College, PA 16801",
-          phone: "814-954-7807",
-          days: [
-            "Sun - Thurs", "Fri - Sat"
-          ],
-          hours: [
-            "11am - 9pm", "11am - 10pm"
-          ]
-        },
-        {
-          title: "The Koop @ Camp Hill",
-          address: "5 South 35th St, Camp Hill, PA 17011",
-          phone: "717-695-7930",
-          days: [
-            "Sun - Thurs", "Fri - Sat"
-          ],
-          hours: [
-            "11am - 9pm", "11am - 10pm"
-          ]
-        }
-      ]
-    };
+    this.state = {};
   }
 
   renderSClocation() {
-    let location1 = this.state.locations[0]
     return (
-      <div className="location__greybg">
-          <div className="location_text">
-            <strong>{location1.title}</strong>
-            <p>
-              {location1.address}<br />
-              {location1.phone}<br />
-              <strong>{location1.days[0]}</strong>: {location1.hours[0]} <br/>
-              <strong>{location1.days[1]}</strong>: {location1.hours[1]}
-            </p>
+      <>
+        <div className="location__block col-md-12">
+          <div className="location__block-first col-md-6">
+              <strong>THE KOOP @ STATE COLLEGE</strong><br /><br/>
+              <div>
+                129 Locust Ln, State College, PA 16801  <br /><br />
+                814-954-7807<br /><br />
+                <strong>Sun - Thurs</strong>: 11am - 9pm <br/>
+                <strong>Fri - Sat</strong>: 11am - 10pm
+              </div>
           </div>
-          <div className="location__display-right">
-            <div className="location__map">
-              map goes here
+            <div className="location__block-first_map col-md-6"> 
+              <div className="location__map">
+                <MapComponent 
+                  coords={[40.7962341779397, -77.85778534626027]} 
+                />
+              </div>
             </div>
-          </div>
-      </div>
+        </div>
+      </>
     )
   }
 
   renderCHlocation() {
-    let location2 = this.state.locations[1]
     return (
-      <div className="location__whitebg">
-        <div className="location__map">map goes here</div>
-        <div className="location__display-right">
-          <div className="location_text">
-            <strong>{location2.title}</strong>
-            <p>
-              {location2.address}<br />
-              {location2.phone}<br />
-              <strong>{location2.days[0]}</strong>: {location2.hours[0]} <br/>
-              <strong>{location2.days[1]}</strong>: {location2.hours[1]}
-            </p>
+      <>
+        <div className="location__block col-md-12">
+          <div className="location__block-second_map col-md-6"> 
+            <div className="location__map">
+              <MapComponent 
+                coords={[40.2390900080966, -76.94114703093386]} 
+              />
+            </div>
+          </div>  
+            
+          <div className="location__block-second col-md-6">
+            <strong>THE KOOP @ CAMP HILL</strong><br /><br />
+            <div>
+              5 South 35th St, Camp Hill, PA 17011<br /><br />
+              717-695-7930<br /><br />
+              <strong>Sun - Thurs</strong>: 11am - 9pm <br/>
+              <strong>Fri - Sat</strong>: 11am - 10pm
+            </div>
           </div>
         </div>
-      </div>
+      </>
     )
   }
-
-  renderMapGrey() {
-    return (
-      <div className="location__map-grey">
-        MAP GOES HERE
-      </div>
-    )
-  }
-
-  renderMapWhite() {
-    return (
-      <div className="location__map-white">
-        MAP GOES HERE
-      </div>
-    )
-  }
-
 
   render() {
     return (
