@@ -99,9 +99,11 @@
   // }
 
   &__map {
-    display: flex;
-    flex-direction: row;
-    text-align: center;
+    // display: flex;
+    // flex-direction: row;
+    // text-align: center;
+    height: 5rem;
+    width: 75%;
   }
 
 }
