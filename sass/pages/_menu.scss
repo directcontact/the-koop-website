@@ -9,21 +9,26 @@
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    height: 50%;
-    min-height: 50%;
+    height: 75%;
+    min-height: 75%;
     transition: height 0.66s ease-in-out;
   }
 
   &__header {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding: 5rem 10rem;
     text-align: center;
     flex-direction: column;
     color: white;
     font-weight: 200;
-    font-size: 2rem;
+    font-size: 3rem;
     height: 100%;
+  }
+
+  &__container {
+    padding: 2rem;
   }
 
   &__list {
@@ -47,13 +52,16 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      width: 65%;
+      width: 75%;
       text-decoration: none;
       list-style-type: none;
       &--item {
+        text-align: center;
         font-size: 2rem;
+        padding: 0 3rem;
+        width: 20%;
         cursor: pointer;
-        transition: opacity 0.3s ease-in-out, font-weight 0.2s ease-in-out;
+        transition: opacity 0.3s ease-in-out, font-weight 0.1s ease-in-out;
         &:hover {
           opacity: 0.7;
         }
