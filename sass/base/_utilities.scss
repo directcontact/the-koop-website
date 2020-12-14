@@ -49,5 +49,22 @@
 }
 
 .selected {
-  font-weight: bold;
+  font-weight: 500;
+  &:after {
+    content: attr(title);
+    display: block;
+    font-weight: bold;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+  }
+}
+
+.solid {
+  border-top: 0.1rem solid $color-black;
+  width: 75%;
+  display: flex;
+  align-self: center;
+  justify-self: center;
+  margin: 0 auto;
 }

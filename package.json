@@ -8,23 +8,16 @@
     "compile:sass": "node-sass sass/main.scss css/style.css -w",
     "dev": "concurrently \"node-sass sass/main.scss public/static/css/styles.css -w\" \"node app\"",
     "build": "next build",
-    "start": "npm run pm2"
+    "start": "yarn run pm2"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kimjeff49/the-koop-website.git"
-  },
-  "author": "",
+  "repository": "git+https://github.com/kimjeff49/the-koop-website.git",
+  "author": "Jeff Kim <42388571+kimjeff49@users.noreply.github.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/kimjeff49/the-koop-website/issues"
   },
   "homepage": "https://github.com/kimjeff49/the-koop-website#readme",
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.32",
-    "@fortawesome/free-brands-svg-icons": "^5.15.1",
-    "@fortawesome/free-solid-svg-icons": "^5.15.1",
-    "@fortawesome/react-fontawesome": "^0.1.12",
     "body-parser": "^1.19.0",
     "bootstrap": "^4.5.3",
     "crypto-random-string": "^3.3.0",
@@ -35,6 +28,7 @@
     "helmet": "^4.1.1",
     "imagemin-mozjpeg": "^9.0.0",
     "imagemin-optipng": "^8.0.0",
+    "leaflet": "^1.7.1",
     "lqip-loader": "^2.2.1",
     "mongoose": "^5.10.14",
     "next": "^10.0.0",
@@ -43,8 +37,9 @@
     "nodemailer": "^6.4.16",
     "normalize.css": "^8.0.1",
     "pm2": "^4.5.0",
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-leaflet": "^3.0.4",
     "react-redux": "^7.2.2",
     "redux": "^4.0.5",
     "stripe": "^8.126.0"
