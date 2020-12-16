@@ -63,7 +63,7 @@ class MyApp extends App {
         <Header />
 
         <div className="page-cover">
-          <motion.div className={`${mainClass}`}>
+          <div className={`${mainClass}`}>
             <Nav />
             <AnimatePresence exitBeforeEnter>
               <motion.div
@@ -77,7 +77,7 @@ class MyApp extends App {
                 <Component {...pageProps} />
               </motion.div>
             </AnimatePresence>
-          </motion.div>
+          </div>
         </div>
         {
           //</Provider>
