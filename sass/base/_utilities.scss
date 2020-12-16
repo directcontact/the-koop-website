@@ -40,6 +40,30 @@
   margin-top: 10rem !important;
 }
 
+.u-padding-left-small {
+  padding-left: 1.5rem !important;
+}
+
+.u-padding-left-medium {
+  padding-left: 4rem !important;
+}
+
+.u-padding-bottom-small {
+  padding-bottom: 1.5rem !important;
+}
+
+.u-padding-bottom-medium {
+  padding-bottom: 4rem !important;
+}
+
+.u-padding-right-small {
+  padding-right: 1.5rem !important;
+}
+
+.u-padding-right-medium {
+  padding-right: 4rem !important;
+}
+
 .page-cover {
   height: 100vh;
 }
@@ -49,7 +73,7 @@
 }
 
 .selected {
-  font-weight: 500;
+  font-weight: 500 !important;
   &:after {
     content: attr(title);
     display: block;

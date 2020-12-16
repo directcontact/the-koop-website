@@ -16,27 +16,69 @@
 
   &__header {
     display: flex;
-    align-items: flex-start;
-    justify-content: flex-end;
-    padding: 5rem 10rem;
-    text-align: center;
-    flex-direction: column;
-    color: white;
-    font-weight: 200;
-    font-size: 3rem;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-direction: row;
     height: 100%;
+    &-text {
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+      padding: 5rem 10rem;
+      text-align: center;
+      color: white;
+      font-weight: 400;
+      font-size: 3rem;
+    }
+    &-pdf {
+      display: flex;
+      flex-direction: row;
+      padding: 5rem 10rem;
+      text-align: center;
+      color: white;
+      font-weight: 400;
+      font-size: 3rem;
+      &--text {
+        padding-right: 0.5rem;
+      }
+      &--link {
+        color: $color-yellow;
+        cursor: pointer;
+        text-decoration: none;
+        &:link,
+        &:visited {
+          color: $color-yellow;
+        }
+      }
+    }
   }
 
   &__container {
-    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 2rem 0;
+    width: 75%;
+    margin: 0 auto;
+    min-height: 100%;
+    transition: height 0.66s ease-in-out;
   }
 
   &__list {
-    &-row {
+    padding: 0;
+    &-header {
+      font-size: 3.25rem;
+      text-align: center;
+      color: $color-red;
+      font-weight: 400;
+    }
+    &-column {
       display: flex;
       flex-direction: row;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
+      padding: 0;
     }
   }
 
@@ -61,6 +103,8 @@
         padding: 0 3rem;
         width: 20%;
         cursor: pointer;
+        font-weight: 300;
+        font-style: normal;
         transition: opacity 0.3s ease-in-out, font-weight 0.1s ease-in-out;
         &:hover {
           opacity: 0.7;

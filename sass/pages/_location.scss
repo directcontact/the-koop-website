@@ -1,5 +1,6 @@
 .location {
-  min-height: 60%;
+  min-height: 75%;
+  height: 100%;
   overflow: hidden;
   transition: height 0.66s ease-out;
   display: flex;
@@ -13,7 +14,9 @@
     background-position: center bottom;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    height: 60%;
+    min-height: 75%;
+    height: 75%;
+    transition: height 0.66s ease-out;
   }
 
   &__block {
