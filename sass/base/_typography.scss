@@ -34,30 +34,30 @@
 );
 
 @include font(
-  'Barlow Condensed',
-  url('#{$barlow-condensed-font-path}/BarlowCondensed-Light.ttf'),
+  'Roboto Condensed',
+  url('#{$barlow-condensed-font-path}/RobotoCondensed-Light.ttf'),
   300,
   'normal'
 );
 
 @include font(
-  'Barlow Condensed',
-  url('#{$barlow-condensed-font-path}/BarlowCondensed-LightItalic.ttf'),
+  'Roboto Condensed',
+  url('#{$barlow-condensed-font-path}/RobotoCondensed-LightItalic.ttf'),
   350,
   'italic'
 );
 
 @include font(
-  'Barlow Condensed',
-  url('#{$barlow-condensed-font-path}/BarlowCondensed-Regular.ttf'),
+  'Roboto Condensed',
+  url('#{$barlow-condensed-font-path}/RobotoCondensed-Regular.ttf'),
   400,
   'normal'
 );
 
 @include font(
-  'Barlow Condensed',
-  url('#{$barlow-condensed-font-path}/BarlowCondensed-Medium.ttf'),
-  500,
+  'Roboto Condensed',
+  url('#{$barlow-condensed-font-path}/RobotoCondensed-Bold.ttf'),
+  600,
   'normal'
 );
 
@@ -70,7 +70,7 @@ h5 {
 }
 
 body {
-  font-family: 'Barlow Condensed', Arial, Helvetica, sans-serif;
+  font-family: 'Roboto Condensed', Arial, Helvetica, sans-serif;
 }
 
 h1 {
