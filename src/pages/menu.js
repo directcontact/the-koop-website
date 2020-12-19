@@ -24,11 +24,15 @@ export default class MenuPage extends React.Component {
   }
 
   renderMenuComponent(navActive) {
-    const menuItems = this.props.items;
     switch (navActive.item) {
       case 'chicken':
-        const sections = chunk(menuItems, 2);
-        return <ChickenMenu sections={sections} />;
+        return (
+          <ChickenMenu
+            sauce={this.props.sauce}
+            prices={this.props.prices}
+            sides={this.props.sides}
+          />
+        );
       case 'appetizers':
       case 'rice dishes':
       case 'trotter':
@@ -108,12 +112,19 @@ export default class MenuPage extends React.Component {
   }
 }
 
-export async function getStaticProps(ctx) {
-  const res = await fetch('http://localhost:3000/api/menu/chicken/items');
-  const items = await res.json();
+export async function getServerSideProps(ctx) {
+  let res = await fetch('http://localhost:3000/api/menu/chicken/items');
+  const sauce = await res.json();
+  res = await fetch('http://localhost:3000/api/menu/side/items');
+  const sides = await res.json();
+  res = await fetch('http://localhost:3000/api/menu/chicken/prices');
+  const prices = await res.json();
+
   return {
     props: {
-      items,
+      sauce,
+      sides,
+      prices,
     },
   };
 }

@@ -4,7 +4,7 @@
 
   &__page {
     background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-      url('../images/honeygarlic-7.jpg');
+      url('../images/menu_page.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -55,7 +55,7 @@
 
   &__container {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     flex-direction: row;
     padding: 2rem 0;
@@ -79,6 +79,40 @@
       align-items: center;
       justify-content: space-between;
       padding: 0;
+    }
+    &-top {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+    &-yaxis {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end;
+      &--item {
+        font-size: 3.25rem;
+        margin-left: 10rem;
+      }
+    }
+    &-rows {
+      display: flex;
+      flex-direction: column;
+      align-items: flext-start;
+      justify-content: center;
+      &--row {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        &---item {
+          &_price {
+            font-weight: 350;
+          }
+        }
+      }
     }
   }
 
