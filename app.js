@@ -87,65 +87,59 @@ server
           src: '',
         },
       ]);
-      const sideItems = [
-        {
-          name: 'white rice',
-          type: 'side',
-          src: '',
-        },
-        {
-          name: 'pickled radish',
-          type: 'side',
-          src: '',
-        },
-      ];
+    });
 
-      const prices = [
+    app.get('/api/menu/chicken/prices', (req, res) => {
+      res.send([
         {
-          chicken: {
-            whole: {
-              small: {
-                price: 9.95,
-                size: '7-8',
-              },
-              large: {
-                price: 18.95,
-                size: '14-16',
-              },
-            },
-            wings: {
-              small: {
-                price: 11.95,
-                size: '8',
-              },
-              large: {
-                price: 20.95,
-                size: '16',
-              },
-            },
-            drumsticks: {
-              small: {
-                price: 11.95,
-                size: '5',
-              },
-              large: {
-                price: 20.95,
-                size: '10',
-              },
-            },
-            boneless: {
-              small: {
-                price: 9.95,
-                size: '450g',
-              },
-              large: {
-                price: 18.95,
-                size: '900g',
-              },
-            },
-          },
+          type: 'whole',
+          size: 'small',
+          price: 9.95,
+          amount: '7-8',
         },
-      ];
+        {
+          type: 'whole',
+          size: 'large',
+          price: 18.95,
+          amount: '14-16',
+        },
+        {
+          type: 'wings',
+          size: 'small',
+          price: 11.95,
+          amount: '8',
+        },
+        {
+          type: 'wings',
+          size: 'large',
+          price: 20.95,
+          amount: '16',
+        },
+        {
+          type: 'drumsticks',
+          size: 'small',
+          price: 11.95,
+          amount: '5',
+        },
+        {
+          type: 'drumsticks',
+          size: 'large',
+          price: 20.95,
+          amount: '10',
+        },
+        {
+          type: 'boneless',
+          size: 'small',
+          price: 9.95,
+          amount: '450g',
+        },
+        {
+          type: 'boneless',
+          size: 'large',
+          price: 18.95,
+          amount: '900g',
+        },
+      ]);
     });
 
     app.post('/api/email', (req, res) => {

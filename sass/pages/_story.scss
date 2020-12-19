@@ -10,7 +10,7 @@
 
   &__page {
     background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-      url('../images/koop-7.jpg');
+      url('../images/story_page.jpg');
     background-size: cover;
     background-position: center bottom;
     background-attachment: fixed;
@@ -22,7 +22,7 @@
 
   &__franchise {
     background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),
-      url('../images/paper.png');
+      url('../images/paper.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -63,7 +63,7 @@
       flex-direction: column;
       margin: 0 auto;
       padding: 3rem;
-    };
+    }
     &-title {
       text-align: center;
       font-weight: 400;
@@ -71,7 +71,7 @@
       margin: 0 auto;
       justify-content: center;
       margin-top: 3rem;
-    };
+    }
     &-content {
       text-align: center;
       justify-content: center;

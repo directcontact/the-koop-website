@@ -81,30 +81,30 @@ li {
   font-display: swap; }
 
 @font-face {
-  font-family: "Barlow Condensed";
-  src: url("fonts/barlow-condensed/BarlowCondensed-Light.ttf");
+  font-family: "Roboto Condensed";
+  src: url("fonts/roboto-condensed/RobotoCondensed-Light.ttf");
   font-weight: 300;
   font-style: "normal";
   font-display: swap; }
 
 @font-face {
-  font-family: "Barlow Condensed";
-  src: url("fonts/barlow-condensed/BarlowCondensed-LightItalic.ttf");
+  font-family: "Roboto Condensed";
+  src: url("fonts/roboto-condensed/RobotoCondensed-LightItalic.ttf");
   font-weight: 350;
   font-style: "italic";
   font-display: swap; }
 
 @font-face {
-  font-family: "Barlow Condensed";
-  src: url("fonts/barlow-condensed/BarlowCondensed-Regular.ttf");
+  font-family: "Roboto Condensed";
+  src: url("fonts/roboto-condensed/RobotoCondensed-Regular.ttf");
   font-weight: 400;
   font-style: "normal";
   font-display: swap; }
 
 @font-face {
-  font-family: "Barlow Condensed";
-  src: url("fonts/barlow-condensed/BarlowCondensed-Medium.ttf");
-  font-weight: 500;
+  font-family: "Roboto Condensed";
+  src: url("fonts/roboto-condensed/RobotoCondensed-Bold.ttf");
+  font-weight: 600;
   font-style: "normal";
   font-display: swap; }
 
@@ -116,7 +116,7 @@ h5 {
   font-family: 'Oswald', Arial, Helvetica, sans-serif; }
 
 body {
-  font-family: 'Barlow Condensed', Arial, Helvetica, sans-serif; }
+  font-family: 'Roboto Condensed', Arial, Helvetica, sans-serif; }
 
 h1 {
   font-weight: 600; }
@@ -285,7 +285,7 @@ h2 {
   flex-direction: column;
   color: #ffffff; }
   .main__page {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url("../images/koop-6.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url("../images/home_page.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -331,7 +331,7 @@ h2 {
   height: 100%;
   transition: height 0.66s ease-in-out; }
   .menu__page {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../images/honeygarlic-7.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../images/menu_page.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -372,7 +372,7 @@ h2 {
           color: #f4c529; }
   .menu__container {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     flex-direction: row;
     padding: 2rem 0;
@@ -393,6 +393,32 @@ h2 {
       align-items: center;
       justify-content: space-between;
       padding: 0; }
+    .menu__list-top {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0; }
+    .menu__list-yaxis {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end; }
+      .menu__list-yaxis--item {
+        font-size: 3.25rem;
+        margin-left: 10rem; }
+    .menu__list-rows {
+      display: flex;
+      flex-direction: column;
+      align-items: flext-start;
+      justify-content: center; }
+      .menu__list-rows--row {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between; }
+        .menu__list-rows--row---item_price {
+          font-weight: 350; }
   .menu__nav {
     display: flex;
     flex-direction: row;
@@ -428,7 +454,7 @@ h2 {
   display: flex;
   color: #ffffff; }
   .location__page {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../images/soygarlic-3.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../images/locations_page.jpg");
     background-size: cover;
     background-position: center bottom;
     background-attachment: fixed;
@@ -489,7 +515,7 @@ h2 {
   flex-grow: 1;
   color: #ffffff; }
   .story__page {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../images/koop-7.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../images/story_page.jpg");
     background-size: cover;
     background-position: center bottom;
     background-attachment: fixed;
@@ -498,7 +524,7 @@ h2 {
     background-color: #4d4d4d;
     transition: height 0.66s ease-in-out; }
   .story__franchise {
-    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url("../images/paper.png");
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url("../images/paper.jpg");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -571,7 +597,7 @@ h2 {
   justify-content: center;
   flex-direction: column; }
   .catering__page {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../images/koop-5.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../images/cater_page.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
