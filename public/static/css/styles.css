@@ -49,39 +49,64 @@ li {
   font-family: "Oswald";
   src: url("fonts/oswald/Oswald-ExtraLight.ttf");
   font-weight: 200;
-  font-style: "extra-light";
+  font-style: "normal";
   font-display: swap; }
 
 @font-face {
   font-family: "Oswald";
   src: url("fonts/oswald/Oswald-Light.ttf");
   font-weight: 300;
-  font-style: "light";
+  font-style: "normal";
   font-display: swap; }
 
 @font-face {
   font-family: "Oswald";
   src: url("fonts/oswald/Oswald-Regular.ttf");
   font-weight: 400;
-  font-style: "regular";
+  font-style: "normal";
   font-display: swap; }
 
 @font-face {
   font-family: "Oswald";
   src: url("fonts/oswald/Oswald-Medium.ttf");
   font-weight: 500;
-  font-style: "medium";
+  font-style: "normal";
   font-display: swap; }
 
 @font-face {
   font-family: "Oswald";
   src: url("fonts/oswald/Oswald-SemiBold.ttf");
   font-weight: 600;
-  font-style: "semi-bold";
+  font-style: "normal";
   font-display: swap; }
 
-* {
-  font-family: 'Oswald', Arial, Helvetica, sans-serif; }
+@font-face {
+  font-family: "Barlow Condensed";
+  src: url("fonts/barlow-condensed/BarlowCondensed-Light.ttf");
+  font-weight: 300;
+  font-style: "normal";
+  font-display: swap; }
+
+@font-face {
+  font-family: "Barlow Condensed";
+  src: url("fonts/barlow-condensed/BarlowCondensed-LightItalic.ttf");
+  font-weight: 350;
+  font-style: "italic";
+  font-display: swap; }
+
+@font-face {
+  font-family: "Barlow Condensed";
+  src: url("fonts/barlow-condensed/BarlowCondensed-Regular.ttf");
+  font-weight: 400;
+  font-style: "normal";
+  font-display: swap; }
+
+@font-face {
+  font-family: "Barlow Condensed";
+  src: url("fonts/barlow-condensed/BarlowCondensed-Medium.ttf");
+  font-weight: 500;
+  font-style: "normal";
+  font-display: swap; }
 
 h1,
 h2,
@@ -89,6 +114,9 @@ h3,
 h4,
 h5 {
   font-family: 'Oswald', Arial, Helvetica, sans-serif; }
+
+body {
+  font-family: 'Barlow Condensed', Arial, Helvetica, sans-serif; }
 
 h1 {
   font-weight: 600; }
@@ -129,6 +157,24 @@ h2 {
 .u-margin-top-huge {
   margin-top: 10rem !important; }
 
+.u-padding-left-small {
+  padding-left: 1.5rem !important; }
+
+.u-padding-left-medium {
+  padding-left: 4rem !important; }
+
+.u-padding-bottom-small {
+  padding-bottom: 1.5rem !important; }
+
+.u-padding-bottom-medium {
+  padding-bottom: 4rem !important; }
+
+.u-padding-right-small {
+  padding-right: 1.5rem !important; }
+
+.u-padding-right-medium {
+  padding-right: 4rem !important; }
+
 .page-cover {
   height: 100vh; }
 
@@ -136,7 +182,7 @@ h2 {
   height: 100%; }
 
 .selected {
-  font-weight: 500; }
+  font-weight: 500 !important; }
   .selected:after {
     content: attr(title);
     display: block;
@@ -295,22 +341,58 @@ h2 {
     transition: height 0.66s ease-in-out; }
   .menu__header {
     display: flex;
-    align-items: flex-start;
-    justify-content: flex-end;
-    padding: 5rem 10rem;
-    text-align: center;
-    flex-direction: column;
-    color: white;
-    font-weight: 200;
-    font-size: 3rem;
-    height: 100%; }
-  .menu__container {
-    padding: 2rem; }
-  .menu__list-row {
-    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
     flex-direction: row;
+    height: 100%; }
+    .menu__header-text {
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+      padding: 5rem 10rem;
+      text-align: center;
+      color: white;
+      font-weight: 400;
+      font-size: 3rem; }
+    .menu__header-pdf {
+      display: flex;
+      flex-direction: row;
+      padding: 5rem 10rem;
+      text-align: center;
+      color: white;
+      font-weight: 400;
+      font-size: 3rem; }
+      .menu__header-pdf--text {
+        padding-right: 0.5rem; }
+      .menu__header-pdf--link {
+        color: #f4c529;
+        cursor: pointer;
+        text-decoration: none; }
+        .menu__header-pdf--link:link, .menu__header-pdf--link:visited {
+          color: #f4c529; }
+  .menu__container {
+    display: flex;
     align-items: center;
-    justify-content: center; }
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 2rem 0;
+    width: 75%;
+    margin: 0 auto;
+    min-height: 100%;
+    transition: height 0.66s ease-in-out; }
+  .menu__list {
+    padding: 0; }
+    .menu__list-header {
+      font-size: 3.25rem;
+      text-align: center;
+      color: #e02c4b;
+      font-weight: 400; }
+    .menu__list-column {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0; }
   .menu__nav {
     display: flex;
     flex-direction: row;
@@ -332,12 +414,15 @@ h2 {
         padding: 0 3rem;
         width: 20%;
         cursor: pointer;
+        font-weight: 300;
+        font-style: normal;
         transition: opacity 0.3s ease-in-out, font-weight 0.1s ease-in-out; }
         .menu__nav-list--item:hover {
           opacity: 0.7; }
 
 .location {
-  min-height: 60%;
+  min-height: 75%;
+  height: 100%;
   overflow: hidden;
   transition: height 0.66s ease-out;
   display: flex;
@@ -524,18 +609,20 @@ h2 {
 
 .menuitem {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
   flex-direction: column;
-  height: 100%; }
-  .menuitem__title {
+  padding: 0;
+  height: 100%;
+  width: fit-content;
+  block-size: fit-content;
+  font-weight: 300; }
+  .menuitem__header {
     font-size: 2rem;
-    font-weight: 400;
+    font-weight: 500;
     display: flex;
     text-align: left; }
   .menuitem__img {
+    object-fit: contain;
     width: 66%;
-    transition: filter 0.3s ease-in-out;
-    object-fit: contain; }
-    .menuitem__img:hover {
-      filter: brightness(0.6); }
+    height: 100%; }

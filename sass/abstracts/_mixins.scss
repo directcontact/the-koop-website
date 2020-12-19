@@ -6,13 +6,6 @@
   }
 }
 
-@mixin absCenter {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
 @mixin font($font-family, $font-file, $font-weight, $font-style) {
   @font-face {
     font-family: $font-family;

@@ -1,5 +1,7 @@
-import { chunk } from '../../util/helper';
+import React from 'react';
+
 import ChickenMenu from '../components/chicken-menu';
+import { chunk } from '../../util/helper';
 
 export default class MenuPage extends React.Component {
   constructor() {
@@ -19,20 +21,25 @@ export default class MenuPage extends React.Component {
         'SIDES',
       ],
     };
-
-    // this.handleEmailButton = this.handleEmailButton.bind(this);
   }
 
-  renderMenuComponent(sections, navActive) {
-    if (navActive.item === 'chicken') {
-      console.log('hi');
-      return <ChickenMenu sections={sections} />;
+  renderMenuComponent(navActive) {
+    const menuItems = this.props.items;
+    switch (navActive.item) {
+      case 'chicken':
+        const sections = chunk(menuItems, 2);
+        return <ChickenMenu sections={sections} />;
+      case 'appetizers':
+      case 'rice dishes':
+      case 'trotter':
+      case 'soups':
+      case 'sides':
+      default:
+        return null;
     }
   }
 
   renderMenu() {
-    const menuItems = this.props.items;
-    const sections = chunk(menuItems, 3);
     const navActive = this.state.navActive;
     const navItems = this.state.navItems;
 
@@ -40,11 +47,26 @@ export default class MenuPage extends React.Component {
       <>
         <div className="menu">
           <div className="menu__header">
-            <p className="menu__header-text">Want to order by call?</p>
-            <p className="menu__header-text u-margin-top-small">
-              Check your nearest locations for numbers
-            </p>
+            <div className="menu__header-text">
+              <p className="menu__header-text--content">
+                Want to order by call?
+              </p>
+              <p className="menu__header-text--content u-margin-top-small">
+                Check your nearest locations for numbers
+              </p>
+            </div>
+            <div className="menu__header-pdf">
+              <p className="menu__header-pdf--text">PDF Version:</p>
+              <a
+                className="menu__header-pdf--link"
+                href="/static/misc-files/koop-menu.pdf"
+                target="_blank"
+              >
+                Koop Menu
+              </a>
+            </div>
           </div>
+
           <div className="menu__nav">
             <ul className="menu__nav-list u-margin-bottom-small">
               {navItems.map((item, idx) => {
@@ -58,7 +80,12 @@ export default class MenuPage extends React.Component {
                     className={`menu__nav-list--item ${active}`}
                     key={idx}
                     onClick={() =>
-                      this.setState({ navActive: { item, active: 'selected' } })
+                      this.setState({
+                        navActive: {
+                          item: item.toLowerCase(),
+                          active: 'selected',
+                        },
+                      })
                     }
                   >
                     {item}
@@ -68,7 +95,9 @@ export default class MenuPage extends React.Component {
             </ul>
           </div>
           <hr className="solid u-margin-top-small" />
-          {this.renderMenuComponent(sections, navActive)}
+          <div className="menu__container col-md-12">
+            {this.renderMenuComponent(navActive)}
+          </div>
         </div>
       </>
     );
@@ -80,41 +109,8 @@ export default class MenuPage extends React.Component {
 }
 
 export async function getStaticProps(ctx) {
-  //const res = await fetch('http://localhost:3000/api/menu/items');
-  //const items = await res.json();
-  const items = [
-    {
-      name: 'SOY GARLIC',
-      type: 'chicken',
-      src: '/static/images/soygarlic-1.jpg',
-    },
-    {
-      name: 'SPICY SOY GARLIC',
-      type: 'chicken',
-      src: '/static/images/soygarlic-5.jpg',
-    },
-    {
-      name: 'EXTRA SPICY',
-      type: 'chicken',
-      src: '/static/images/sweet_spicy-2.jpg',
-    },
-    {
-      name: 'SWEET & SPICY',
-      type: 'chicken',
-      src: '/static/images/sweet_spicy-3.jpg',
-    },
-    {
-      name: 'HONEY GARLIC',
-      type: 'chicken',
-      src: '/static/images/honeygarlic-4.jpg',
-    },
-    {
-      name: 'MILD',
-      type: 'chicken',
-      src: '/static/images/mild-5.jpg',
-    },
-  ];
-
+  const res = await fetch('http://localhost:3000/api/menu/chicken/items');
+  const items = await res.json();
   return {
     props: {
       items,

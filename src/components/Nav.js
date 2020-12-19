@@ -1,6 +1,13 @@
 import Link from 'next/link';
+import NavItem from './nav-item';
 
 const Nav = () => {
+  const pages = [
+    { name: 'MENU', href: '/menu' },
+    { name: 'LOCATION', href: '/location' },
+    { name: 'OUR STORY', href: '/story' },
+    { name: 'CATERING', href: '/catering' },
+  ];
   return (
     <>
       <div className="row nav">
@@ -16,34 +23,9 @@ const Nav = () => {
         </div>
         <div className="col-md-8 nav__block">
           <ul className="list-inline nav__block-list">
-            <li className="list-inline-item nav__item">
-              <h2 className="nav__item-header">
-                <Link href="/menu">
-                  <a className="nav__item-header-link">MENU</a>
-                </Link>
-              </h2>
-            </li>
-            <li className="list-inline-item nav__item">
-              <h2 className="nav__item-header">
-                <Link href="/location">
-                  <a className="nav__item-header-link">LOCATIONS</a>
-                </Link>
-              </h2>
-            </li>
-            <li className="list-inline-item nav__item">
-              <h2 className="nav__item-header">
-                <Link href="/story">
-                  <a className="nav__item-header-link">OUR STORY</a>
-                </Link>
-              </h2>
-            </li>
-            <li className="list-inline-item nav__item">
-              <h2 className="nav__item-header">
-                <Link href="/catering">
-                  <a className="nav__item-header-link">CATERING</a>
-                </Link>
-              </h2>
-            </li>
+            {pages.map((page, idx) => (
+              <NavItem page={page} key={idx} />
+            ))}
           </ul>
         </div>
         <div className="col-md-2 nav__block">

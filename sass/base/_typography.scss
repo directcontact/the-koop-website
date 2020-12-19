@@ -2,40 +2,64 @@
   'Oswald',
   url('#{$oswald-font-path}/Oswald-ExtraLight.ttf'),
   200,
-  'extra-light'
+  'normal'
 );
 
 @include font(
   'Oswald',
   url('#{$oswald-font-path}/Oswald-Light.ttf'),
   300,
-  'light'
+  'normal'
 );
 
 @include font(
   'Oswald',
   url('#{$oswald-font-path}/Oswald-Regular.ttf'),
   400,
-  'regular'
+  'normal'
 );
 
 @include font(
   'Oswald',
   url('#{$oswald-font-path}/Oswald-Medium.ttf'),
   500,
-  'medium'
+  'normal'
 );
 
 @include font(
   'Oswald',
   url('#{$oswald-font-path}/Oswald-SemiBold.ttf'),
   600,
-  'semi-bold'
+  'normal'
 );
 
-* {
-  font-family: 'Oswald', Arial, Helvetica, sans-serif;
-}
+@include font(
+  'Barlow Condensed',
+  url('#{$barlow-condensed-font-path}/BarlowCondensed-Light.ttf'),
+  300,
+  'normal'
+);
+
+@include font(
+  'Barlow Condensed',
+  url('#{$barlow-condensed-font-path}/BarlowCondensed-LightItalic.ttf'),
+  350,
+  'italic'
+);
+
+@include font(
+  'Barlow Condensed',
+  url('#{$barlow-condensed-font-path}/BarlowCondensed-Regular.ttf'),
+  400,
+  'normal'
+);
+
+@include font(
+  'Barlow Condensed',
+  url('#{$barlow-condensed-font-path}/BarlowCondensed-Medium.ttf'),
+  500,
+  'normal'
+);
 
 h1,
 h2,
@@ -43,6 +67,10 @@ h3,
 h4,
 h5 {
   font-family: 'Oswald', Arial, Helvetica, sans-serif;
+}
+
+body {
+  font-family: 'Barlow Condensed', Arial, Helvetica, sans-serif;
 }
 
 h1 {

@@ -1,5 +1,6 @@
 .location {
-  min-height: 60%;
+  min-height: 75%;
+  height: 100%;
   overflow: hidden;
   transition: height 0.66s ease-out;
   display: flex;
@@ -41,7 +42,7 @@
         font-size: 2.75rem;
         margin-top: 5rem;
       }
-    };
+    }
     &-second {
       text-align: center;
       font-weight: 250;
@@ -59,8 +60,8 @@
         font-size: 2.75rem;
         color: #4d4d4d;
         margin-top: 1rem;
-      };
-    };
+      }
+    }
   }
 
 
@@ -73,5 +74,4 @@
       font-size: 3rem;
     }
   }
-
 }

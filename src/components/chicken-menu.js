@@ -1,40 +1,19 @@
-import Image from 'next/image';
-import { motion } from 'framer-motion';
+import ChickenMenuSauce from './chicken-menu-sauce';
+import ChickenMenuPrice from './chicken-menu-price';
 
 const ChickenMenu = (props) => {
   const sections = props.sections;
   return (
-    <div className="menu__container">
-      <div className="menu__list col-md-12">
-        {sections.map((divs, idx) => (
-          <motion.div
-            key={idx}
-            className="menu__list-row col-md-12"
-            transition={{
-              staggerChildren: 0.5,
-              ease: 'easeInOut',
-              delay: 0.5,
-            }}
-          >
-            {divs.map((item, idx) => (
-              <div className="menuitem col-md-4" key={idx}>
-                <h3 className="menuitem__title u-margin-bottom-small">
-                  {item.name}
-                </h3>
-                <Image
-                  src={item.src}
-                  objectFit={'cover'}
-                  width={300}
-                  height={300}
-                  loading="eager"
-                  className="menuitem__img"
-                />
-              </div>
-            ))}
-          </motion.div>
-        ))}
+    <>
+      <div className="menu__list col-md-6">
+        <div className="menu__list-column">
+          <ChickenMenuPrice sections={sections} />
+        </div>
       </div>
-    </div>
+      <div className="menu__list col-md-6">
+        <ChickenMenuSauce sections={sections} />
+      </div>
+    </>
   );
 };
 
