@@ -2,6 +2,11 @@ import dynamic from 'next/dynamic';
 
 const MapComponent = dynamic(() => import('../components/map'), {
   ssr: false,
+  loading: () => (
+    <div className="location__map-loading">
+      LOADING...
+    </div>
+  )
 });
 
 export default class LocationPage extends React.Component {

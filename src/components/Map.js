@@ -1,6 +1,16 @@
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 
+// const MapSearch = dynamic(import('../../components/Map'), {
+//     ssr: false,
+//     loading: () => (
+//       <div style={{textAlign: 'center', paddingTop: 20}}>
+//         Chargement…
+//       </div>
+//     )
+//   })
+  
+
 const Map = (props) => {
     return (
         <MapContainer
