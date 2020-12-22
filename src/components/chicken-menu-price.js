@@ -18,35 +18,40 @@ const ChickenMenuSauce = (props) => {
         <h3 className="menu__list-header u-margin-bottom-medium">
           STEP ONE: CHOOSE YOUR TYPE OF CHICKEN
         </h3>
-        <div className="menu__list-yaxis">
-          <div className="menu__list-yaxis--item">Small</div>
-          <div className="menu__list-yaxis--item">Large</div>
+        <div className="menu__list-yaxis col-md-12">
+          <div className="menu__list-yaxis--item col-md-4">Small</div>
+          <div className="menu__list-yaxis--item col-md-4">Large</div>
         </div>
-        <div className="menu__list-rows">
-          {iterable.map((priceGroup, idx) => {
-            const small = priceGroup[1][0];
-            const large = priceGroup[1][1];
-            return (
-              <div className="menu__list-rows--row" key={idx}>
-                <div className="menu__list-rows--row---item">
-                  {priceGroup[0]}
-                </div>
-                <div className="menu__list-rows--row---item">
-                  {`${small.price} /`}
-                  <span className="menu__list-rows--row---item_price">
-                    ${small.amount}
-                  </span>
-                </div>
-                <div className="menu__list-rows--row---item">
-                  {`${large.price} /`}
-                  <span className="menu__list-rows--row---item_price">
-                    ${large.amount}
-                  </span>
-                </div>
+        {iterable.map((priceGroup, idx) => {
+          const small = priceGroup[1][0];
+          const large = priceGroup[1][1];
+
+          return (
+            <div className="menu__list-row col-md-12" key={idx}>
+              <div className="menu__list-row--item_header col-md-4">
+                {priceGroup[0]}
               </div>
-            );
-          })}
-        </div>
+              <div className="menu__list-row--item col-md-4">
+                {`$${small.price}`}
+                <span className="menu__list-row--item_price">
+                  {small.amount}
+                </span>
+                <span className="menu__list-row--item_price">
+                  {small.units}
+                </span>
+              </div>
+              <div className="menu__list-row--item col-md-4">
+                {`$${large.price}`}
+                <span className="menu__list-row--item_price">
+                  {large.amount}
+                </span>
+                <span className="menu__list-row--item_price">
+                  {large.units}
+                </span>
+              </div>
+            </div>
+          );
+        })}
       </motion.div>
     </AnimatePresence>
   );
