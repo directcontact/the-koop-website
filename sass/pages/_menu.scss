@@ -90,28 +90,48 @@
     &-yaxis {
       display: flex;
       flex-direction: row;
-      align-items: center;
+      align-items: flex-end;
       justify-content: flex-end;
+      margin-bottom: 3rem;
       &--item {
-        font-size: 3.25rem;
-        margin-left: 10rem;
+        font-size: 2.5rem;
       }
     }
-    &-rows {
+    &-row {
       display: flex;
-      flex-direction: column;
-      align-items: flext-start;
-      justify-content: center;
-      &--row {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        &---item {
-          &_price {
-            font-weight: 350;
-          }
+      flex-direction: row;
+      align-items: center;
+      margin-bottom: 3rem;
+
+      &--item {
+        font-size: 2rem;
+        & span:first-child {
+          margin-left: 1.5rem;
         }
+        &_header {
+          font-weight: 400;
+          font-size: 2.5rem;
+        }
+        &_price {
+          font-weight: 350;
+        }
+      }
+
+      &--text {
+        font-size: 2.5rem;
+        font-weight: 400;
+      }
+    }
+
+    &-chicken {
+      height: 100%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-start;
+      &--img {
+        position: aboslute;
+        padding-top: 15rem;
+        width: 100%;
       }
     }
   }

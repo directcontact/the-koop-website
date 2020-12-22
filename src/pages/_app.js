@@ -8,7 +8,7 @@ import 'bootstrap/dist/css/bootstrap-grid.min.css';
 import '../../public/static/css/styles.css';
 import 'normalize.css/normalize.css';
 
-import Nav from '../components/Nav';
+import Nav from '../components/nav';
 import Header from '../components/Header';
 //import store from '../redux/store';
 
@@ -63,7 +63,13 @@ class MyApp extends App {
         <Header />
 
         <div className="page-cover">
-          <div className={`${mainClass}`}>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className={`${mainClass}`}
+          >
             <Nav />
             <AnimatePresence exitBeforeEnter>
               <motion.div
@@ -77,7 +83,7 @@ class MyApp extends App {
                 <Component {...pageProps} />
               </motion.div>
             </AnimatePresence>
-          </div>
+          </motion.div>
         </div>
         {
           //</Provider>

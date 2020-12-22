@@ -31,7 +31,10 @@ export default class LocationPage extends React.Component {
           </div>
           <div className="location__block-first_map col-md-6">
             <div className="location__map">
-              <MapComponent coords={[40.7962341779397, -77.85778534626027]} />
+              <MapComponent
+                coords={[40.7962341779397, -77.85778534626027]}
+                address={'129 Locust Ln, State College, PA 16801'}
+              />
             </div>
           </div>
         </div>
@@ -45,7 +48,10 @@ export default class LocationPage extends React.Component {
         <div className="location__block col-md-12">
           <div className="location__block-second_map col-md-6">
             <div className="location__map">
-              <MapComponent coords={[40.2390900080966, -76.94114703093386]} />
+              <MapComponent
+                coords={[40.2390900080966, -76.94114703093386]}
+                address={'5 South 35th St, Camp Hill, PA 17011'}
+              />
             </div>
           </div>
 
