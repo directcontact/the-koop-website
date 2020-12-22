@@ -9,7 +9,7 @@ import '../../public/static/css/styles.css';
 import 'normalize.css/normalize.css';
 
 import Nav from '../components/nav';
-import Header from '../components/Header';
+import Header from '../components/header';
 //import store from '../redux/store';
 
 class MyApp extends App {
