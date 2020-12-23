@@ -43,14 +43,11 @@ server
 
     const options = {
       useNewUrlParser: true,
-      user: process.env.MONGODB_ID,
-      pass: process.env.MONGODB_PASS,
+      user: process.env.MONGO_ID,
+      pass: process.env.MONGO_PASS,
     };
 
-    mongoose.connect(
-      'mongodb+srv://koop-website-cluster.rfw0m.mongodb.net/koop',
-      options
-    );
+    mongoose.connect(process.env.MONGO_URL, options);
 
     // Connected handler
     mongoose.connection.on('connected', function (err) {
