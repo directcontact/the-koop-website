@@ -1,9 +1,11 @@
 const express = require('express');
 const next = require('next');
 const helmet = require('helmet');
+const mongoose = require('mongoose');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const cryptoRandomString = require('crypto-random-string');
+require('dotenv').config();
 
 const { emailSender } = require('./util/email');
 
@@ -38,6 +40,27 @@ server
         contentSecurityPolicy: false,
       })
     );
+
+    const options = {
+      useNewUrlParser: true,
+      user: process.env.MONGODB_ID,
+      pass: process.env.MONGODB_PASS,
+    };
+
+    mongoose.connect(
+      'mongodb+srv://koop-website-cluster.rfw0m.mongodb.net/koop',
+      options
+    );
+
+    // Connected handler
+    mongoose.connection.on('connected', function (err) {
+      console.log('Connected to DB');
+    });
+
+    // Error handler
+    mongoose.connection.on('error', function (err) {
+      console.log(err);
+    });
 
     app.get('/api/menu/chicken/items', (req, res) => {
       res.send([

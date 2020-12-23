@@ -1,7 +1,7 @@
 import App from 'next/app';
 import React from 'react';
 //import withRedux from 'next-redux-wrapper';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, AnimateSharedLayout } from 'framer-motion';
 //import { Provider } from 'react-redux';
 
 import 'bootstrap/dist/css/bootstrap-grid.min.css';
@@ -61,30 +61,33 @@ class MyApp extends App {
           //<Provider store={store}>
         }
         <Header />
-
-        <div className="page-cover">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className={`${mainClass}`}
-          >
-            <Nav />
-            <AnimatePresence exitBeforeEnter>
-              <motion.div
-                key={mainClass}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3 }}
-                className="max-height"
-              >
-                <Component {...pageProps} />
-              </motion.div>
-            </AnimatePresence>
-          </motion.div>
-        </div>
+        <Nav />
+        <AnimateSharedLayout type="crossfade">
+          <AnimatePresence exitBeforeEnter>
+            <motion.div
+              key={mainClass}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="page-cover"
+            >
+              <div className={`${mainClass}`}>
+                <AnimatePresence exitBeforeEnter>
+                  <motion.div
+                    key={mainClass}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="max-height"
+                  >
+                    <Component {...pageProps} />
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </AnimateSharedLayout>
         {
           //</Provider>
         }
