@@ -60,14 +60,6 @@ function StoryPage() {
               WE ARE LOOKING FOR CANDIDATES WHO ARE ENTHUSIASTIC TO START THEIR
               OWN CHICKEN KOOP.
               <br />
-              <div className="story__text-title">FRANCHISE</div>
-              <div className="story__text-content">
-                <br />
-                WE ARE LOOKING FOR CANDIDATES WHO ARE ENTHUSIASTIC TO START
-                THEIR OWN CHICKEN KOOP.
-                <br />
-                PLEASE CONTACT STACY LEE AT 717-471-1602
-              </div>
             </div>
           </div>
         </div>

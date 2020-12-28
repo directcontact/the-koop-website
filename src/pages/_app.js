@@ -42,6 +42,9 @@ class MyApp extends App {
       case '/catering':
         mainClass = 'catering__page';
         break;
+      case '/order':
+        mainClass = 'ordering__page';
+        break;
       default:
         mainClass = 'main__page';
         break;
