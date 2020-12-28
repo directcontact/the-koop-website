@@ -628,6 +628,28 @@ h2 {
     font-weight: 400;
     font-size: 3rem; }
 
+.ordering {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column; }
+  .ordering__page {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("../images/paper.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100%;
+    transition: height 0.66s ease-in-out; }
+  .ordering__header {
+    color: #ffffff;
+    font-weight: 400;
+    font-size: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+
 .btn {
   background-color: #e02c4b;
   color: #ffffff;

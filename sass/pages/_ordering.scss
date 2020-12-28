@@ -1,25 +1,35 @@
 .ordering {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: $color-white;
+
+  &__page {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url('../images/paper.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     height: 100%;
+    transition: height 0.66s ease-in-out;
+  }
+
+  &__header {
+    color: $color-white;
+    font-weight: 400;
+    font-size: 3rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
-
-    &__page {
-      background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-        url('../images/paper.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      height: 100%;
-      transition: height 0.66s ease-in-out;
-    }
-  
-    &__header {
-      color: $color-white;
-      font-weight: 400;
-      font-size: 3rem;
-    }
   }
+
+  &__cart {
+    display: flex;
+    justify-content: right;
+    
+  }
+}
   
