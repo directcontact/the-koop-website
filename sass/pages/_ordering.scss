@@ -3,11 +3,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
+  flex-direction: row;
   color: $color-white;
 
   &__page {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),
       url('../images/paper.jpg');
     background-size: cover;
     background-position: center;
@@ -26,10 +26,57 @@
     justify-content: center;
   }
 
+
   &__cart {
     display: flex;
     justify-content: right;
-    
+    background-color: #FFF;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100%;
+    width: 100%;
+    transition: height 0.66s ease-in-out;
+    color: #000;
+
+
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center bottom;
+    padding: 5rem;
+    width: 80%;
+    position: fixed;
+    // margin-left: 20rem;
+    bottom: 0;
+    right: 15rem;
+    &-list {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 75%;
+      text-decoration: none;
+      list-style-type: none;
+      &--item {
+        text-align: center;
+        font-size: 3rem;
+        padding: 0 3rem;
+        width: 20%;
+        cursor: pointer;
+        font-weight: 300;
+        font-style: normal;
+        // color: #000;
+        transition: opacity 0.3s ease-in-out, font-weight 0.1s ease-in-out;
+        &:hover {
+          opacity: 0.7;
+        }
+      }
+    }
   }
 }
   
