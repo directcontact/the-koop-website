@@ -5,6 +5,7 @@ import { motion, AnimatePresence, AnimateSharedLayout } from 'framer-motion';
 //import { Provider } from 'react-redux';
 
 import 'bootstrap/dist/css/bootstrap-grid.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
 import '../../public/static/css/styles.css';
 import 'normalize.css/normalize.css';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import Cart from '../components/cart'
+import Cart from '../components/cart';
 
 
 export default class OrderingPage extends React.Component {
@@ -45,10 +45,10 @@ export default class OrderingPage extends React.Component {
     switch (navActive.step) {
       case 'LOCATION':
         // show location options 
-        this.renderLocationSelection();
+        return this.renderLocationSelection();
       case 'FOOD':
         // show menu 
-        this.renderOrderComponent();
+        return this.renderOrderComponent();
       case 'PICKUP':
         // show address input + time
       default:
@@ -118,7 +118,7 @@ export default class OrderingPage extends React.Component {
       <>
         <div className="ordering max-height col-md-12">
           <div className="ordering col-md-10">
-            <div className="ordering__header">{this.renderSteps(this.state.navActive)}</div>
+            <div className="ordering__container">{this.renderSteps(this.state.navActive)}</div>
             <div className="ordering">{this.renderOrderNav()}</div>
           </div>
           <div className="ordering col-md-2">
