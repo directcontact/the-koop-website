@@ -31,9 +31,35 @@ export default class OrderingPage extends React.Component {
   renderLocationSelection() {
     return (
       <>
-        <div className="ordering__header">
+      <div className="row">
+        <div className="ordering__container-header">
           PICK A LOCATION
         </div>
+      </div>
+      <div className="row">
+        <div className="ordering__container-content">
+          <div className="row">
+            <a className="ordering__menuselect-inactive col-lg-12">
+              <div className="ordering__menuselect-inactive_header col-lg-4">State College</div>
+              <div className="ordering__menuselect-inactive_content col-lg-8">
+                129 Locust Lane, State College, PA 16801
+                <br />
+                (814)-954-7807
+              </div>
+            </a>
+          </div>
+          <div className="row">
+            <a className="ordering__menuselect-inactive col-lg-12">
+              <div className="ordering__menuselect-inactive_header col-lg-4">Camp Hill</div>
+              <div className="col-lg-8">
+                5 South 35th Street, Camp Hill, PA 17011
+                <br />
+                (717)-695-7930
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
       </>
     );
       // location selection screen
