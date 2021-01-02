@@ -45,6 +45,9 @@ body {
 li {
   font-weight: 300; }
 
+#nprogress .bar {
+  background: #f4c529; }
+
 @font-face {
   font-family: "Oswald";
   src: url("fonts/oswald/Oswald-ExtraLight.ttf");
@@ -667,3 +670,32 @@ h2 {
     object-fit: contain;
     width: 66%;
     height: 100%; }
+
+.standardmenu__row {
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  flex-direction: column; }
+  .standardmenu__row-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%; }
+    .standardmenu__row-item--name {
+      font-size: 2.75rem;
+      font-weight: 500; }
+    .standardmenu__row-item--price {
+      font-size: 2.25rem;
+      font-weight: 350;
+      display: flex;
+      align-self: end;
+      justify-self: end; }
+  .standardmenu__row-description {
+    font-size: 1.5rem;
+    font-weight: 350; }
+
+.standardmenu__img {
+  object-fit: contain;
+  width: 66%;
+  height: 100%; }

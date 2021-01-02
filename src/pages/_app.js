@@ -1,5 +1,8 @@
 import App from 'next/app';
 import React from 'react';
+import { Router } from 'next/dist/client/router';
+import NProgress from 'nprogress';
+import 'nprogress/nprogress.css';
 //import withRedux from 'next-redux-wrapper';
 import { motion, AnimatePresence, AnimateSharedLayout } from 'framer-motion';
 //import { Provider } from 'react-redux';
@@ -12,6 +15,19 @@ import Nav from '../components/nav';
 import Header from '../components/header';
 //import store from '../redux/store';
 
+NProgress.configure({ showSpinner: false });
+
+Router.events.on('routeChangeStart', () => {
+  NProgress.start();
+});
+
+Router.events.on('routeChangeComplete', () => {
+  NProgress.done();
+});
+
+Router.events.on('routeChangeError', () => {
+  NProgress.done();
+});
 class MyApp extends App {
   static async getInitialProps({ Component, router, ctx }) {
     let pageProps = {};

@@ -38,3 +38,7 @@ body {
 li {
   font-weight: 300;
 }
+
+#nprogress .bar {
+  background: $color-yellow;
+}
