@@ -1,7 +1,8 @@
 import React from 'react';
+import fs from 'fs';
 
 import ChickenMenu from '../components/chicken-menu';
-import { chunk } from '../../util/helper';
+import StandardMenu from '../components/standard-menu';
 
 export default class MenuPage extends React.Component {
   constructor() {
@@ -23,21 +24,45 @@ export default class MenuPage extends React.Component {
     };
   }
 
+  ComponentDidMount() {
+    this.renderMenuComponent();
+  }
+
   renderMenuComponent(navActive) {
     switch (navActive.item) {
       case 'chicken':
-        return (
-          <ChickenMenu
-            sauce={this.props.sauce}
-            prices={this.props.prices}
-            sides={this.props.sides}
-          />
+        const sauce = this.props.menu.chicken.items.filter(
+          (item) => item.type === 'chicken'
         );
+        const prices = this.props.menu.chicken.prices.filter(
+          (price) => price.item === 'chicken'
+        );
+        return <ChickenMenu sauce={sauce} prices={prices} />;
       case 'appetizers':
+        const appetizer = this.props.menu.items.filter(
+          (item) => item.type === 'appetizer'
+        );
+        return <StandardMenu items={appetizer} />;
       case 'rice dishes':
+        const rice = this.props.menu.items.filter(
+          (item) => item.type === 'rice'
+        );
+        return <StandardMenu items={rice} />;
       case 'trotter':
+        const trotter = this.props.menu.items.filter(
+          (item) => item.type === 'trotter'
+        );
+        return <StandardMenu items={trotter} />;
       case 'soups':
+        const soups = this.props.menu.items.filter(
+          (item) => item.type === 'soup'
+        );
+        return <StandardMenu items={soups} />;
       case 'sides':
+        const sides = this.props.menu.items.filter(
+          (item) => item.type === 'side'
+        );
+        return <StandardMenu items={sides} />;
       default:
         return null;
     }
@@ -112,19 +137,12 @@ export default class MenuPage extends React.Component {
   }
 }
 
-export async function getServerSideProps(ctx) {
-  let res = await fetch('http://localhost:3000/api/menu/chicken/items');
-  const sauce = await res.json();
-  res = await fetch('http://localhost:3000/api/menu/side/items');
-  const sides = await res.json();
-  res = await fetch('http://localhost:3000/api/menu/chicken/prices');
-  const prices = await res.json();
-
+export async function getStaticProps(ctx) {
+  const file = fs.readFileSync('./public/static/data/items.json');
+  const menu = JSON.parse(file);
   return {
     props: {
-      sauce,
-      sides,
-      prices,
+      menu,
     },
   };
 }

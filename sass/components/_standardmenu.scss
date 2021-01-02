@@ -1,0 +1,36 @@
+.standardmenu {
+  &__row {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    flex-direction: column;
+    &-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: row;
+      width: 100%;
+      &--name {
+        font-size: 2.75rem;
+        font-weight: 500;
+      }
+      &--price {
+        font-size: 2.25rem;
+        font-weight: 350;
+        display: flex;
+        align-self: end;
+        justify-self: end;
+      }
+    }
+    &-description {
+      font-size: 1.5rem;
+      font-weight: 350;
+    }
+  }
+
+  &__img {
+    object-fit: contain;
+    width: 66%;
+    height: 100%;
+  }
+}

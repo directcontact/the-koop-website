@@ -1,0 +1,332 @@
+{
+  "chicken": {
+    "items": [
+      {
+        "name": "soy garlic",
+        "type": "chicken",
+        "src": "/static/images/soygarlic-1.jpg"
+      },
+      {
+        "name": "spicy soy garlic",
+        "type": "chicken",
+        "src": "/static/images/soygarlic-5.jpg"
+      },
+      {
+        "name": "extra spicy",
+        "type": "chicken",
+        "src": "/static/images/sweet_spicy-2.jpg"
+      },
+      {
+        "name": "sweet & spicy",
+        "type": "chicken",
+        "src": "/static/images/sweet_spicy-3.jpg"
+      },
+      {
+        "name": "honey garlic",
+        "type": "chicken",
+        "src": "/static/images/honeygarlic-4.jpg"
+      },
+      {
+        "name": "mild",
+        "type": "chicken",
+        "src": "/static/images/mild-5.jpg"
+      }
+    ],
+    "prices": [
+      {
+        "item": "chicken",
+        "type": "whole",
+        "size": "small",
+        "price": 9.95,
+        "amount": "7-8",
+        "units": "P/C"
+      },
+      {
+        "item": "chicken",
+        "type": "whole",
+        "size": "large",
+        "price": 18.95,
+        "amount": "14-16",
+        "units": "P/C"
+      },
+      {
+        "item": "chicken",
+        "type": "wings",
+        "size": "small",
+        "price": 11.95,
+        "amount": "8",
+        "units": "P/C"
+      },
+      {
+        "item": "chicken",
+        "type": "wings",
+        "size": "large",
+        "price": 20.95,
+        "amount": "16",
+        "units": "P/C"
+      },
+      {
+        "item": "chicken",
+        "type": "drumsticks",
+        "size": "small",
+        "price": 11.95,
+        "amount": "5",
+        "units": "P/C"
+      },
+      {
+        "item": "chicken",
+        "type": "drumsticks",
+        "size": "large",
+        "price": 20.95,
+        "amount": "10",
+        "units": "P/C"
+      },
+      {
+        "item": "chicken",
+        "type": "boneless",
+        "size": "small",
+        "price": 9.95,
+        "amount": "450",
+        "units": "g"
+      },
+      {
+        "item": "chicken",
+        "type": "boneless",
+        "size": "large",
+        "price": 18.95,
+        "amount": "900",
+        "units": "g"
+      }
+    ]
+  },
+  "items": [
+    {
+      "name": "white rice",
+      "type": "side",
+      "price": 1.00,
+      "amount": "",
+      "description": ""
+    },
+    {
+      "name": "pickled radish",
+      "type": "side",
+      "price": 1.95,
+      "amount": "",
+      "description": ""
+    },
+    {
+      "name": "french fries",
+      "type": "side",
+      "price": 2.95,
+      "amount": "",
+      "description": ""
+    },
+    {
+      "name": "sweet potato fries",
+      "type": "side",
+      "price": 3.95,
+      "amount": "",
+      "description": ""
+    },
+    {
+      "name": "mixed fries",
+      "type": "side",
+      "price": 5.95,
+      "amount": "",
+      "description": ""
+    },
+    {
+      "name": "kimchi",
+      "type": "side",
+      "price": {
+        "small": 1.00,
+        "large": 2.00
+      },
+      "amount": "",
+      "description": ""
+    },
+    {
+      "name": "coleslaw",
+      "type": "side",
+      "price": 1.95,
+      "amount": "",
+      "description": ""
+    },
+    {
+      "name": "blue cheese / ranch",
+      "type": "side",
+      "price": {
+        "small": 0.50,
+        "large": 1.00
+      },
+      "amount": "",
+      "description": ""
+    },
+    {
+      "name": "ddukbokki",
+      "type": "appetizer",
+      "price": 10.95,
+      "amount": "",
+      "description": "rice cakes with spicy sauce"
+    },
+    {
+      "name": "hemul pajeon",
+      "type": "appetizer",
+      "price": 10.95,
+      "amount": "",
+      "description": "korean seafood pancake with green onions"
+    },
+    {
+      "name": "kimchi pajeon",
+      "type": "appetizer",
+      "price": 10.95,
+      "amount": "",
+      "description": "korean kimchi pancake"
+    },
+    {
+      "name": "kimbap",
+      "type": "appetizer",
+      "price": 6.95,
+      "amount": "",
+      "description": "rolled rice, meat and veggies in seaweed"
+    },
+    {
+      "name": "fried dumplings",
+      "type": "appetizer",
+      "price": 6.95,
+      "amount": "12",
+      "description": "stuffed with vegetable and pork"
+    },
+    {
+      "name": "specialty dumplings",
+      "type": "appetizer",
+      "price": 8.95,
+      "amount": "12",
+      "description": "fried dumplings w/ cheese & homemade sauce (spicy)"
+    },
+    {
+      "name": "bulgogi",
+      "type": "rice",
+      "price": 14.95,
+      "amount": "",
+      "description": "thin marinated beef"
+    },
+    {
+      "name": "daegi bulgogi",
+      "type": "rice",
+      "price": 12.95,
+      "amount": "",
+      "description": "thin marinated spicy pork"
+    },
+    {
+      "name": "galbi",
+      "type": "rice",
+      "price": 19.95,
+      "amount": "",
+      "description": "marinated beef short ribs"
+    },
+    {
+      "name": "grilled short rib patties",
+      "type": "rice",
+      "price": 12.95,
+      "amount": "3",
+      "description": "with salad and rice"
+    },
+    {
+      "name": "donkatsu",
+      "type": "rice",
+      "price": 10.95,
+      "amount": "",
+      "description": "breaded, fried port cutlet with salad"
+    },
+    {
+      "name": "bibimbap",
+      "type": "rice",
+      "price": 10.95,
+      "amount": "",
+      "description": "rice mixed with vegetables and meat choice: soy sauce or spicy sauce"
+    },
+    {
+      "name": "dolsot bibimbap",
+      "type": "rice",
+      "price": 12.95,
+      "amount": "",
+      "description": "*not available for takeout* bibimmbap served in a hot clay bowl choice: beef, spicy port, seafood, vegetable, galbi (+$1.00)"
+    },
+    {
+      "name": "budae jigae",
+      "type": "soup",
+      "price": 11.95,
+      "amount": "",
+      "description": "ramen, rice cakes, meat, and kimchi in a spicy stew"
+    },
+    {
+      "name": "ddukgook",
+      "type": "soup",
+      "price": 10.95,
+      "amount": "",
+      "description": "rice cake soup with egg marinated beef, and seaweed"
+    },
+    {
+      "name": "\"hangover\" ramen",
+      "type": "soup",
+      "price": 9.95,
+      "amount": "",
+      "description": "*not available for takeout* ramen sop with scallions, carrots, egg"
+    },
+    {
+      "name": "kimchi jiggae",
+      "type": "soup",
+      "price": 11.95,
+      "amount": "",
+      "description": "spicy korean stew with kimchi, tofu, scallions, and pork"
+    },
+    {
+      "name": "soondubu",
+      "type": "soup",
+      "price": 9.95,
+      "amount": "",
+      "description": "soft spicy tofu stew with vegetables choice: veggie, kimchi, pork (+$1.00), seafood (+$1.00)"
+    },
+    {
+      "name": "yookgaejang",
+      "type": "soup",
+      "price": 10.95,
+      "amount": "",
+      "description": "spicy beef soup with vegetables"
+    },
+    {
+      "name": "mackerel combo",
+      "type": "soup",
+      "price": 10.95,
+      "amount": "",
+      "description": "grilled mackerel + denjang jigae (soybean paste stew)"
+    },
+    {
+      "name": "original trotter",
+      "type": "trotter",
+      "price": 27.00,
+      "amount": ""
+    },
+    {
+      "name": "spicy trotter",
+      "type": "trotter",
+      "price": 29.00,
+      "amount": ""
+    },
+    {
+      "name": "welsched onion (paddock)",
+      "type": "trotter",
+      "price": 22.95,
+      "amount": "",
+      "description": "large boneless w/ garlic sauce & green onions"
+    },
+    {
+      "name": "gangjeong",
+      "type": "trotter",
+      "price": 22.95,
+      "amount": "",
+      "description": "large crispy boneless w/ spicy sauce & rice cakes"
+    }
+  ]
+}
