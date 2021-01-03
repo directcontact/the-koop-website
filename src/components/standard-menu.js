@@ -1,5 +1,6 @@
 import StandardMenuItem from './standard-menu-item';
 import { chunk } from '../../util/helper';
+import { AnimatePresence } from 'framer-motion';
 
 const StandardMenu = (props) => {
   const sections = chunk(props.items, props.items.length / 2);
@@ -8,9 +9,6 @@ const StandardMenu = (props) => {
   if (props.items.length % 2 === 1) {
     secondSection.push(sections[2][0]);
   }
-
-  console.log(firstSection);
-  console.log(secondSection);
 
   return (
     <>
