@@ -41,6 +41,11 @@ class MyApp extends App {
 
   getMainClass(path) {
     let mainClass = '';
+    if (path.includes('admin')) {
+      const params = path.split('/');
+      path = `/${params[params.length - 1]}`;
+      console.log(path);
+    }
 
     switch (path) {
       case '/':
@@ -58,12 +63,23 @@ class MyApp extends App {
       case '/catering':
         mainClass = 'catering__page';
         break;
+      case '/login':
+        mainClass = 'login__page';
+        break;
       default:
         mainClass = 'main__page';
         break;
     }
 
     return mainClass;
+  }
+
+  renderNavComponents() {
+    return (
+      <>
+        <Nav />
+      </>
+    );
   }
 
   render() {
@@ -76,10 +92,14 @@ class MyApp extends App {
         {
           //<Provider store={store}>
         }
-        <Header />
-        <Nav />
         <AnimateSharedLayout type="crossfade">
           <AnimatePresence exitBeforeEnter>
+            <Header />
+
+            {router.pathname.includes('admin')
+              ? null
+              : this.renderNavComponents()}
+
             <motion.div
               key={mainClass}
               animate={{ opacity: 1 }}
@@ -88,18 +108,16 @@ class MyApp extends App {
               className="page-cover"
             >
               <div className={`${mainClass}`}>
-                <AnimatePresence exitBeforeEnter>
-                  <motion.div
-                    key={mainClass}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="max-height"
-                  >
-                    <Component {...pageProps} />
-                  </motion.div>
-                </AnimatePresence>
+                <motion.div
+                  key={mainClass}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="max-height"
+                >
+                  <Component {...pageProps} />
+                </motion.div>
               </div>
             </motion.div>
           </AnimatePresence>

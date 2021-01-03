@@ -1,5 +1,6 @@
 import React from 'react';
 import fs from 'fs';
+import { AnimateSharedLayout } from 'framer-motion';
 
 import ChickenMenu from '../components/chicken-menu';
 import StandardMenu from '../components/standard-menu';
@@ -22,10 +23,6 @@ export default class MenuPage extends React.Component {
         'SIDES',
       ],
     };
-  }
-
-  ComponentDidMount() {
-    this.renderMenuComponent();
   }
 
   renderMenuComponent(navActive) {
@@ -125,7 +122,9 @@ export default class MenuPage extends React.Component {
           </div>
           <hr className="solid u-margin-top-small" />
           <div className="menu__container col-md-12">
-            {this.renderMenuComponent(navActive)}
+            <AnimateSharedLayout>
+              {this.renderMenuComponent(navActive)}
+            </AnimateSharedLayout>
           </div>
         </div>
       </>

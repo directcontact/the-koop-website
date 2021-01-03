@@ -59,6 +59,17 @@ server
       console.log(err);
     });
 
+    app.post('/api/auth', (req, res) => {
+      const username = req.body.username;
+      const password = req.body.password;
+
+      if (username === 'test' && password === 'test') {
+        res.sendStatus(200);
+      } else {
+        res.sendStatus(403);
+      }
+    });
+
     app.post('/api/email', (req, res) => {
       const email = req.body.value;
       emailSender(email);
