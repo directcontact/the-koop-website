@@ -21,6 +21,7 @@ server
     const port = process.env.PORT || 3000;
 
     const session_secret = cryptoRandomString({ length: 10, type: 'base64' });
+    const hour = 3600000;
 
     if (dev) {
       const morgan = require('morgan');
@@ -64,8 +65,11 @@ server
       const password = req.body.password;
 
       if (username === 'test' && password === 'test') {
+        req.session.cookie.maxAge = hour;
+        req.session.login = true;
         res.sendStatus(200);
       } else {
+        req.session.login = false;
         res.sendStatus(403);
       }
     });

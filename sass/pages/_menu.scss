@@ -45,9 +45,13 @@
         color: $color-yellow;
         cursor: pointer;
         text-decoration: none;
+        transition: color 0.3s ease-in-out;
         &:link,
         &:visited {
           color: $color-yellow;
+        }
+        &:hover {
+          color: $color-yellow-bright;
         }
       }
     }

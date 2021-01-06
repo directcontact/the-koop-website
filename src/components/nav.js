@@ -23,8 +23,8 @@ const Nav = () => {
         </div>
         <div className="col-md-8 nav__block">
           <ul className="list-inline nav__block-list">
-            {pages.map((page, idx) => (
-              <NavItem page={page} key={idx} />
+            {pages.map((page) => (
+              <NavItem page={page} key={page.href} />
             ))}
           </ul>
         </div>

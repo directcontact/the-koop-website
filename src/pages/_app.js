@@ -3,9 +3,9 @@ import React from 'react';
 import { Router } from 'next/dist/client/router';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
-//import withRedux from 'next-redux-wrapper';
+import withRedux from 'next-redux-wrapper';
 import { motion, AnimatePresence, AnimateSharedLayout } from 'framer-motion';
-//import { Provider } from 'react-redux';
+import { Provider } from 'react-redux';
 
 import 'bootstrap/dist/css/bootstrap-grid.min.css';
 import '../../public/static/css/styles.css';
@@ -13,7 +13,7 @@ import 'normalize.css/normalize.css';
 
 import Nav from '../components/nav';
 import Header from '../components/header';
-//import store from '../redux/store';
+import store from '../redux/store';
 
 NProgress.configure({ showSpinner: false });
 
@@ -28,6 +28,16 @@ Router.events.on('routeChangeComplete', () => {
 Router.events.on('routeChangeError', () => {
   NProgress.done();
 });
+
+// https://stackoverflow.com/questions/58476658/how-to-redirect-to-login-page-for-restricted-pages-in-next-js
+export function redirectUser(ctx, location) {
+  if (ctx.req) {
+    ctx.res.writeHead(302, { Location: location });
+    ctx.res.end();
+  } else {
+    Router.push(location);
+  }
+}
 class MyApp extends App {
   static async getInitialProps({ Component, router, ctx }) {
     let pageProps = {};
@@ -35,6 +45,10 @@ class MyApp extends App {
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx);
     }
+
+    const { session } = ctx.req;
+
+    console.log(session);
 
     return { pageProps };
   }
@@ -89,10 +103,7 @@ class MyApp extends App {
 
     return (
       <>
-        {
-          //<Provider store={store}>
-        }
-        <AnimateSharedLayout type="crossfade">
+        <Provider store={store}>
           <AnimatePresence exitBeforeEnter>
             <Header />
 
@@ -100,31 +111,22 @@ class MyApp extends App {
               ? null
               : this.renderNavComponents()}
 
-            <motion.div
-              key={mainClass}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="page-cover"
-            >
+            <div className="page-cover">
               <div className={`${mainClass}`}>
                 <motion.div
-                  key={mainClass}
+                  key={router.route}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.3 }}
                   className="max-height"
                 >
-                  <Component {...pageProps} />
+                  <Component {...pageProps} key={router.route} />
                 </motion.div>
               </div>
-            </motion.div>
+            </div>
           </AnimatePresence>
-        </AnimateSharedLayout>
-        {
-          //</Provider>
-        }
+        </Provider>
       </>
     );
   }
@@ -136,7 +138,6 @@ export function reportWebVitals(metric) {
   }
 }
 
-// const makeStore = () => store;
+const makeStore = () => store;
 
-//export default withRedux(makeStore)(MyApp);
-export default MyApp;
+export default withRedux(makeStore)(MyApp);
