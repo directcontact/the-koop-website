@@ -1,5 +1,8 @@
 import App from 'next/app';
 import React from 'react';
+import { Router } from 'next/dist/client/router';
+import NProgress from 'nprogress';
+import 'nprogress/nprogress.css';
 //import withRedux from 'next-redux-wrapper';
 import { motion, AnimatePresence, AnimateSharedLayout } from 'framer-motion';
 //import { Provider } from 'react-redux';
@@ -13,6 +16,19 @@ import Nav from '../components/nav';
 import Header from '../components/header';
 //import store from '../redux/store';
 
+NProgress.configure({ showSpinner: false });
+
+Router.events.on('routeChangeStart', () => {
+  NProgress.start();
+});
+
+Router.events.on('routeChangeComplete', () => {
+  NProgress.done();
+});
+
+Router.events.on('routeChangeError', () => {
+  NProgress.done();
+});
 class MyApp extends App {
   static async getInitialProps({ Component, router, ctx }) {
     let pageProps = {};
@@ -26,6 +42,11 @@ class MyApp extends App {
 
   getMainClass(path) {
     let mainClass = '';
+    if (path.includes('admin')) {
+      const params = path.split('/');
+      path = `/${params[params.length - 1]}`;
+      console.log(path);
+    }
 
     switch (path) {
       case '/':
@@ -45,6 +66,8 @@ class MyApp extends App {
         break;
       case '/order':
         mainClass = 'ordering__page';
+      case '/login':
+        mainClass = 'login__page';
         break;
       default:
         mainClass = 'main__page';
@@ -52,6 +75,14 @@ class MyApp extends App {
     }
 
     return mainClass;
+  }
+
+  renderNavComponents() {
+    return (
+      <>
+        <Nav />
+      </>
+    );
   }
 
   render() {
@@ -64,10 +95,14 @@ class MyApp extends App {
         {
           //<Provider store={store}>
         }
-        <Header />
-        <Nav />
         <AnimateSharedLayout type="crossfade">
           <AnimatePresence exitBeforeEnter>
+            <Header />
+
+            {router.pathname.includes('admin')
+              ? null
+              : this.renderNavComponents()}
+
             <motion.div
               key={mainClass}
               animate={{ opacity: 1 }}
@@ -76,18 +111,16 @@ class MyApp extends App {
               className="page-cover"
             >
               <div className={`${mainClass}`}>
-                <AnimatePresence exitBeforeEnter>
-                  <motion.div
-                    key={mainClass}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="max-height"
-                  >
-                    <Component {...pageProps} />
-                  </motion.div>
-                </AnimatePresence>
+                <motion.div
+                  key={mainClass}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="max-height"
+                >
+                  <Component {...pageProps} />
+                </motion.div>
               </div>
             </motion.div>
           </AnimatePresence>
