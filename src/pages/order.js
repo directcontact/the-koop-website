@@ -26,12 +26,28 @@ export default class OrderingPage extends React.Component {
         'PICKUP',
       ],
       order: {
-        location: '',
+        location: null,
         food: {},
         address: {},
 
       }
     };
+  }
+
+  toggleLocationCSS(location) {
+
+    if (this.state.order.location === null) {
+      this.setState({
+        ...this.state,
+        order: {...this.state.order, location }
+      })
+    } else if (this.state.order.location !== location ) {
+      this.setState({
+        ...this.state,
+        order: {...this.state.order, location }
+      })
+    }
+
   }
 
   renderLocationSelection() {
@@ -47,22 +63,28 @@ export default class OrderingPage extends React.Component {
       <div className="row">
         <div className="ordering__container-content">
           <div className="row">
-            <div className="ordering__menuselect-inactive col-lg-12"
-            onClick={() => this.setState({...this.state, order: {...this.state.order, location: "State College"}})}>
+            <div 
+            className={ this.state.order.location === "State College" ? 
+            'ordering__menuselect-active col-lg-12' : 
+            'ordering__menuselect-inactive col-lg-12' }
+            onClick={() => this.toggleLocationCSS("State College")}>
               <div className="ordering__menuselect-inactive_header col-lg-4">State College</div>
               <div className="ordering__menuselect-inactive_content col-lg-8">
-                129 Locust Lane, State College, PA 16801
+                129 Locust Ln, State College, PA 16801
                 <br />
                 (814)-954-7807
               </div>
             </div>
           </div>
           <div className="row">
-            <div className="ordering__menuselect-inactive col-lg-12"
-            onClick={() => this.setState({...this.state, order: {...this.state.order, location: "Camp Hill"}})}>
+            <div
+            className={ this.state.order.location === "Camp Hill" ? 
+            'ordering__menuselect-active col-lg-12' : 
+            'ordering__menuselect-inactive col-lg-12' }
+            onClick={() => this.toggleLocationCSS("Camp Hill")}>
               <div className="ordering__menuselect-inactive_header col-lg-4">Camp Hill</div>
               <div className="col-lg-8">
-                5 South 35th Street, Camp Hill, PA 17011
+                5 South 35th St, Camp Hill, PA 17011
                 <br />
                 (717)-695-7930
               </div>

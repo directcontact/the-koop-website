@@ -728,7 +728,10 @@ h2 {
     flex-direction: row;
     margin-bottom: 3rem;
     align-items: center;
-    text-decoration: none; }
+    text-decoration: none;
+    height: 12rem;
+    width: 70rem;
+    min-width: 80%; }
     .ordering__menuselect-inactive_header {
       font-size: 3rem !important;
       font-weight: 400; }
@@ -740,7 +743,7 @@ h2 {
     opacity: 50%;
     color: #ffffff;
     padding: 2rem;
-    border-radius: 2rem;
+    border-radius: 1rem;
     border: none;
     font-size: 2.5rem;
     font-weight: 300;
@@ -748,9 +751,13 @@ h2 {
     display: flex;
     flex-direction: row;
     margin-bottom: 3rem;
-    align-items: center; }
+    align-items: center;
+    text-decoration: none;
+    height: 12rem;
+    width: 70rem;
+    min-width: 80%; }
     .ordering__menuselect-active_header {
-      font-size: 4rem !important;
+      font-size: 3rem !important;
       font-weight: 400; }
     .ordering__menuselect-active_content {
       display: flex !important;
