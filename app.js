@@ -48,7 +48,7 @@ server
       pass: process.env.MONGO_PASS,
     };
 
-    mongoose.connect(process.env.MONGO_URL, options);
+    // mongoose.connect(process.env.MONGO_URL, options);
 
     // Connected handler
     mongoose.connection.on('connected', function (err) {

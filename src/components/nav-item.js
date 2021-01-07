@@ -1,10 +1,8 @@
 import Link from 'next/link';
-import { connect } from 'react-redux';
-import { setActive } from '../redux/actions/nav';
 
 const NavItem = (props) => {
-  const { nav, setActive } = props;
-  const activeClass = nav.active === props.page.name ? 'active' : '';
+  const { active, setActive } = props;
+  const activeClass = active === props.page.name ? 'active' : '';
   return (
     <li className="list-inline-item nav__item">
       <h2 className={`nav__item-header ${activeClass}`}>
@@ -21,12 +19,4 @@ const NavItem = (props) => {
   );
 };
 
-export const mapStateToProps = (state) => ({
-  nav: state.nav,
-});
-
-export const mapDispatchToProps = {
-  setActive: setActive,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(NavItem);
+export default NavItem;
