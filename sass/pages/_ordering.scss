@@ -82,6 +82,37 @@
     }
   }
 
+  &__menuNav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: left center;
+    padding-top: 5vh;
+    width: 100%;
+    &-list {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 75%;
+      text-decoration: none;
+      list-style-type: none;
+      &--item {
+        text-align: center;
+        font-size: 2rem;
+        padding: 0 3rem;
+        width: 20%;
+        cursor: pointer;
+        font-weight: 300;
+        font-style: normal;
+        transition: opacity 0.3s ease-in-out, font-weight 0.1s ease-in-out;
+        &:hover {
+          opacity: 0.7;
+        }
+      }
+    }
+  }
+
   &__container {
     display: flex;
     flex-direction: column;
