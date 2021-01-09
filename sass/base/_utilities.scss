@@ -96,3 +96,12 @@
 .text-center {
   text-align: center;
 }
+
+.active {
+  padding-bottom: 1px;
+  border-bottom: $color-white 4px solid;
+  & a::before {
+    height: 0px;
+    transition: none !important;
+  }
+}

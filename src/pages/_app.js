@@ -2,22 +2,26 @@ import App from 'next/app';
 import React from 'react';
 import { Router } from 'next/dist/client/router';
 import NProgress from 'nprogress';
-import 'nprogress/nprogress.css';
-//import withRedux from 'next-redux-wrapper';
-import { motion, AnimatePresence, AnimateSharedLayout } from 'framer-motion';
-//import { Provider } from 'react-redux';
+import { motion, AnimatePresence } from 'framer-motion';
+
+// import withRedux from 'next-redux-wrapper';
+// import { Provider } from 'react-redux';
 
 import 'bootstrap/dist/css/bootstrap-grid.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../../public/static/css/styles.css';
 import 'normalize.css/normalize.css';
+import 'nprogress/nprogress.css';
 
 import Nav from '../components/nav';
+import AdminNav from '../components/admin-nav';
 import Header from '../components/header';
-//import store from '../redux/store';
+// import store from '../redux/store';
 
+// This is where we configure the loading bar at the top of the screen when we're moving to the next page.
 NProgress.configure({ showSpinner: false });
 
+// Router will have these events that fire based on each page load, we can run NProgress based on them.
 Router.events.on('routeChangeStart', () => {
   NProgress.start();
 });
@@ -45,7 +49,6 @@ class MyApp extends App {
     if (path.includes('admin')) {
       const params = path.split('/');
       path = `/${params[params.length - 1]}`;
-      console.log(path);
     }
 
     switch (path) {
@@ -68,6 +71,11 @@ class MyApp extends App {
         mainClass = 'ordering__page';
       case '/login':
         mainClass = 'login__page';
+        break;
+      case '/complete':
+      case '/incomplete':
+      case '/alert':
+        mainClass = 'incomplete__page';
         break;
       default:
         mainClass = 'main__page';
@@ -92,42 +100,28 @@ class MyApp extends App {
 
     return (
       <>
-        {
-          //<Provider store={store}>
-        }
-        <AnimateSharedLayout type="crossfade">
-          <AnimatePresence exitBeforeEnter>
-            <Header />
+        {/* <Provider store={store}> */}
+        <AnimatePresence exitBeforeEnter>
+          <Header />
 
-            {router.pathname.includes('admin')
-              ? null
-              : this.renderNavComponents()}
+          {router.pathname.includes('admin') ? <AdminNav /> : <Nav />}
 
-            <motion.div
-              key={mainClass}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="page-cover"
-            >
-              <div className={`${mainClass}`}>
-                <motion.div
-                  key={mainClass}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="max-height"
-                >
-                  <Component {...pageProps} />
-                </motion.div>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-        </AnimateSharedLayout>
-        {
-          //</Provider>
-        }
+          <div className="page-cover">
+            <div className={`${mainClass}`}>
+              <motion.div
+                key={router.route}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="max-height"
+              >
+                <Component {...pageProps} key={router.route} />
+              </motion.div>
+            </div>
+          </div>
+        </AnimatePresence>
+        {/* </Provider> */}
       </>
     );
   }
@@ -139,7 +133,8 @@ export function reportWebVitals(metric) {
   }
 }
 
+export default MyApp;
+
 // const makeStore = () => store;
 
-//export default withRedux(makeStore)(MyApp);
-export default MyApp;
+// export default withRedux(makeStore)(MyApp);

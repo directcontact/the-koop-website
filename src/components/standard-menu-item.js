@@ -11,24 +11,16 @@ const StandardMenuItem = (props) => {
     );
   };
 
-  const stagger = {
-    animate: {
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
   return (
-    <motion.div variants={stagger} className="u-margin-top-small">
-      {sections.map((item, idx) => (
+    <div className="u-margin-top-small">
+      {sections.map((item) => (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
+          key={item.name}
           className="standardmenu__row col-md-12 u-margin-bottom-medium"
-          key={Math.random() * (idx + 1)}
         >
           <div className="standardmenu__row-item">
             <span className="standardmenu__row-item--name">
@@ -46,7 +38,7 @@ const StandardMenuItem = (props) => {
           </div>
         </motion.div>
       ))}
-    </motion.div>
+    </div>
   );
 };
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import fs from 'fs';
-import { AnimateSharedLayout } from 'framer-motion';
 
 import ChickenMenu from '../components/chicken-menu';
 import StandardMenu from '../components/standard-menu';
@@ -34,32 +33,34 @@ export default class MenuPage extends React.Component {
         const prices = this.props.menu.chicken.prices.filter(
           (price) => price.item === 'chicken'
         );
-        return <ChickenMenu sauce={sauce} prices={prices} />;
+        return (
+          <ChickenMenu sauce={sauce} prices={prices} nav={navActive.item} />
+        );
       case 'appetizers':
         const appetizer = this.props.menu.items.filter(
           (item) => item.type === 'appetizer'
         );
-        return <StandardMenu items={appetizer} />;
+        return <StandardMenu items={appetizer} nav={navActive.item} />;
       case 'rice dishes':
         const rice = this.props.menu.items.filter(
           (item) => item.type === 'rice'
         );
-        return <StandardMenu items={rice} />;
+        return <StandardMenu items={rice} nav={navActive.item} />;
       case 'trotter':
         const trotter = this.props.menu.items.filter(
           (item) => item.type === 'trotter'
         );
-        return <StandardMenu items={trotter} />;
+        return <StandardMenu items={trotter} nav={navActive.item} />;
       case 'soups':
         const soups = this.props.menu.items.filter(
           (item) => item.type === 'soup'
         );
-        return <StandardMenu items={soups} />;
+        return <StandardMenu items={soups} nav={navActive.item} />;
       case 'sides':
         const sides = this.props.menu.items.filter(
           (item) => item.type === 'side'
         );
-        return <StandardMenu items={sides} />;
+        return <StandardMenu items={sides} nav={navActive.item} />;
       default:
         return null;
     }
@@ -75,7 +76,7 @@ export default class MenuPage extends React.Component {
           <div className="menu__header">
             <div className="menu__header-text">
               <p className="menu__header-text--content">
-                Want to order by call?
+                Want to order by phone?
               </p>
               <p className="menu__header-text--content u-margin-top-small">
                 Check your nearest locations for numbers
@@ -95,7 +96,7 @@ export default class MenuPage extends React.Component {
 
           <div className="menu__nav">
             <ul className="menu__nav-list u-margin-bottom-small">
-              {navItems.map((item, idx) => {
+              {navItems.map((item) => {
                 let active = '';
                 let strup = navActive.item.toUpperCase();
                 if (strup === item) {
@@ -104,7 +105,7 @@ export default class MenuPage extends React.Component {
                 return (
                   <li
                     className={`menu__nav-list--item ${active}`}
-                    key={idx}
+                    key={item}
                     onClick={() =>
                       this.setState({
                         navActive: {
@@ -122,9 +123,7 @@ export default class MenuPage extends React.Component {
           </div>
           <hr className="solid u-margin-top-small" />
           <div className="menu__container col-md-12">
-            <AnimateSharedLayout>
-              {this.renderMenuComponent(navActive)}
-            </AnimateSharedLayout>
+            {this.renderMenuComponent(navActive)}
           </div>
         </div>
       </>
