@@ -8,6 +8,7 @@
 @import 'base/utilities';
 
 @import 'layout/nav';
+@import 'layout/adminnav';
 @import 'layout/list';
 
 @import 'pages/index';
@@ -16,6 +17,9 @@
 @import 'pages/story';
 @import 'pages/catering';
 @import 'pages/login';
+@import 'pages/incomplete';
+@import 'pages/complete';
+@import 'pages/alert';
 
 @import 'components/btn';
 @import 'components/menuitem';

@@ -2,21 +2,25 @@ import App from 'next/app';
 import React from 'react';
 import { Router } from 'next/dist/client/router';
 import NProgress from 'nprogress';
-import 'nprogress/nprogress.css';
+import { motion, AnimatePresence } from 'framer-motion';
+
 // import withRedux from 'next-redux-wrapper';
-import { motion, AnimatePresence, AnimateSharedLayout } from 'framer-motion';
 // import { Provider } from 'react-redux';
 
 import 'bootstrap/dist/css/bootstrap-grid.min.css';
 import '../../public/static/css/styles.css';
 import 'normalize.css/normalize.css';
+import 'nprogress/nprogress.css';
 
 import Nav from '../components/nav';
+import AdminNav from '../components/admin-nav';
 import Header from '../components/header';
 // import store from '../redux/store';
 
+// This is where we configure the loading bar at the top of the screen when we're moving to the next page.
 NProgress.configure({ showSpinner: false });
 
+// Router will have these events that fire based on each page load, we can run NProgress based on them.
 Router.events.on('routeChangeStart', () => {
   NProgress.start();
 });
@@ -28,26 +32,12 @@ Router.events.on('routeChangeComplete', () => {
 Router.events.on('routeChangeError', () => {
   NProgress.done();
 });
-
-// https://stackoverflow.com/questions/58476658/how-to-redirect-to-login-page-for-restricted-pages-in-next-js
-export function redirectUser(ctx, location) {
-  if (ctx.req) {
-    ctx.res.writeHead(302, { Location: location });
-    ctx.res.end();
-  } else {
-    Router.push(location);
-  }
-}
 class MyApp extends App {
   static async getInitialProps({ Component, router, ctx }) {
     let pageProps = {};
 
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx);
-    }
-
-    if (ctx.req) {
-      console.log(ctx.req);
     }
 
     return { pageProps };
@@ -58,7 +48,6 @@ class MyApp extends App {
     if (path.includes('admin')) {
       const params = path.split('/');
       path = `/${params[params.length - 1]}`;
-      console.log(path);
     }
 
     switch (path) {
@@ -79,6 +68,11 @@ class MyApp extends App {
         break;
       case '/login':
         mainClass = 'login__page';
+        break;
+      case '/complete':
+      case '/incomplete':
+      case '/alert':
+        mainClass = 'incomplete__page';
         break;
       default:
         mainClass = 'main__page';
@@ -107,9 +101,7 @@ class MyApp extends App {
         <AnimatePresence exitBeforeEnter>
           <Header />
 
-          {router.pathname.includes('admin')
-            ? null
-            : this.renderNavComponents()}
+          {router.pathname.includes('admin') ? <AdminNav /> : <Nav />}
 
           <div className="page-cover">
             <div className={`${mainClass}`}>

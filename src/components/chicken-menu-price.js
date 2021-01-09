@@ -33,13 +33,23 @@ const ChickenMenuSauce = (props) => {
             </div>
             <div className="menu__list-row--item col-md-4">
               {`$${small.price}`}
+              {small.units === 'g' ? (
+                <span className="menu__list-row--item_special">≈</span>
+              ) : null}
               <span className="menu__list-row--item_price">{small.amount}</span>
-              <span className="menu__list-row--item_price">{small.units}</span>
+              <span className="menu__list-row--item_price">
+                {small.units === 'P/C' ? ` ${small.units}` : small.units}
+              </span>
             </div>
             <div className="menu__list-row--item col-md-4">
               {`$${large.price}`}
+              {large.units === 'g' ? (
+                <span className="menu__list-row--item_special">≈</span>
+              ) : null}
               <span className="menu__list-row--item_price">{large.amount}</span>
-              <span className="menu__list-row--item_price">{large.units}</span>
+              <span className="menu__list-row--item_price">
+                {large.units === 'P/C' ? ` ${large.units}` : large.units}
+              </span>
             </div>
           </div>
         );

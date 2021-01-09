@@ -76,7 +76,7 @@ export default class MenuPage extends React.Component {
           <div className="menu__header">
             <div className="menu__header-text">
               <p className="menu__header-text--content">
-                Want to order by call?
+                Want to order by phone?
               </p>
               <p className="menu__header-text--content u-margin-top-small">
                 Check your nearest locations for numbers

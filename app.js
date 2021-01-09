@@ -28,14 +28,20 @@ server
       app.use(morgan('common'));
     }
 
+    const sessionOptions = {
+      secret: session_secret,
+      resave: false,
+      saveUninitialized: true,
+      cookie: {},
+    };
+
+    if (app.get('env') === 'production') {
+      app.set('trust proxy', 1); // trust first proxy
+      sessionOptions.cookie.secure = true; // serve secure cookies
+    }
+
     app.use(bodyParser.json());
-    app.use(
-      session({
-        secret: session_secret,
-        resave: false,
-        saveUninitialized: true,
-      })
-    );
+    app.use(session(sessionOptions));
     app.use(
       helmet({
         contentSecurityPolicy: false,
@@ -65,11 +71,8 @@ server
       const password = req.body.password;
 
       if (username === 'test' && password === 'test') {
-        req.session.cookie.maxAge = hour;
-        req.session.login = true;
         res.sendStatus(200);
       } else {
-        req.session.login = false;
         res.sendStatus(403);
       }
     });
