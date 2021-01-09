@@ -2,9 +2,7 @@ const express = require('express');
 const next = require('next');
 const helmet = require('helmet');
 const mongoose = require('mongoose');
-const session = require('express-session');
 const bodyParser = require('body-parser');
-const cryptoRandomString = require('crypto-random-string');
 require('dotenv').config();
 
 const { emailSender } = require('./util/email');
@@ -20,28 +18,12 @@ server
 
     const port = process.env.PORT || 3000;
 
-    const session_secret = cryptoRandomString({ length: 10, type: 'base64' });
-    const hour = 3600000;
-
     if (dev) {
       const morgan = require('morgan');
       app.use(morgan('common'));
     }
 
-    const sessionOptions = {
-      secret: session_secret,
-      resave: false,
-      saveUninitialized: true,
-      cookie: {},
-    };
-
-    if (app.get('env') === 'production') {
-      app.set('trust proxy', 1); // trust first proxy
-      sessionOptions.cookie.secure = true; // serve secure cookies
-    }
-
     app.use(bodyParser.json());
-    app.use(session(sessionOptions));
     app.use(
       helmet({
         contentSecurityPolicy: false,
