@@ -105,3 +105,9 @@
     transition: none !important;
   }
 }
+
+.selectedOrder {
+  background-color: $color-black !important;
+  opacity: 50% !important;
+  color: $color-white !important;
+}

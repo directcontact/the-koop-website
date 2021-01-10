@@ -69,6 +69,7 @@ class MyApp extends App {
         break;
       case '/order':
         mainClass = 'ordering__page';
+        break;
       case '/login':
         mainClass = 'login__page';
         break;

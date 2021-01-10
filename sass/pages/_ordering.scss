@@ -142,6 +142,30 @@
       font-size: 3rem;
       height: 100%;
     }
+
+    // &_miniContainer {
+    //   &-content {
+
+    //   }
+    // }
+    &-menuContent {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: left;
+      font-size: 3rem;
+      color: $color-white;
+      font-weight: 300;
+      padding-right: 3rem;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      width: 100%;
+
+      // &_text {
+      //   display: flex;
+      //   flex-direction: row !important;
+      // }
+    }
   }
 
 

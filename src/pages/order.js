@@ -1,7 +1,7 @@
 import React from 'react';
 import Cart from '../components/cart';
 
-// import fs from 'fs';
+import fs from 'fs';
 import { AnimateSharedLayout } from 'framer-motion';
 
 
@@ -11,7 +11,7 @@ export default class OrderingPage extends React.Component {
     this.state = {
       navActive: {
         step: 'LOCATION',
-        selection: 'chicken',
+        selection: 'CHICKEN',
         // cart: [],
         active: 'selected',
       },
@@ -28,11 +28,37 @@ export default class OrderingPage extends React.Component {
         'FOOD',
         'PICKUP',
       ],
+      locations: [
+        {
+          name: 'State College',
+          address: '129 Locust Ln, State College, PA 16801',
+          phone: '(814)-954-7807'
+        },
+        {
+          name: 'Camp Hill',
+          address: '5 South 35th St, Camp Hill, PA 17011',
+          phone: '(717)-695-7930'
+        },
+      ],
       order: {
-        location: null,
-        food: {},
+        location: '',
+        food: {
+          chicken: [],
+          appetizers: [],
+          rice: [],
+          trotter: [],
+          soups: [],
+          sides: []  
+        },
         address: {},
-
+        active: 'selectedOrder'
+      },
+      currentSel: {
+        quant: 0,
+        type: '',
+        sauce: '',
+        size: '',
+        price: 0.0
       }
     };
   }
@@ -49,12 +75,18 @@ export default class OrderingPage extends React.Component {
         ...this.state,
         order: {...this.state.order, location }
       })
+    } else if (this.state.order.location === location ) {
+      this.setState({
+        ...this.state,
+        order: {...this.state.order, location: ''}
+      })
     }
 
   }
 
   renderLocationSelection() {
     let order = this.state.order
+    let locations = this.state.locations
 
     return (
       <>
@@ -65,7 +97,42 @@ export default class OrderingPage extends React.Component {
       </div>
       <div className="row">
         <div className="ordering__container-content">
-          <div className="row">
+
+        {locations.map((location) => {
+          let active = '';
+          let strup = order.location;
+          if (strup === location) {
+            active = order.active;
+          }
+
+          return (
+            <div className="row">
+              <div 
+                className={`ordering__menuselect-inactive ${active} col-lg-12 `}
+                onClick={() => 
+                  this.setState({
+                    ...this.state,
+                    order: {
+                      ...this.state.order,
+                      location: location.name,
+                      active: 'selectedOrder'
+                    }
+                  })
+                }>
+                    <div className="ordering__menuselect-inactive_header col-lg-4">
+                      {location.name}
+                    </div>
+                    <div className="ordering__menuselect-inactive_content col-lg-8">
+                      {location.address}
+                      <br />
+                      {location.phone}
+                    </div>
+              </div>
+            </div>
+          )
+        })}
+
+          {/* <div className="row">
             <div 
             className={ this.state.order.location === "State College" ? 
             'ordering__menuselect-active col-lg-12' : 
@@ -92,14 +159,11 @@ export default class OrderingPage extends React.Component {
                 (717)-695-7930
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
       </>
     );
-      // location selection screen
-      // choose between state college or camp hill (title on left, address + phone num on right)
-      // unselected is cream/light tan color. selected is mocha brown color
   }
 
   renderSteps(navActive) {
@@ -154,57 +218,92 @@ export default class OrderingPage extends React.Component {
     );
   }
 
+  renderChickenMenu(sauce, chickenItems) {
+    const chickenTypes = ['Whole', 'Wings', 'Drumsticks', 'Boneless']
+    const size = ['Small', 'Large']
+    const sides = ['White Rice', 'Pickled Radish']
 
-  // renderMenuComponent(navActive) {
-  //   switch (navActive.selection) {
-  //     case 'chicken':
-  //       const sauce = this.props.menu.chicken.items.filter(
-  //         (item) => item.type === 'chicken'
-  //       );
-  //       const prices = this.props.menu.chicken.prices.filter(
-  //         (price) => price.item === 'chicken'
-  //       );
-  //       return <ChickenMenu sauce={sauce} prices={prices} />;
-  //     case 'appetizers':
-  //       const appetizer = this.props.menu.items.filter(
-  //         (item) => item.type === 'appetizer'
-  //       );
-  //       return <StandardMenu items={appetizer} />;
-  //     case 'rice dishes':
-  //       const rice = this.props.menu.items.filter(
-  //         (item) => item.type === 'rice'
-  //       );
-  //       return <StandardMenu items={rice} />;
-  //     case 'trotter':
-  //       const trotter = this.props.menu.items.filter(
-  //         (item) => item.type === 'trotter'
-  //       );
-  //       return <StandardMenu items={trotter} />;
-  //     case 'soups':
-  //       const soups = this.props.menu.items.filter(
-  //         (item) => item.type === 'soup'
-  //       );
-  //       return <StandardMenu items={soups} />;
-  //     case 'sides':
-  //       const sides = this.props.menu.items.filter(
-  //         (item) => item.type === 'side'
-  //       );
-  //       return <StandardMenu items={sides} />;
-  //     default:
-  //       return null;
-  //   }
-  // }
+    return (
+      <>
+      <div className="ordering__container-content">
+        <div className="row">
+          <div className="ordering__container-header">
+            CHOOSE YOUR CHICKEN
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="ordering__container-menuContent col-lg-12">
+            {chickenTypes.map((type) =>
+            {return (
+              <span className="ordering__container-menuContent col-lg-3">
+                {type}
+              </span>
+            )})}
+          </div>
+        </div></div>
+      </>
+    )
+  }
+
+
+  renderMenuComponent(navActive) {
+    switch (navActive.selection) {
+      case 'CHICKEN':
+        const sauce = this.props.menu.chicken.items.filter(
+          (item) => item.type === 'chicken'
+        );
+        const chickenItems = this.props.menu.chicken.prices.filter(
+          (price) => price.item === 'chicken'
+        );
+        // return <ChickenMenu sauce={sauce} prices={prices} />;
+        return (this.renderChickenMenu(sauce, chickenItems))
+      case 'APPETIZERS':
+        // const appetizer = this.props.menu.items.filter(
+        //   (item) => item.type === 'appetizer'
+        // );
+        // return <StandardMenu items={appetizer} />;
+        return (<div>APPETIZERS</div>)
+      case 'RICE DISHES':
+        // const rice = this.props.menu.items.filter(
+        //   (item) => item.type === 'rice'
+        // );
+        // return <StandardMenu items={rice} />;
+        return (<div>RICE DISHES</div>)
+      case 'TROTTER':
+        // const trotter = this.props.menu.items.filter(
+        //   (item) => item.type === 'trotter'
+        // );
+        // return <StandardMenu items={trotter} />;
+        return (<div>TROTTER</div>)
+      case 'SOUPS':
+        // const soups = this.props.menu.items.filter(
+        //   (item) => item.type === 'soup'
+        // );
+        // return <StandardMenu items={soups} />;
+        return (<div>SOUPS</div>)
+      case 'SIDES':
+        // const sides = this.props.menu.items.filter(
+        //   (item) => item.type === 'side'
+        // );
+        // return <StandardMenu items={sides} />;
+        return (<div>SIDES</div>)
+      default:
+        return null;
+    }
+  }
 
 
   renderOrderComponent() {
     const navActive = this.state.navActive;
-    const navItems = this.state.menuItems;
+    const menuItems = this.state.menuItems;
 
     return (
       <>
-        <div className="ordering__menuNav">
+        
+        <div className="ordering__menuNav row">
             <ul className="ordering__menuNav-list u-margin-bottom-small">
-            {navItems.map((item, idx) => {
+            {menuItems.map((item, idx) => {
               let active = '';
               let strup = navActive.selection.toUpperCase();
               if (strup === item) {
@@ -218,7 +317,7 @@ export default class OrderingPage extends React.Component {
                     this.setState({ ...this.state, 
                       navActive: {
                         ...this.state.navActive,
-                        selection: item.toLowerCase(),
+                        selection: item,
                         active: 'selected',
                       },
                     })
@@ -232,11 +331,11 @@ export default class OrderingPage extends React.Component {
         </div>
         {/* <hr className="solid u-margin-top-small" /> */}
         {/* <div className="ordering__container col-md-12"> */}
-        <div className="ordering__container">
-          {/* <AnimateSharedLayout>
+        <div className="row">
+          <AnimateSharedLayout>
             {this.renderMenuComponent(navActive)}
-          </AnimateSharedLayout> */}
-          <div className="ordering__container-header">MENU</div>
+          </AnimateSharedLayout>
+          {/* <div className="ordering__container-header">MENU</div> */}
         </div>
       </>
     )
@@ -273,12 +372,12 @@ export default class OrderingPage extends React.Component {
   }
 }
 
-// export async function getStaticProps(ctx) {
-//   const file = fs.readFileSync('./public/static/data/items.json');
-//   const menu = JSON.parse(file);
-//   return {
-//     props: {
-//       menu,
-//     },
-//   };
-// }
+export async function getStaticProps(ctx) {
+  const file = fs.readFileSync('./public/static/data/items.json');
+  const menu = JSON.parse(file);
+  return {
+    props: {
+      menu,
+    },
+  };
+}

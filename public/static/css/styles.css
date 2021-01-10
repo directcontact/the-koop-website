@@ -205,6 +205,18 @@ h2 {
 .text-center {
   text-align: center; }
 
+.active {
+  padding-bottom: 1px;
+  border-bottom: #ffffff 4px solid; }
+  .active a::before {
+    height: 0px;
+    transition: none !important; }
+
+.selectedOrder {
+  background-color: #000000 !important;
+  opacity: 50% !important;
+  color: #ffffff !important; }
+
 .nav {
   color: #ffffff;
   position: absolute;
@@ -253,7 +265,7 @@ h2 {
         content: '';
         position: absolute;
         width: 0;
-        height: 2px;
+        height: 4px;
         bottom: 0;
         left: 0;
         background-color: #fff;
@@ -280,6 +292,40 @@ h2 {
   @media only screen and (max-width: 37.5em) {
     .nav {
       display: none; } }
+
+.adminnav {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end; }
+  .adminnav__list {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row; }
+    .adminnav__list-item {
+      margin: 2rem; }
+      .adminnav__list-item--link {
+        position: relative;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 3rem; }
+        .adminnav__list-item--link::before {
+          content: '';
+          position: absolute;
+          width: 0;
+          height: 2px;
+          bottom: 0;
+          left: 0;
+          background-color: #000;
+          visibility: hidden;
+          transition: all 0.3s ease-in-out; }
+        .adminnav__list-item--link:link, .adminnav__list-item--link:visited {
+          color: #000000; }
+        .adminnav__list-item--link:hover, .adminnav__list-item--link:active {
+          text-decoration: none;
+          color: #000000; }
+          .adminnav__list-item--link:hover::before, .adminnav__list-item--link:active::before {
+            visibility: visible;
+            width: 100%; }
 
 .list-inline {
   margin-bottom: 0; }
@@ -373,9 +419,12 @@ h2 {
       .menu__header-pdf--link {
         color: #f4c529;
         cursor: pointer;
-        text-decoration: none; }
+        text-decoration: none;
+        transition: color 0.3s ease-in-out; }
         .menu__header-pdf--link:link, .menu__header-pdf--link:visited {
           color: #f4c529; }
+        .menu__header-pdf--link:hover {
+          color: #f7d669; }
   .menu__container {
     display: flex;
     align-items: flex-start;
@@ -427,6 +476,9 @@ h2 {
           font-size: 2.5rem; }
         .menu__list-row--item_price {
           font-weight: 350; }
+        .menu__list-row--item_special {
+          font-weight: 350;
+          margin: auto 0.5rem !important; }
       .menu__list-row--text {
         font-size: 2.5rem;
         font-weight: 400; }
@@ -743,6 +795,18 @@ h2 {
       font-weight: 400;
       font-size: 3rem;
       height: 100%; }
+    .ordering__container-menuContent {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: left;
+      font-size: 3rem;
+      color: #ffffff;
+      font-weight: 300;
+      padding-right: 3rem;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      width: 100%; }
   .ordering__menuselect-inactive {
     background-color: #ffffff;
     opacity: 50%;
@@ -874,6 +938,9 @@ h2 {
           color: rgba(0, 0, 0, 0.5);
           cursor: pointer; }
 
+.incomplete__page {
+  background-color: #f7f7f7; }
+
 .btn {
   background-color: #e02c4b;
   color: #ffffff;
@@ -952,8 +1019,8 @@ h2 {
 
 .standardmenu__row {
   display: flex;
-  align-items: start;
-  justify-content: start;
+  align-items: flex-start;
+  justify-content: flex-start;
   flex-direction: column; }
   .standardmenu__row-item {
     display: flex;
