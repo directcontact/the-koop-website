@@ -101,20 +101,20 @@ export default class OrderingPage extends React.Component {
         {locations.map((location) => {
           let active = '';
           let strup = order.location;
-          if (strup === location) {
+          if (strup === location.name) {
             active = order.active;
           }
 
           return (
             <div className="row">
               <div 
-                className={`ordering__menuselect-inactive ${active} col-lg-12 `}
+                className={`ordering__menuselect-inactive ${active} col-lg-12`}
                 onClick={() => 
                   this.setState({
                     ...this.state,
                     order: {
                       ...this.state.order,
-                      location: location.name,
+                      location: this.state.order.location === location.name ? '' : location.name,
                       active: 'selectedOrder'
                     }
                   })
