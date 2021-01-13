@@ -106,8 +106,13 @@
   }
 }
 
-.selectedOrder {
+.selectedLocation {
   background-color: $color-black !important;
   opacity: 50% !important;
   color: $color-white !important;
+}
+
+.selectedOrder {
+  color: color-black !important;
+  font-weight: 500 !important;
 }

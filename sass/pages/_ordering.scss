@@ -121,6 +121,7 @@
     height: 70%;
     width: 100%;
     padding-left: 16rem;
+    // overflow-y: scroll !important;
 
     &-header {
       display: flex;
@@ -136,11 +137,15 @@
 
     &-content {
       padding-top: 2rem;
+      padding-left: 2rem;
+      // padding-right: 1rem;
       display: flex;
       flex-direction: column;
       font-weight: 400;
       font-size: 3rem;
       height: 100%;
+      width: 80%;
+      overflow-y: scroll;
     }
 
     // &_miniContainer {
@@ -160,6 +165,7 @@
       padding-top: 1rem;
       padding-bottom: 1rem;
       width: 100%;
+      
 
       // &_text {
       //   display: flex;
