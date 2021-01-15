@@ -15,7 +15,7 @@ const AdminNav = () => {
       <div className="row adminnav">
         <ul className="adminnav__list">
           {pages.map((page) => (
-            <AdminNavItem page={page} />
+            <AdminNavItem page={page} key={page.name} />
           ))}
         </ul>
       </div>

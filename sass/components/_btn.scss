@@ -1,12 +1,13 @@
 .btn {
   background-color: $color-red;
   color: $color-white;
-  padding: 0.5rem 2.5rem;
+  padding: 1rem 3rem;
   border-radius: 10rem;
   border: none;
   font-size: 2rem;
-  font-weight: 200;
+  font-weight: 400;
   transition: color 0.4s;
+  font-family: 'Oswald';
 
   &:link,
   &:visited {

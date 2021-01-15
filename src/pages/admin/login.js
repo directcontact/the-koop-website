@@ -1,5 +1,6 @@
 import React from 'react';
 import Router from 'next/router';
+import lscache from 'lscache';
 
 class LoginPage extends React.Component {
   constructor() {
@@ -28,7 +29,7 @@ class LoginPage extends React.Component {
       });
 
       if (res.status === 200) {
-        localStorage.setItem('login', 'true');
+        lscache.set('login', 'true', 100000);
         Router.push('/admin/incomplete');
       } else if (res.status === 403) {
         alert('Sorry, wrong username and password.');
@@ -51,7 +52,7 @@ class LoginPage extends React.Component {
         />
         <h2 className="login__header u-margin-bottom-medium">ADMIN PORTAL</h2>
         <div className="login__container">
-          <h3 className="login__container-header u-margin-bottom-small">
+          <h3 className="login__container-header u-ma rgin-bottom-small">
             SIGN IN
           </h3>
           <form className="login__container-form">

@@ -4,7 +4,7 @@ function CateringPage() {
       <div className="catering__header u-margin-bottom-medium">
         How can we cater for you?
       </div>
-      <div className="btn">ORDER</div>
+      <div className="catering__btn">START CATERING</div>
     </div>
   );
 }

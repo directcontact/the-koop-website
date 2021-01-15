@@ -11,6 +11,8 @@ const dev = process.env.NODE_ENV !== 'production';
 const server = next({ dev });
 const handle = server.getRequestHandler();
 
+const API_KEY = process.env.API_KEY;
+
 server
   .prepare()
   .then(() => {
@@ -63,6 +65,88 @@ server
       const email = req.body.value;
       emailSender(email);
       res.sendStatus(200);
+    });
+
+    app.get('/api/orders', (req, res) => {
+      const { key } = req.query;
+      if (key === API_KEY) {
+        res.send([
+          {
+            id: 'dsafa',
+            name: 'Tom',
+            pickup: true,
+            notes: 'Extra spicy',
+            items: [
+              {
+                name: 'spicy soy garlic small whole chicken',
+                quantity: 1,
+                price: 9.95,
+              },
+              {
+                name: 'extra spicy large wings chicken',
+                quantity: 1,
+                price: 20.95,
+              },
+            ],
+          },
+          {
+            id: 'khtyt',
+            name: 'Sharon',
+            pickup: true,
+            notes: '',
+            items: [
+              {
+                name: 'daegi bulgogi',
+                quantity: 2,
+                price: 12.95,
+              },
+            ],
+          },
+          {
+            id: 'tryuyuyi',
+            name: 'Arnold',
+            pickup: true,
+            notes: 'Extra spicy',
+            items: [
+              {
+                name: 'budae jigae',
+                quantity: 1,
+                price: 11.95,
+              },
+            ],
+          },
+          {
+            id: 'ncvmvn',
+            name: 'James',
+            pickup: true,
+            notes: '',
+            items: [
+              {
+                name: 'spicy trotter',
+                quantity: 1,
+                price: 29.0,
+              },
+              {
+                name: 'gangjeong',
+                quantity: 1,
+                price: 22.95,
+              },
+              {
+                name: 'original trotter',
+                quantity: 2,
+                price: 27.0,
+              },
+              {
+                name: 'mackerel combo',
+                quantity: 3,
+                price: 10.95,
+              },
+            ],
+          },
+        ]);
+      } else {
+        res.sendStatus(403);
+      }
     });
 
     app.get('*', (req, res) => {
