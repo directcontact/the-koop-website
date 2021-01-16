@@ -1,5 +1,6 @@
 import React from 'react';
 import Cart from '../components/cart';
+import Link from 'next/link';
 
 import fs from 'fs';
 import { AnimateSharedLayout } from 'framer-motion';
@@ -65,26 +66,6 @@ export default class OrderingPage extends React.Component {
     };
   }
 
-  toggleLocationCSS(location) {
-
-    if (this.state.order.location === null) {
-      this.setState({
-        ...this.state,
-        order: {...this.state.order, location }
-      })
-    } else if (this.state.order.location !== location ) {
-      this.setState({
-        ...this.state,
-        order: {...this.state.order, location }
-      })
-    } else if (this.state.order.location === location ) {
-      this.setState({
-        ...this.state,
-        order: {...this.state.order, location: ''}
-      })
-    }
-
-  }
 
   renderLocationSelection() {
     let order = this.state.order
@@ -110,7 +91,7 @@ export default class OrderingPage extends React.Component {
           return (
             <div className="row">
               <div 
-                className={`ordering__menuselect-inactive ${active} col-lg-12`}
+                className={`ordering__menuselect-main ${active} col-lg-12`}
                 onClick={() => 
                   this.setState({
                     ...this.state,
@@ -121,10 +102,10 @@ export default class OrderingPage extends React.Component {
                     }
                   })
                 }>
-                    <div className="ordering__menuselect-inactive_header col-lg-4">
+                    <div className="ordering__menuselect-main_header col-lg-4">
                       {location.name}
                     </div>
-                    <div className="ordering__menuselect-inactive_content col-lg-8">
+                    <div className="ordering__menuselect-main_content col-lg-8">
                       {location.address}
                       <br />
                       {location.phone}
@@ -214,7 +195,7 @@ export default class OrderingPage extends React.Component {
                 active = 'selectedOrder';
               }
               return (
-              <div 
+              <span 
                 className={`ordering__container-menuContent ${active} col-lg-3`}
                 onClick={() => 
                   this.setState({
@@ -228,7 +209,7 @@ export default class OrderingPage extends React.Component {
                 }
               >
                 {type}
-              </div>
+              </span>
             )})}
           </div>
         </div>
@@ -242,14 +223,21 @@ export default class OrderingPage extends React.Component {
         <div className="row">
           <div className="ordering__container-menuContent col-lg-12">
             {sizes.map((size) =>
-            {return (
+            { 
+              let active = '';
+              let strup = this.state.currentSel.size;
+              if (strup === size) {
+                active = 'selectedOrder';
+              }
+            return (
               <span 
-                className="ordering__container-menuContent col-lg-6"
+                className={`ordering__container-menuContent ${active} col-lg-6`}
                 onClick={() => this.setState({
                   ...this.state,
                   currentSel: {
                     ...this.state.currentSel,
-                    size
+                      size: this.state.currentSel.size === size ? '' : size,
+                      active: 'selectedOrder'
                   }
                 })}
               >
@@ -268,14 +256,21 @@ export default class OrderingPage extends React.Component {
         <div className="row">
           <div className="ordering__container-menuContent col-lg-12">
             {sides.map((side) =>
-            {return (
+            {
+              let active = '';
+              let strup = this.state.currentSel.side;
+              if (strup === side) {
+                active = 'selectedOrder';
+              }
+              return (
               <span 
-                className="ordering__container-menuContent col-lg-6"
+                className={`ordering__container-menuContent ${active} col-lg-6`}
                 onClick={() => this.setState({
                   ...this.state,
                   currentSel: {
                     ...this.state.currentSel,
-                    side
+                    side: this.state.currentSel.side === side ? '' : side,
+                    active: 'selectedOrder'
                   }
                 })}
               >
@@ -284,6 +279,19 @@ export default class OrderingPage extends React.Component {
             )})}
           </div>
         </div>
+
+        <div className="row">
+          <div className="ordering__container-header">
+            CHOOSE SAUCE
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="ordering__container-menuContent col-lg-12">
+              
+          </div>
+        </div>
+
 
       </div>
       </>
@@ -402,6 +410,18 @@ export default class OrderingPage extends React.Component {
   render() {
     return (
       <>
+      {/* <div className="col-md-2 nav__block">
+          <h2 className="nav__item-header">
+            <Link href="/">
+              <img
+                src="/static/images/the-koop-logo.png"
+                className="nav__item-header--logo"
+                onClick={() => setActive('')}
+              />
+            </Link>
+          </h2>
+        </div> */}
+
         <div className="ordering max-height col-md-12">
           <div className="ordering col-md-10">
             <div className="ordering__container">{this.renderSteps(this.state.navActive)}</div>

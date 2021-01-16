@@ -113,6 +113,7 @@
 }
 
 .selectedOrder {
-  color: color-black !important;
+  color: $color-black !important;
+  opacity: 60% !important;
   font-weight: 500 !important;
 }
