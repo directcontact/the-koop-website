@@ -56,7 +56,7 @@ export default class OrderingPage extends React.Component {
         active: 'selectedOrder'
       },
       currentSel: {
-        quant: 0,
+        quant: 1,
         type: '',
         sauce: '',
         size: '',
@@ -91,7 +91,7 @@ export default class OrderingPage extends React.Component {
           return (
             <div className="row">
               <div 
-                className={`ordering__menuselect-main ${active} col-lg-12`}
+                className={`ordering__menuselect-main ${active} col-md-12`}
                 onClick={() => 
                   this.setState({
                     ...this.state,
@@ -102,10 +102,10 @@ export default class OrderingPage extends React.Component {
                     }
                   })
                 }>
-                    <div className="ordering__menuselect-main_header col-lg-4">
+                    <div className="ordering__menuselect-main_header col-md-4">
                       {location.name}
                     </div>
-                    <div className="ordering__menuselect-main_content col-lg-8">
+                    <div className="ordering__menuselect-main_content col-md-8">
                       {location.address}
                       <br />
                       {location.phone}
@@ -171,7 +171,7 @@ export default class OrderingPage extends React.Component {
     );
   }
 
-  renderChickenMenu(sauce, chickenItems) {
+  renderChickenMenu(sauces, chickenItems) {
     const chickenTypes = ['Whole', 'Wings', 'Drumsticks', 'Boneless']
     const sizes = ['Small', 'Large']
     const sides = ['White Rice', 'Pickled Radish']
@@ -190,7 +190,7 @@ export default class OrderingPage extends React.Component {
             {chickenTypes.map((type) =>
             {
               let active = '';
-              let strup = this.state.currentSel.type;
+              let strup = this.state.currentSel.item;
               if (strup === type) {
                 active = 'selectedOrder';
               }
@@ -202,7 +202,8 @@ export default class OrderingPage extends React.Component {
                     ...this.state,
                     currentSel: {
                       ...this.state.currentSel,
-                      type: this.state.currentSel.type === type ? '' : type,
+                      type: 'chicken',
+                      item: this.state.currentSel.item === type ? '' : type,
                       active: 'selectedOrder'
                     }
                   })
@@ -287,13 +288,108 @@ export default class OrderingPage extends React.Component {
         </div>
 
         <div className="row">
-          <div className="ordering__container-menuContent col-lg-12">
-              
+          <div className="ordering__container-sauce">
+            {sauces.map((sauce) =>
+              {
+                let active = '';
+                let strup = this.state.currentSel.sauce;
+                if (strup === sauce) {
+                  active = 'selectedLocation';
+                }
+                return (
+                <span 
+                  className={`ordering__container-sauce_button ${active}`}
+                  onClick={() => this.setState({
+                    ...this.state,
+                    currentSel: {
+                      ...this.state.currentSel,
+                      sauce: this.state.currentSel.sauce === sauce ? '' : sauce,
+                      active: 'selectedLocation'
+                    }
+                  })}
+                >
+                  <div className='ordering__container-sauce_button_content'>
+                    {/* <span className='ordering__container-sauce-button_content--image'> */}
+                      <img className="ordering__container-sauce_button_content--img" src={sauce.src} />
+                    {/* </span> */}
+                    <span>{sauce.name}</span>
+                  </div>
+                  
+                </span>
+            )})}
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="ordering__container-header">
+            ADD TO CART
           </div>
         </div>
 
 
       </div>
+      </>
+    )
+  }
+
+  addToCart() {
+    // add currentSel to cart
+    this.setState({
+      ...this.state,
+      currentSel: {
+        quant: 1,
+        type: '',
+        item: '',
+        sauce: '',
+        size: '',
+        side: '',
+        price: 0.0
+      }
+    })
+  }
+
+  renderOtherMenus(types) {
+    return (
+      <>
+        <div className="ordering__container-content">
+          {
+            types.map(type => 
+              {
+                let active = '';
+                let strup = this.state.currentSel.item;
+                if (strup === type.name) {
+                active = 'selectedLocation';
+                }
+              
+                return (
+                  <div 
+                    className={`ordering__container-other_button ${active}`}
+                    onClick={() => this.setState({
+                      ...this.state,
+                      currentSel: {
+                        ...this.state.currentSel,
+                        type: type.type,
+                        item: this.state.currentSel.item === type.name ? '' : type.name,
+                        price: type.price,
+                        active: 'selectedLocation'
+                      }
+                    })}
+                  >
+                    <div className='ordering__container-other_button_left'>
+                      <span className='ordering__container-other_button_left-header'>
+                        {type.name}
+                      </span>
+                      {type.description}
+                    </div>
+                    <div className='ordering__container-other_button_right'>
+                      ${type.price}
+                    </div>
+                  </div>
+                )
+              }
+            )
+          }
+        </div>
       </>
     )
   }
@@ -308,38 +404,35 @@ export default class OrderingPage extends React.Component {
         const chickenItems = this.props.menu.chicken.prices.filter(
           (price) => price.item === 'chicken'
         );
+       
         // return <ChickenMenu sauce={sauce} prices={prices} />;
         return (this.renderChickenMenu(sauce, chickenItems))
       case 'APPETIZERS':
-        // const appetizer = this.props.menu.items.filter(
-        //   (item) => item.type === 'appetizer'
-        // );
-        // return <StandardMenu items={appetizer} />;
-        return (<div>APPETIZERS</div>)
+        const appetizers = this.props.menu.items.filter(
+          (item) => item.type === 'appetizer'
+        );
+        // 
+        return (this.renderOtherMenus(appetizers))
       case 'RICE DISHES':
-        // const rice = this.props.menu.items.filter(
-        //   (item) => item.type === 'rice'
-        // );
-        // return <StandardMenu items={rice} />;
-        return (<div>RICE DISHES</div>)
+        const rice = this.props.menu.items.filter(
+          (item) => item.type === 'rice'
+        );
+        return (this.renderOtherMenus(rice))
       case 'TROTTER':
-        // const trotter = this.props.menu.items.filter(
-        //   (item) => item.type === 'trotter'
-        // );
-        // return <StandardMenu items={trotter} />;
-        return (<div>TROTTER</div>)
+        const trotter = this.props.menu.items.filter(
+          (item) => item.type === 'trotter'
+        );
+        return (this.renderOtherMenus(trotter))
       case 'SOUPS':
-        // const soups = this.props.menu.items.filter(
-        //   (item) => item.type === 'soup'
-        // );
-        // return <StandardMenu items={soups} />;
-        return (<div>SOUPS</div>)
+        const soups = this.props.menu.items.filter(
+          (item) => item.type === 'soup'
+        );
+        return (this.renderOtherMenus(soups))
       case 'SIDES':
-        // const sides = this.props.menu.items.filter(
-        //   (item) => item.type === 'side'
-        // );
-        // return <StandardMenu items={sides} />;
-        return (<div>SIDES</div>)
+        const sides = this.props.menu.items.filter(
+          (item) => item.type === 'side'
+        );
+        return (this.renderOtherMenus(sides))
       default:
         return null;
     }
