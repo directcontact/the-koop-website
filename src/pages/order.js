@@ -309,9 +309,7 @@ export default class OrderingPage extends React.Component {
                   })}
                 >
                   <div className='ordering__container-sauce_button_content'>
-                    {/* <span className='ordering__container-sauce-button_content--image'> */}
                       <img className="ordering__container-sauce_button_content--img" src={sauce.src} />
-                    {/* </span> */}
                     <span>{sauce.name}</span>
                   </div>
                   
@@ -347,6 +345,7 @@ export default class OrderingPage extends React.Component {
       }
     })
   }
+
 
   renderOtherMenus(types) {
     return (
@@ -516,12 +515,13 @@ export default class OrderingPage extends React.Component {
         </div> */}
 
         <div className="ordering max-height col-md-12">
-          <div className="ordering col-md-10">
+          <div className="ordering col-md-9">
             <div className="ordering__container">{this.renderSteps(this.state.navActive)}</div>
             <div className="ordering">{this.renderOrderNav()}</div>
           </div>
-          <div className="ordering col-md-2">
-            CART WILL GO HERE
+          <div className="ordering col-md-3">
+            {/* CART WILL GO HERE */}
+            <Cart />
           </div>
         </div>
       </>

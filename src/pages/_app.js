@@ -105,7 +105,7 @@ class MyApp extends App {
         <AnimatePresence exitBeforeEnter>
           <Header />
 
-          {router.pathname.includes('admin') ? <AdminNav /> : <Nav />}
+          {router.pathname.includes('admin') ? <AdminNav /> : router.pathname.includes('order') ? null : <Nav />}
 
           <div className="page-cover">
             <div className={`${mainClass}`}>
