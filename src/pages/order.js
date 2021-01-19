@@ -52,6 +52,7 @@ export default class OrderingPage extends React.Component {
           sides: []  
         },
         address: {},
+        totalQuant: 0,
         activeLocation: 'selectedLocation',
         active: 'selectedOrder'
       },
@@ -209,7 +210,7 @@ export default class OrderingPage extends React.Component {
                   })
                 }
               >
-                {type}
+                <span className='ordering__container-menuContent_text'>{type}</span>
               </span>
             )})}
           </div>
@@ -242,7 +243,7 @@ export default class OrderingPage extends React.Component {
                   }
                 })}
               >
-                {size}
+                <span className='ordering__container-menuContent_text'>{size}</span>
               </span>
             )})}
           </div>
@@ -275,7 +276,7 @@ export default class OrderingPage extends React.Component {
                   }
                 })}
               >
-                {side}
+                <span className='ordering__container-menuContent_text'>{side}</span>
               </span>
             )})}
           </div>
@@ -519,9 +520,9 @@ export default class OrderingPage extends React.Component {
             <div className="ordering__container">{this.renderSteps(this.state.navActive)}</div>
             <div className="ordering">{this.renderOrderNav()}</div>
           </div>
-          <div className="ordering col-md-3">
+          <div className="ordering__cart max-height col-md-3">
             {/* CART WILL GO HERE */}
-            <Cart />
+            <Cart order={this.state.order.totalQuant} />
           </div>
         </div>
       </>
