@@ -52,6 +52,9 @@ export default class OrderingPage extends React.Component {
           sides: []  
         },
         address: {},
+        name: '',
+        notes: '',
+        time: '',
         totalQuant: 0,
         activeLocation: 'selectedLocation',
         active: 'selectedOrder'
@@ -63,7 +66,16 @@ export default class OrderingPage extends React.Component {
         size: '',
         side: '',
         price: 0.0
-      }
+      },
+      times: [
+       '11:30 am', '11:45 am', '12:00 pm', '12:15 pm', '12:30 pm', '12:45 pm',
+       '1:00 pm', '1:15 pm', '1:30 pm', '1:45 pm', '2:00 pm', '2:15 pm',
+       '2:30 pm', '2:45 pm', '3:00 pm', '3:15 pm', '3:30 pm', '3:45 pm',
+       '4:00 pm', '4:15 pm', '4:30 pm', '4:45 pm', '5:00 pm', '5:15 pm',
+       '5:30 pm', '5:45 pm', '6:00 pm', '6:15 pm', '6:30 pm', '6:45 pm',
+       '7:00 pm', '7:15 pm', '7:30 pm', '7:45 pm', '8:00 pm', '8:15 pm',
+       '8:30 pm', '9:00 pm'
+      ]
     };
   }
 
@@ -130,7 +142,7 @@ export default class OrderingPage extends React.Component {
         // show menu 
         return this.renderOrderComponent();
       case 'PICKUP':
-        // show address input + time
+        return this.renderPickUpForm();
       default:
         return null;
     }
@@ -157,7 +169,6 @@ export default class OrderingPage extends React.Component {
                     this.setState({
                       navActive: {
                         ...this.state.navActive,
-                        // item: item.toLowerCase(),
                         step: step,
                       },
                     })
@@ -171,6 +182,7 @@ export default class OrderingPage extends React.Component {
       </div>
     );
   }
+
 
   renderChickenMenu(sauces, chickenItems) {
     const chickenTypes = ['Whole', 'Wings', 'Drumsticks', 'Boneless']
@@ -229,7 +241,7 @@ export default class OrderingPage extends React.Component {
               let active = '';
               let strup = this.state.currentSel.size;
               if (strup === size) {
-                active = 'selectedOrder';
+                active = 'selectedOrder'
               }
             return (
               <span 
@@ -404,8 +416,6 @@ export default class OrderingPage extends React.Component {
         const chickenItems = this.props.menu.chicken.prices.filter(
           (price) => price.item === 'chicken'
         );
-       
-        // return <ChickenMenu sauce={sauce} prices={prices} />;
         return (this.renderChickenMenu(sauce, chickenItems))
       case 'APPETIZERS':
         const appetizers = this.props.menu.items.filter(
@@ -474,46 +484,94 @@ export default class OrderingPage extends React.Component {
             })}
           </ul>
         </div>
-        {/* <hr className="solid u-margin-top-small" /> */}
-        {/* <div className="ordering__container col-md-12"> */}
         <div className="row">
           <AnimateSharedLayout>
             {this.renderMenuComponent(navActive)}
           </AnimateSharedLayout>
-          {/* <div className="ordering__container-header">MENU</div> */}
         </div>
       </>
     )
-    // switch (navActive.selection) {
-    //   case 'CHICKEN':
-    //   case 'APPETIZERS':
-    //   case 'RICE DISHES':
-    //   case 'TROTTER':
-    //   case 'SOUPS':
-    //   case 'SIDES':
-    //   default:
-    //     return null;
-    // }
-
-  
   }
+
+  renderPickUpForm() {
+    const times = this.state.times
+
+    return (
+      <>
+      <div className="ordering__container-content">
+        <div className="ordering__form col-md-12">
+            <div className="ordering__form-left col-md-6">
+              <div className="row">
+                <span className="ordering__form-header">
+                  NAME FOR THE ORDER
+                </span>
+                <div className="ordering__form-left_input"> 
+                  <input type="text" placeholder="First and last name" style={{border: 0}}
+                    value={this.state.order.name} />
+                </div>
+              </div>
+              <br /><br />
+              <div className="row">
+                <span className="ordering__form-header">
+                  NOTES FOR THE ORDER
+                </span>
+                <div className="ordering__form-left_textarea">
+                  <textarea type="text" placeholder="e.g., Extra napkins pls" style={{border: 0}} 
+                    value={this.state.order.notes} />
+                </div>
+              </div>
+            </div>
+
+            <div className="ordering__form-right col-md-6">
+              <div className="row">
+                <div className="ordering__form-header">
+                  SET UP A PICK UP TIME
+                </div>
+              </div>
+
+              <div className="row">
+                <div className='ordering__form-right_list'>
+                  {times.map((time) =>
+                    {
+                      let active = '';
+                      let strup = this.state.order.time;
+                      if (strup === time) {
+                        active = 'selectedLocation';
+                      }
+                      return (
+                      <div 
+                        className={`ordering__form-right_list--button ${active}`}
+                        onClick={() => this.setState({
+                          ...this.state,
+                          order: {
+                            ...this.state.order,
+                            time: this.state.order.time === time ? '' : time,
+                            active: 'selectedLocation'
+                          }
+                        })}
+                      >
+                        {time}
+                      </div>
+                  )})}
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+      
+      <div className="ordering__form-extra"><br />
+          Please allow up to 30-45 min for us to prepare your order.
+      </div>
+      </>
+    )
+  }
+
 
 
 
   render() {
     return (
       <>
-      {/* <div className="col-md-2 nav__block">
-          <h2 className="nav__item-header">
-            <Link href="/">
-              <img
-                src="/static/images/the-koop-logo.png"
-                className="nav__item-header--logo"
-                onClick={() => setActive('')}
-              />
-            </Link>
-          </h2>
-        </div> */}
 
         <div className="ordering max-height col-md-12">
           <div className="ordering col-md-9">
