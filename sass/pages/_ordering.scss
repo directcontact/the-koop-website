@@ -114,8 +114,8 @@
     flex-wrap: nowrap;
     align-items: center;
     justify-content: center bottom;
-    padding: 5rem;
-    // padding-top: 3rem;
+    padding: 3rem;
+    // padding-top: 6rem;
     width: 80%;
     position: fixed;
     // margin-left: 20rem;
@@ -182,15 +182,15 @@
     flex-direction: column;
     // justify-content: center;
     // align-items: center;
-    height: 80%;
-    min-height: 80%;
-    width: 90rem;
+    height: 75%;
+    min-height: 75%;
+    width: 85rem;
     padding-left: 10rem;
     padding-bottom: 3rem;
     padding-top: 2rem;
     position: fixed !important;
     left: 5rem !important ;
-    top: 3rem;
+    top: 2rem;
     // overflow: hidden;
 
     &-header {
@@ -557,8 +557,23 @@
       font-size: 2rem;
       font-weight: 300;
     }
-    
-    
+  }
+
+  &__cartbutton {
+    height: 5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: 2.5rem;
+    font-weight: 300;
+    padding: 1rem;
+
+    &:hover,
+    &:active {
+      text-decoration: none;
+      color: rgba($color-black, 0.5);
+      cursor: pointer;
+    }
   }
   
 }

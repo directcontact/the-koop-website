@@ -4,7 +4,8 @@ import Link from 'next/link';
 
 import fs from 'fs';
 import { AnimateSharedLayout } from 'framer-motion';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCartPlus } from '@fortawesome/free-solid-svg-icons'
 
 export default class OrderingPage extends React.Component {
   constructor() {
@@ -56,11 +57,11 @@ export default class OrderingPage extends React.Component {
         notes: '',
         time: '',
         totalQuant: 0,
+        subTotal: 0, 
         activeLocation: 'selectedLocation',
         active: 'selectedOrder'
       },
       currentSel: {
-        quant: 1,
         type: '',
         sauce: '',
         size: '',
@@ -331,32 +332,114 @@ export default class OrderingPage extends React.Component {
           </div>
         </div>
 
-        <div className="row">
-          <div className="ordering__container-header">
-            ADD TO CART
-          </div>
-        </div>
-
-
       </div>
       </>
     )
   }
 
-  addToCart() {
-    // add currentSel to cart
+  resetCurrentSel() {
     this.setState({
       ...this.state,
-      currentSel: {
-        quant: 1,
-        type: '',
-        item: '',
-        sauce: '',
-        size: '',
-        side: '',
-        price: 0.0
-      }
+        currentSel: {
+          type: '',
+          item: '',
+          sauce: '',
+          size: '',
+          side: '',
+          price: 0.0
+        }
     })
+  }
+
+  addToCart() {
+    // add currentSel to cart
+
+    if (this.state.currentSel.type === 'chicken') {
+      this.setState({
+        ...this.state,
+        order: {
+          ...this.state.order,
+          totalQuant: this.state.order.totalQuant + 1,
+          subTotal: this.state.order.subTotal + this.state.currentSel.price,
+          food: {
+            ...this.state.order.food,
+            chicken: [...this.state.order.food.chicken, this.state.currentSel]
+          }
+        }
+      }, () => this.resetCurrentSel()
+      )
+    } else if (this.state.currentSel.type === 'appetizer') {
+      this.setState({
+        ...this.state,
+        order: {
+          ...this.state.order,
+          totalQuant: this.state.order.totalQuant + 1,
+          subTotal: this.state.order.subTotal + this.state.currentSel.price,
+          food: {
+            ...this.state.order.food,
+            appetizers: [...this.state.order.food.appetizers, this.state.currentSel]
+          }
+        }
+      }, () => this.resetCurrentSel()
+      )
+    } else if (this.state.currentSel.type === 'rice') {
+      this.setState({
+        ...this.state,
+        order: {
+          ...this.state.order,
+          totalQuant: this.state.order.totalQuant + 1,
+          subTotal: this.state.order.subTotal + this.state.currentSel.price,
+          food: {
+            ...this.state.order.food,
+            rice: [...this.state.order.food.rice, this.state.currentSel]
+          }
+        }
+      }, () => this.resetCurrentSel()
+      )
+    } else if (this.state.currentSel.type === 'trotter') {
+      this.setState({
+        ...this.state,
+        order: {
+          ...this.state.order,
+          totalQuant: this.state.order.totalQuant + 1,
+          subTotal: this.state.order.subTotal + this.state.currentSel.price,
+          food: {
+            ...this.state.order.food,
+            trotter: [...this.state.order.food.trotter, this.state.currentSel]
+          }
+        }
+      }, () => this.resetCurrentSel()
+      )
+    } else if (this.state.currentSel.type === 'soup') {
+      this.setState({
+        ...this.state,
+        order: {
+          ...this.state.order,
+          totalQuant: this.state.order.totalQuant + 1,
+          subTotal: this.state.order.subTotal + this.state.currentSel.price,
+          food: {
+            ...this.state.order.food,
+            soups: [...this.state.order.food.soups, this.state.currentSel]
+          }
+        }
+      }, () => this.resetCurrentSel()
+      )
+    } else if (this.state.currentSel.type === 'side') {
+      this.setState({
+        ...this.state,
+        order: {
+          ...this.state.order,
+          totalQuant: this.state.order.totalQuant + 1,
+          subTotal: this.state.order.subTotal + this.state.currentSel.price,
+          food: {
+            ...this.state.order.food,
+            sides: [...this.state.order.food.sides, this.state.currentSel]
+          }
+        }
+      }, () => this.resetCurrentSel()
+      )
+    }
+    
   }
 
 
@@ -489,8 +572,32 @@ export default class OrderingPage extends React.Component {
             {this.renderMenuComponent(navActive)}
           </AnimateSharedLayout>
         </div>
+        <div className="row ordering__cartbutton"
+          onClick={() => this.addToCart()}>
+          <FontAwesomeIcon icon={faCartPlus} size='1x'/>
+        </div>
       </>
     )
+  }
+
+  setName(name) {
+    this.setState({
+      ...this.state,
+      order: {
+        ...this.state.order,
+        name
+      }
+    })
+  }
+
+  setNotes(notes) {
+    this.setState({
+      ...this.state,
+      order: {
+        ...this.state.order,
+        notes
+      }
+    })
   }
 
   renderPickUpForm() {
@@ -507,7 +614,8 @@ export default class OrderingPage extends React.Component {
                 </span>
                 <div className="ordering__form-left_input"> 
                   <input type="text" placeholder="First and last name" style={{border: 0}}
-                    value={this.state.order.name} />
+                    value={this.state.order.name} 
+                    onChange={(e) => this.setName(e.target.value)}/>
                 </div>
               </div>
               <br /><br />
@@ -517,7 +625,8 @@ export default class OrderingPage extends React.Component {
                 </span>
                 <div className="ordering__form-left_textarea">
                   <textarea type="text" placeholder="e.g., Extra napkins pls" style={{border: 0}} 
-                    value={this.state.order.notes} />
+                    value={this.state.order.notes} 
+                    onChange={(e) => this.setNotes(e.target.value)}/>
                 </div>
               </div>
             </div>
@@ -529,6 +638,7 @@ export default class OrderingPage extends React.Component {
                 </div>
               </div>
 
+    {/* figure out a way to render times up to 9 or 10pm depending on S-Th/F-Sat */}
               <div className="row">
                 <div className='ordering__form-right_list'>
                   {times.map((time) =>

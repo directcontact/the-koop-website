@@ -772,7 +772,7 @@ h2 {
     flex-wrap: nowrap;
     align-items: center;
     justify-content: center bottom;
-    padding: 5rem;
+    padding: 3rem;
     width: 80%;
     position: fixed;
     bottom: 0;
@@ -823,15 +823,15 @@ h2 {
   .ordering__container {
     display: flex;
     flex-direction: column;
-    height: 80%;
-    min-height: 80%;
-    width: 90rem;
+    height: 75%;
+    min-height: 75%;
+    width: 85rem;
     padding-left: 10rem;
     padding-bottom: 3rem;
     padding-top: 2rem;
     position: fixed !important;
     left: 5rem !important;
-    top: 3rem; }
+    top: 2rem; }
     .ordering__container-header {
       display: flex;
       justify-content: left;
@@ -1074,6 +1074,18 @@ h2 {
       align-content: center;
       font-size: 2rem;
       font-weight: 300; }
+  .ordering__cartbutton {
+    height: 5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: 2.5rem;
+    font-weight: 300;
+    padding: 1rem; }
+    .ordering__cartbutton:hover, .ordering__cartbutton:active {
+      text-decoration: none;
+      color: rgba(0, 0, 0, 0.5);
+      cursor: pointer; }
 
 .login {
   display: flex;
