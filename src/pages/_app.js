@@ -95,7 +95,7 @@ class MyApp extends App {
   }
 
   render() {
-    const { Component, pageProps, router, store } = this.props;
+    const { Component, pageProps, router } = this.props;
 
     const mainClass = this.getMainClass(router.pathname);
 
