@@ -2,6 +2,7 @@
   width: 100%;
   display: flex;
   justify-content: flex-end;
+  font-family: 'Oswald';
   &__list {
     list-style-type: none;
     display: flex;
@@ -11,7 +12,7 @@
       &--link {
         position: relative;
         text-decoration: none;
-        font-weight: 600;
+        font-weight: 400;
         font-size: 3rem;
 
         &::before {

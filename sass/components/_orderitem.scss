@@ -1,0 +1,53 @@
+.orderitem {
+  display: flex;
+  align-items: flex-start;
+  justify-content: first baseline;
+  flex-direction: row;
+
+  &__checkbox {
+    margin: 1.5rem;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1.5rem;
+    &-header {
+      font-size: 1.25rem;
+    }
+    &-notes {
+      font-weight: 400;
+      font-size: 1.25rem;
+    }
+
+    &-list {
+      margin: 2rem 5rem;
+      &--item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 2rem;
+        &---name {
+          padding-right: 3rem;
+        }
+        &---price {
+          font-weight: 600;
+        }
+      }
+      &--total {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        &---items {
+          font-weight: 600;
+        }
+        &---prices {
+          font-weight: 600;
+        }
+      }
+      &--divider {
+        margin-bottom: 2rem;
+      }
+    }
+  }
+}

@@ -1,7 +1,9 @@
 const express = require('express');
 const next = require('next');
 const helmet = require('helmet');
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
+const dynamo = require('dynamodb');
+const Joi = require('joi');
 const bodyParser = require('body-parser');
 require('dotenv').config();
 
@@ -12,6 +14,8 @@ const server = next({ dev });
 const handle = server.getRequestHandler();
 
 const API_KEY = process.env.API_KEY;
+const AWSDB_ACCESS_KEY = process.env.AWSDB_ACCESS_KEY;
+const AWSDB_SECRET_KEY = process.env.AWSDB_SECRET_KEY;
 
 server
   .prepare()
@@ -32,23 +36,29 @@ server
       })
     );
 
-    const options = {
-      useNewUrlParser: true,
-      user: process.env.MONGO_ID,
-      pass: process.env.MONGO_PASS,
-    };
+    dynamo.AWS.config.update({
+      accessKeyId: AWSDB_ACCESS_KEY,
+      secretAccessKey: AWSDB_SECRET_KEY,
+      region: 'us-east-1',
+    });
+
+    // const options = {
+    //   useNewUrlParser: true,
+    //   user: process.env.MONGO_ID,
+    //   pass: process.env.MONGO_PASS,
+    // };
 
     // mongoose.connect(process.env.MONGO_URL, options);
 
     // Connected handler
-    mongoose.connection.on('connected', function (err) {
-      console.log('Connected to DB');
-    });
+    // mongoose.connection.on('connected', function (err) {
+    //   console.log('Connected to DB');
+    // });
 
-    // Error handler
-    mongoose.connection.on('error', function (err) {
-      console.log(err);
-    });
+    // // Error handler
+    // mongoose.connection.on('error', function (err) {
+    //   console.log(err);
+    // });
 
     app.post('/api/auth', (req, res) => {
       const username = req.body.username;
@@ -74,7 +84,7 @@ server
           {
             id: 'dsafa',
             name: 'Tom',
-            pickup: true,
+            pickup: '16:30',
             notes: 'Extra spicy',
             items: [
               {
@@ -92,7 +102,7 @@ server
           {
             id: 'khtyt',
             name: 'Sharon',
-            pickup: true,
+            pickup: '12:30',
             notes: '',
             items: [
               {
@@ -105,7 +115,7 @@ server
           {
             id: 'tryuyuyi',
             name: 'Arnold',
-            pickup: true,
+            pickup: '17:30',
             notes: 'Extra spicy',
             items: [
               {
@@ -118,7 +128,7 @@ server
           {
             id: 'ncvmvn',
             name: 'James',
-            pickup: true,
+            pickup: '17:30',
             notes: '',
             items: [
               {
