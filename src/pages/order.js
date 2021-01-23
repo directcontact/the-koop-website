@@ -2,12 +2,19 @@ import React from 'react';
 import Cart from '../components/cart';
 import Link from 'next/link';
 
+import { connect } from 'react-redux'
+import { addLocation, addChicken, addAppetizer, addRice, addTrotter,
+  addSoup, addSide, addName, addNotes, setTime } from '../redux/actions/ordering'
+
+
 import fs from 'fs';
 import { AnimateSharedLayout } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons'
 
-export default class OrderingPage extends React.Component {
+
+
+class OrderingPage extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -116,10 +123,10 @@ export default class OrderingPage extends React.Component {
                     }
                   })
                 }>
-                    <div className="ordering__menuselect-main_header col-md-4">
+                    <div className="ordering__menuselect-main_header">
                       {location.name}
                     </div>
-                    <div className="ordering__menuselect-main_content col-md-8">
+                    <div className="ordering__menuselect-main_content">
                       {location.address}
                       <br />
                       {location.phone}
@@ -707,3 +714,15 @@ export async function getStaticProps(ctx) {
     },
   };
 }
+
+const mapStateToProps = state => {
+  return {
+    order: state.order
+  }
+}
+
+const mapDispatchToProps = {
+  addLocation
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(OrderingPage)

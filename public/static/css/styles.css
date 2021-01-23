@@ -906,7 +906,7 @@ h2 {
             max-height: 20rem;
             max-width: 18rem;
             opacity: 100% !important;
-            left: 0;
+            float: left;
             margin-right: 3rem; }
         .ordering__container-sauce_button:hover, .ordering__container-sauce_button:active {
           text-decoration: none;
@@ -940,20 +940,22 @@ h2 {
         margin-bottom: 3rem;
         align-items: center;
         text-decoration: none;
-        justify-content: left;
         height: 12rem !important;
         width: 60rem;
         min-width: 80%; }
         .ordering__container-other_button_left {
           display: flex;
           flex-direction: column !important;
-          float: left !important; }
+          float: left !important;
+          width: 100%;
+          font-size: 1.5rem; }
           .ordering__container-other_button_left-header {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 500; }
         .ordering__container-other_button_right {
           float: right !important;
-          text-align: right !important; }
+          text-align: right !important;
+          width: 100%; }
         .ordering__container-other_button:hover, .ordering__container-other_button:active {
           text-decoration: none;
           background-color: rgba(0, 0, 0, 0.5);
@@ -985,13 +987,15 @@ h2 {
     .ordering__menuselect-main_header {
       font-size: 3rem !important;
       font-weight: 400;
-      float: left; }
+      float: left;
+      width: 100%; }
     .ordering__menuselect-main_content {
       display: flex !important;
       justify-content: right !important;
       text-align: right;
       float: right;
-      padding-left: 5rem; }
+      padding-left: 5rem;
+      width: 100%; }
     .ordering__menuselect-main:hover, .ordering__menuselect-main:active {
       text-decoration: none;
       background-color: rgba(0, 0, 0, 0.5);
@@ -1058,14 +1062,14 @@ h2 {
         border-radius: 1rem; }
       .ordering__form-left_textarea {
         width: 74%;
-        height: 20rem;
+        height: 21rem;
         padding: 1rem;
         background-color: #ffffff;
         opacity: 70%;
         color: #000000;
         border: none;
         border-radius: 1rem;
-        resize: vertical; }
+        overflow-y: auto; }
     .ordering__form-extra {
       padding-top: 2rem;
       display: flex;
@@ -1076,11 +1080,12 @@ h2 {
       font-weight: 300; }
   .ordering__cartbutton {
     height: 5rem;
-    width: 100%;
+    width: -50%;
     display: flex;
     justify-content: center;
     font-size: 2.5rem;
     font-weight: 300;
+    margin-top: 1rem;
     padding: 1rem; }
     .ordering__cartbutton:hover, .ordering__cartbutton:active {
       text-decoration: none;

@@ -4,8 +4,8 @@ import { Router } from 'next/dist/client/router';
 import NProgress from 'nprogress';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// import withRedux from 'next-redux-wrapper';
-// import { Provider } from 'react-redux';
+import withRedux from 'next-redux-wrapper';
+import { Provider } from 'react-redux';
 
 import 'bootstrap/dist/css/bootstrap-grid.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -16,7 +16,7 @@ import 'nprogress/nprogress.css';
 import Nav from '../components/nav';
 import AdminNav from '../components/admin-nav';
 import Header from '../components/header';
-// import store from '../redux/store';
+import store from '../redux/store';
 
 // This is where we configure the loading bar at the top of the screen when we're moving to the next page.
 NProgress.configure({ showSpinner: false });
@@ -95,34 +95,34 @@ class MyApp extends App {
   }
 
   render() {
-    const { Component, pageProps, router } = this.props;
+    const { Component, pageProps, router, store } = this.props;
 
     const mainClass = this.getMainClass(router.pathname);
 
     return (
       <>
-        {/* <Provider store={store}> */}
-        <AnimatePresence exitBeforeEnter>
-          <Header />
+        <Provider store={store}>
+          <AnimatePresence exitBeforeEnter>
+            <Header />
 
-          {router.pathname.includes('admin') ? <AdminNav /> : router.pathname.includes('order') ? null : <Nav />}
+            {router.pathname.includes('admin') ? <AdminNav /> : router.pathname.includes('order') ? null : <Nav />}
 
-          <div className="page-cover">
-            <div className={`${mainClass}`}>
-              <motion.div
-                key={router.route}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3 }}
-                className="max-height"
-              >
-                <Component {...pageProps} key={router.route} />
-              </motion.div>
+            <div className="page-cover">
+              <div className={`${mainClass}`}>
+                <motion.div
+                  key={router.route}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="max-height"
+                >
+                  <Component {...pageProps} key={router.route} />
+                </motion.div>
+              </div>
             </div>
-          </div>
-        </AnimatePresence>
-        {/* </Provider> */}
+          </AnimatePresence>
+        </Provider>
       </>
     );
   }
@@ -134,8 +134,8 @@ export function reportWebVitals(metric) {
   }
 }
 
-export default MyApp;
+// export default MyApp;
 
-// const makeStore = () => store;
+const makeStore = () => store;
 
-// export default withRedux(makeStore)(MyApp);
+export default withRedux(makeStore)(MyApp);
