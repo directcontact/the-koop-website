@@ -1,9 +1,11 @@
 import React from 'react'
 // import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShoppingCart, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
+import { faShoppingCart, faSignOutAlt, faTimes } from '@fortawesome/free-solid-svg-icons'
 
 import { connect } from 'react-redux'
+
+import { removeItem } from '../redux/actions/ordering'
 
 import Router from 'next/router';
 
@@ -11,7 +13,6 @@ const Cart = (props) => {
   
     // const { order } = props.order
 
-console.log(props.cart)
   return (
     
     <>
@@ -34,8 +35,12 @@ console.log(props.cart)
             {props.cart.map(item => {
               return (
                 <>
-                  <div className="ordering__cart_content-name">{item.item} </div>
-                  <div className="ordering__cart_content-price">{item.price.toFixed(2)}</div>
+                  <div className="ordering__cart_content-name">
+                    <span className="ordering__cart_content-name_remove"
+                    onClick={() => props.removeItem(item)}
+                    ><FontAwesomeIcon icon={faTimes} size='xs' /></span>    {item.item} x {item.quant}
+                  </div>
+                  <div className="ordering__cart_content-price">${(item.price * item.quant).toFixed(2)}</div>
                   <br />
                 </>
               )
@@ -47,14 +52,14 @@ console.log(props.cart)
               Tax:
             </div>
             <div className="ordering__cart_total-content">
-              {props.subTotal >= 0 ? (props.subTotal * 0.06).toFixed(2) : (0.00).toFixed(2)}
+              ${props.subTotal >= 0 ? (props.subTotal * 0.06).toFixed(2) : (0.00).toFixed(2)}
             </div>
             <br />
             <div className="ordering__cart_total-header">
               TOTAL:
             </div> 
             <div className="ordering__cart_total-content">
-              {props.subTotal >= 0 ? ((props.subTotal + (props.subTotal * 0.06))).toFixed(2) : (0.00).toFixed(2)}
+              ${props.subTotal >= 0 ? ((props.subTotal + (props.subTotal * 0.06))).toFixed(2) : (0.00).toFixed(2)}
             </div>
             <br /><br />
             <div className="ordering__orderButton"
@@ -78,5 +83,8 @@ const mapStateToProps = state => {
   }
 }
 
+const mapDispatchToProps = {
+  removeItem
+}
 
-export default connect(mapStateToProps)(Cart)
+export default connect(mapStateToProps, mapDispatchToProps)(Cart)

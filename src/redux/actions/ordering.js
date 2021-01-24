@@ -1,6 +1,7 @@
 import {
     ADD_LOCATION,
     ADD_CHICKEN,
+    ADD_ITEM,
     ADD_APPETIZER,
     ADD_RICE,
     ADD_TROTTER,
@@ -9,7 +10,8 @@ import {
     ADD_NAME,
     ADD_NOTES,
     SET_TIME,
-    EXIT_ORDER
+    EXIT_ORDER,
+    REMOVE_ITEM
 
 } from '../types';
 
@@ -27,10 +29,15 @@ export const addChicken = (chicken) => ({
     
 })
 
+export const addItem = (item) => ({
+        type: ADD_ITEM,
+        payload: item
+})
+
 export const addAppetizer = (appetizer) => ({
     
         type: ADD_APPETIZER,
-        payload: appetizer
+        payload: appetizer, quant: 0
     
 })
 
@@ -87,4 +94,9 @@ export const exitOrder = () => ({
     
         type: EXIT_ORDER,
     
+})
+
+export const removeItem = (item) => ({
+        type: REMOVE_ITEM,
+        payload: item
 })

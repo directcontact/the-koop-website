@@ -4,6 +4,8 @@ export const ADD_LOCATION = 'ADD_LOCATION';
 
 export const ADD_CHICKEN = 'ADD_CHICKEN';
 
+export const ADD_ITEM = 'ADD_ITEM';
+
 export const ADD_APPETIZER = 'ADD_APPETIZER';
 
 export const ADD_RICE = 'ADD_RICE';
@@ -21,3 +23,5 @@ export const ADD_NOTES = 'ADD_NOTES';
 export const SET_TIME = 'SET_TIME';
 
 export const EXIT_ORDER = 'EXIT_ORDER';
+
+export const REMOVE_ITEM = 'REMOVE_ITEM';

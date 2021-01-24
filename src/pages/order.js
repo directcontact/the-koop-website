@@ -3,7 +3,7 @@ import Cart from '../components/cart';
 import Link from 'next/link';
 
 import { connect } from 'react-redux'
-import { addLocation, addChicken, addAppetizer, addRice, addTrotter,
+import { addLocation, addChicken, addItem, addAppetizer, addRice, addTrotter,
   addSoup, addSide, addName, addNotes, setTime } from '../redux/actions/ordering'
 
 
@@ -356,22 +356,28 @@ class OrderingPage extends React.Component {
     if (this.state.currentSel.type === 'chicken') {
       this.props.addChicken(this.state.currentSel)
       this.resetCurrentSel()
-    } else if (this.state.currentSel.type === 'appetizer') {
-      this.props.addAppetizer(this.state.currentSel);
-      this.resetCurrentSel();
-    } else if (this.state.currentSel.type === 'rice') {
-      this.props.addRice(this.state.currentSel);
-      this.resetCurrentSel();
-    } else if (this.state.currentSel.type === 'trotter') {
-      this.props.addTrotter(this.state.currentSel);
-      this.resetCurrentSel();
-    } else if (this.state.currentSel.type === 'soup') {
-      this.props.addSoup(this.state.currentSel);
-      this.resetCurrentSel();
-    } else if (this.state.currentSel.type === 'side') {
-      this.props.addSide(this.state.currentSel);
+    } else if (this.state.currentSel.type) {
+      this.props.addItem(this.state.currentSel);
       this.resetCurrentSel();
     }
+    
+    // } else if (this.state.currentSel.type === 'appetizer') {
+    //   // this.props.addAppetizer(this.state.currentSel);
+    //   this.props.addItem(this.state.currentSel);
+    //   this.resetCurrentSel();
+    // } else if (this.state.currentSel.type === 'rice') {
+    //   this.props.addRice(this.state.currentSel);
+    //   this.resetCurrentSel();
+    // } else if (this.state.currentSel.type === 'trotter') {
+    //   this.props.addTrotter(this.state.currentSel);
+    //   this.resetCurrentSel();
+    // } else if (this.state.currentSel.type === 'soup') {
+    //   this.props.addSoup(this.state.currentSel);
+    //   this.resetCurrentSel();
+    // } else if (this.state.currentSel.type === 'side') {
+    //   this.props.addSide(this.state.currentSel);
+    //   this.resetCurrentSel();
+    // }
   }
 
   renderOtherMenus(types) {
@@ -646,6 +652,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
   addLocation,
   addChicken, 
+  addItem,
   addAppetizer, 
   addRice, 
   addTrotter,

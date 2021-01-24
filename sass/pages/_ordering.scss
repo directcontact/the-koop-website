@@ -50,7 +50,7 @@
     margin-right: 0;
     transition: height 0.66s ease-in-out;
     color: #000;
-    padding-right: 1rem;
+    padding-right: 2rem;
     padding-left: 1rem;
     align-items: center;
     
@@ -98,13 +98,25 @@
     &_content {
       padding-top: 5rem;
       font-size: 2.5rem;
-      height: 60%;
+      height: 80%;
       width: 100%;
       overflow-y: auto;
+      padding-bottom: 3rem;
 
       &-name {
         float: left;
         // height: 2%;
+        width: 65%;
+        word-wrap: break-word;
+
+        &_remove {
+          &:hover,
+          &:active {
+            text-decoration: none;
+            color: rgba($color-black, 0.5);
+            cursor: pointer;
+          }
+        }
 
       }
 
@@ -121,11 +133,13 @@
       height: 25%;
       position: absolute;
       bottom: 0 !important;
+      padding-right: 1rem;
+      width: 90%;
 
       &-header {
         float: left;
         font-weight: 5rem;
-        padding-right: 17rem;
+        // padding-right: 17rem;
       }
 
       &-content {
@@ -133,6 +147,7 @@
         justify-content: right;
         text-align: right;
         font-weight: 1rem !important;
+        // padding-right: 10rem;
       }
     }
 
