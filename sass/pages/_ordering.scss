@@ -50,8 +50,9 @@
     margin-right: 0;
     transition: height 0.66s ease-in-out;
     color: #000;
-    padding-right: 3rem;
-    padding-left: 3rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    align-items: center;
     
 
     &_header {
@@ -60,12 +61,15 @@
       height: 10%;
       padding-top: 5rem;
       padding-bottom: 2rem;
-      
 
       &-cartImg {
         opacity: 75%;
         float: left;
+        text-align: left;
         justify-content: center;
+        align-items: center;
+        
+        padding-right: 5rem !important;
       }
 
       &-exit {
@@ -95,14 +99,43 @@
       padding-top: 5rem;
       font-size: 2.5rem;
       height: 60%;
+      width: 100%;
+      overflow-y: auto;
+
+      &-name {
+        float: left;
+        // height: 2%;
+
+      }
+
+      &-price {
+        float: right;
+        justify-content: right;
+        text-align: right;
+      }
+
     }
 
     &_total {
-      font-size: 2.5rem;
+      font-size: 3rem;
       height: 25%;
       position: absolute;
       bottom: 0 !important;
+
+      &-header {
+        float: left;
+        font-weight: 5rem;
+        padding-right: 17rem;
+      }
+
+      &-content {
+        float: right;
+        justify-content: right;
+        text-align: right;
+        font-weight: 1rem !important;
+      }
     }
+
 
     
 
@@ -582,6 +615,38 @@
       cursor: pointer;
     }
   }
+
+  &__orderButton {
+    background-color: $color-black;
+    color: $color-white;
+    padding: 0.5rem 2.5rem;
+    border-radius: 10rem;
+    border: none;
+    font-size: 2rem;
+    font-weight: 200;
+    transition: color 0.4s;
+    width: 100%;
+    padding-left: 6rem;
+
+    &:link,
+    &:visited {
+      color: $color-white;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    &:hover,
+    &:active {
+      text-decoration: none;
+      color: rgba($color-white, 0.5);
+      cursor: pointer;
+    }
+
+    @include respond(phone) {
+      // width < 1200?
+      padding: 0.5rem 2rem;
+      font-size: 1rem;
+    }
+    }
   
 }
   

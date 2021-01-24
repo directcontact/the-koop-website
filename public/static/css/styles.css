@@ -732,8 +732,9 @@ h2 {
     margin-right: 0;
     transition: height 0.66s ease-in-out;
     color: #000;
-    padding-right: 3rem;
-    padding-left: 3rem; }
+    padding-right: 1rem;
+    padding-left: 1rem;
+    align-items: center; }
     .ordering__cart_header {
       flex-direction: row !important;
       font-size: 1.5rem;
@@ -743,7 +744,10 @@ h2 {
       .ordering__cart_header-cartImg {
         opacity: 75%;
         float: left;
-        justify-content: center; }
+        text-align: left;
+        justify-content: center;
+        align-items: center;
+        padding-right: 5rem !important; }
       .ordering__cart_header-exit {
         font-size: 1.5rem;
         float: right;
@@ -760,12 +764,29 @@ h2 {
     .ordering__cart_content {
       padding-top: 5rem;
       font-size: 2.5rem;
-      height: 60%; }
+      height: 60%;
+      width: 100%;
+      overflow-y: auto; }
+      .ordering__cart_content-name {
+        float: left; }
+      .ordering__cart_content-price {
+        float: right;
+        justify-content: right;
+        text-align: right; }
     .ordering__cart_total {
-      font-size: 2.5rem;
+      font-size: 3rem;
       height: 25%;
       position: absolute;
       bottom: 0 !important; }
+      .ordering__cart_total-header {
+        float: left;
+        font-weight: 5rem;
+        padding-right: 17rem; }
+      .ordering__cart_total-content {
+        float: right;
+        justify-content: right;
+        text-align: right;
+        font-weight: 1rem !important; }
   .ordering__nav {
     display: flex;
     flex-direction: row;
@@ -1091,6 +1112,29 @@ h2 {
       text-decoration: none;
       color: rgba(0, 0, 0, 0.5);
       cursor: pointer; }
+  .ordering__orderButton {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 0.5rem 2.5rem;
+    border-radius: 10rem;
+    border: none;
+    font-size: 2rem;
+    font-weight: 200;
+    transition: color 0.4s;
+    width: 100%;
+    padding-left: 6rem; }
+    .ordering__orderButton:link, .ordering__orderButton:visited {
+      color: #ffffff;
+      text-decoration: none;
+      text-transform: uppercase; }
+    .ordering__orderButton:hover, .ordering__orderButton:active {
+      text-decoration: none;
+      color: rgba(255, 255, 255, 0.5);
+      cursor: pointer; }
+    @media only screen and (max-width: 37.5em) {
+      .ordering__orderButton {
+        padding: 0.5rem 2rem;
+        font-size: 1rem; } }
 
 .login {
   display: flex;

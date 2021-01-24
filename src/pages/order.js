@@ -104,25 +104,19 @@ class OrderingPage extends React.Component {
 
         {locations.map((location) => {
           let active = '';
-          let strup = order.location;
+          // let strup = order.location;
+          let strup = this.props.location
           if (strup === location.name) {
-            active = order.activeLocation;
-          }
-
+            active = 'selectedLocation';
+          } 
           return (
             <div className="row">
               <div 
                 className={`ordering__menuselect-main ${active} col-md-12`}
                 onClick={() => 
-                  this.setState({
-                    ...this.state,
-                    order: {
-                      ...this.state.order,
-                      location: this.state.order.location === location.name ? '' : location.name,
-                      activeLocation: 'selectedLocation'
-                    }
-                  })
-                }>
+                  this.props.location === location.name ? this.props.addLocation('') : this.props.addLocation(location.name)
+                }
+                >
                     <div className="ordering__menuselect-main_header">
                       {location.name}
                     </div>
@@ -359,96 +353,26 @@ class OrderingPage extends React.Component {
   }
 
   addToCart() {
-    // add currentSel to cart
-
     if (this.state.currentSel.type === 'chicken') {
-      this.setState({
-        ...this.state,
-        order: {
-          ...this.state.order,
-          totalQuant: this.state.order.totalQuant + 1,
-          subTotal: this.state.order.subTotal + this.state.currentSel.price,
-          food: {
-            ...this.state.order.food,
-            chicken: [...this.state.order.food.chicken, this.state.currentSel]
-          }
-        }
-      }, () => this.resetCurrentSel()
-      )
+      this.props.addChicken(this.state.currentSel)
+      this.resetCurrentSel()
     } else if (this.state.currentSel.type === 'appetizer') {
-      this.setState({
-        ...this.state,
-        order: {
-          ...this.state.order,
-          totalQuant: this.state.order.totalQuant + 1,
-          subTotal: this.state.order.subTotal + this.state.currentSel.price,
-          food: {
-            ...this.state.order.food,
-            appetizers: [...this.state.order.food.appetizers, this.state.currentSel]
-          }
-        }
-      }, () => this.resetCurrentSel()
-      )
+      this.props.addAppetizer(this.state.currentSel);
+      this.resetCurrentSel();
     } else if (this.state.currentSel.type === 'rice') {
-      this.setState({
-        ...this.state,
-        order: {
-          ...this.state.order,
-          totalQuant: this.state.order.totalQuant + 1,
-          subTotal: this.state.order.subTotal + this.state.currentSel.price,
-          food: {
-            ...this.state.order.food,
-            rice: [...this.state.order.food.rice, this.state.currentSel]
-          }
-        }
-      }, () => this.resetCurrentSel()
-      )
+      this.props.addRice(this.state.currentSel);
+      this.resetCurrentSel();
     } else if (this.state.currentSel.type === 'trotter') {
-      this.setState({
-        ...this.state,
-        order: {
-          ...this.state.order,
-          totalQuant: this.state.order.totalQuant + 1,
-          subTotal: this.state.order.subTotal + this.state.currentSel.price,
-          food: {
-            ...this.state.order.food,
-            trotter: [...this.state.order.food.trotter, this.state.currentSel]
-          }
-        }
-      }, () => this.resetCurrentSel()
-      )
+      this.props.addTrotter(this.state.currentSel);
+      this.resetCurrentSel();
     } else if (this.state.currentSel.type === 'soup') {
-      this.setState({
-        ...this.state,
-        order: {
-          ...this.state.order,
-          totalQuant: this.state.order.totalQuant + 1,
-          subTotal: this.state.order.subTotal + this.state.currentSel.price,
-          food: {
-            ...this.state.order.food,
-            soups: [...this.state.order.food.soups, this.state.currentSel]
-          }
-        }
-      }, () => this.resetCurrentSel()
-      )
+      this.props.addSoup(this.state.currentSel);
+      this.resetCurrentSel();
     } else if (this.state.currentSel.type === 'side') {
-      this.setState({
-        ...this.state,
-        order: {
-          ...this.state.order,
-          totalQuant: this.state.order.totalQuant + 1,
-          subTotal: this.state.order.subTotal + this.state.currentSel.price,
-          food: {
-            ...this.state.order.food,
-            sides: [...this.state.order.food.sides, this.state.currentSel]
-          }
-        }
-      }, () => this.resetCurrentSel()
-      )
+      this.props.addSide(this.state.currentSel);
+      this.resetCurrentSel();
     }
-    
   }
-
 
   renderOtherMenus(types) {
     return (
@@ -621,8 +545,9 @@ class OrderingPage extends React.Component {
                 </span>
                 <div className="ordering__form-left_input"> 
                   <input type="text" placeholder="First and last name" style={{border: 0}}
-                    value={this.state.order.name} 
-                    onChange={(e) => this.setName(e.target.value)}/>
+                    value={this.props.name} 
+                    onChange={(e) => this.props.addName(e.target.value)}
+                    />
                 </div>
               </div>
               <br /><br />
@@ -632,8 +557,8 @@ class OrderingPage extends React.Component {
                 </span>
                 <div className="ordering__form-left_textarea">
                   <textarea type="text" placeholder="e.g., Extra napkins pls" style={{border: 0}} 
-                    value={this.state.order.notes} 
-                    onChange={(e) => this.setNotes(e.target.value)}/>
+                    value={this.props.notes} 
+                    onChange={(e) => this.props.addNotes(e.target.value)}/>
                 </div>
               </div>
             </div>
@@ -651,21 +576,14 @@ class OrderingPage extends React.Component {
                   {times.map((time) =>
                     {
                       let active = '';
-                      let strup = this.state.order.time;
+                      let strup = this.props.time;
                       if (strup === time) {
                         active = 'selectedLocation';
                       }
                       return (
                       <div 
                         className={`ordering__form-right_list--button ${active}`}
-                        onClick={() => this.setState({
-                          ...this.state,
-                          order: {
-                            ...this.state.order,
-                            time: this.state.order.time === time ? '' : time,
-                            active: 'selectedLocation'
-                          }
-                        })}
+                        onClick={() => this.props.time === time ? this.props.setTime('') : this.props.setTime(time)}
                       >
                         {time}
                       </div>
@@ -717,12 +635,25 @@ export async function getStaticProps(ctx) {
 
 const mapStateToProps = state => {
   return {
-    order: state.order
+    location: state.ordering.location,
+    name: state.ordering.name,
+    notes: state.ordering.notes,
+    time: state.ordering.time,
+    order: state.ordering
   }
 }
 
 const mapDispatchToProps = {
-  addLocation
+  addLocation,
+  addChicken, 
+  addAppetizer, 
+  addRice, 
+  addTrotter,
+  addSoup, 
+  addSide, 
+  addName, 
+  addNotes, 
+  setTime
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(OrderingPage)

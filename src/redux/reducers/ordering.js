@@ -13,177 +13,147 @@ import {
 } from '../types'
 
 let initialState = {
-    order: {
-        location: '',
-        food: {
-            chicken: [],
-            appetizers: [],
-            rice: [],
-            trotter: [],
-            soups: [],
-            sides: [],
-        },
-        address: {},
-        name: '',
-        notes: '',
-        time: '',
-        totalQuant: 0,
-        subTotal: 0,
-
-    }
+    location: '',
+    food: {
+        chicken: [],
+        appetizers: [],
+        rice: [],
+        trotter: [],
+        soups: [],
+        sides: [],
+    },
+    cart: [],
+    address: {},
+    name: '',
+    notes: '',
+    time: '',
+    totalQuant: 0,
+    subTotal: 0,
 }
 
 const ordering = (state = {
-    order: {
-        location: '',
-        food: {
-            chicken: [],
-            appetizers: [],
-            rice: [],
-            trotter: [],
-            soups: [],
-            sides: [],
-        },
-        address: {},
-        name: '',
-        notes: '',
-        time: '',
-        totalQuant: 0,
-        subTotal: 0,
-
-    }
+    location: '',
+    food: {
+        chicken: [],
+        appetizers: [],
+        rice: [],
+        trotter: [],
+        soups: [],
+        sides: [],
+    },
+    cart: [],
+    address: {},
+    name: '',
+    notes: '',
+    time: '',
+    totalQuant: 0,
+    subTotal: 0,
 }, action) => {
 
     switch(action.type) {
         case ADD_LOCATION:
             return {
                 ...state,
-                order: {
-                    ...state.order, 
-                    location: action.location
-                }
+                location: action.payload
             }
         case ADD_CHICKEN:
             return {
                 ...state,
-                order: {
-                    ...state.order,
-                    food: {
-                        ...state.order.food,
-                        chicken: [...state.order.food.chicken, action.chicken]
-                    },
-                    totalQuant: state.order.totalQuant + 1
-                    // add PRICE TO SUBTOTAL!!
-                }
+                food: {
+                    ...state.order.food,
+                    chicken: [...state.food.chicken, action.payload]
+                },
+                totalQuant: state.totalQuant + 1
+                // add PRICE TO SUBTOTAL!!
             }
         case ADD_APPETIZER:
             return {
                 ...state,
-                order: {
-                    ...state.order,
-                    food: {
-                        ...state.order.food,
-                        appetizers: [...state.order.food.appetizers, action.appetizer]
-                    },
-                    totalQuant: state.order.totalQuant + 1,
-                    subTotal: state.order.subTotal + action.appetizer.price
-                }
+                food: {
+                    ...state.food,
+                    appetizers: [...state.food.appetizers, action.payload]
+                },
+                cart: [...state.cart, action.payload],
+                totalQuant: state.totalQuant + 1,
+                subTotal: state.subTotal + action.payload.price
             }
+            
         case ADD_RICE:
             return {
                 ...state,
-                order: {
-                    ...state.order,
-                    food: {
-                        ...state.order.food,
-                        rice: [...state.order.food.rice, action.rice]
-                    },
-                    totalQuant: state.order.totalQuant + 1,
-                    subTotal: state.order.subTotal + action.rice.price
-                }
+                food: {
+                    ...state.food,
+                    rice: [...state.food.rice, action.payload]
+                },
+                cart: [...state.cart, action.payload],
+                totalQuant: state.totalQuant + 1,
+                subTotal: state.subTotal + action.payload.price
             }
         case ADD_TROTTER:
             return {
                 ...state,
-                order: {
-                    ...state.order,
-                    food: {
-                        ...state.order.food,
-                        trotter: [...state.order.food.trotter, action.trotter]
-                    },
-                    totalQuant: state.order.totalQuant + 1,
-                    subTotal: state.order.subTotal + action.trotter.price
-                }
+                food: {
+                    ...state.food,
+                    trotter: [...state.food.trotter, action.payload]
+                },
+                cart: [...state.cart, action.payload],
+                totalQuant: state.totalQuant + 1,
+                subTotal: state.subTotal + action.payload.price
             }
         case ADD_SOUP: 
             return {
                 ...state,
-                order: {
-                    ...state.order,
-                    food: {
-                        ...state.order.food,
-                        soups: [...state.order.food.soups, action.soup]
-                    },
-                    totalQuant: state.order.totalQuant + 1,
-                    subTotal: state.order.subTotal + action.soup.price
-                }
+                food: {
+                    ...state.food,
+                    soups: [...state.food.soups, action.payload]
+                },
+                cart: [...state.cart, action.payload],
+                totalQuant: state.totalQuant + 1,
+                subTotal: state.subTotal + action.payload.price
             }
         case ADD_SIDE:
             return {
                 ...state,
-                order: {
-                    ...state.order,
                     food: {
-                        ...state.order.food,
-                        sides: [...state.order.food.sides, action.side]
+                        ...state.food,
+                        sides: [...state.food.sides, action.payload]
                     },
-                    totalQuant: state.order.totalQuant + 1,
-                    subTotal: state.order.subTotal + action.side.price
-                }
+                    cart: [...state.cart, action.payload],
+                    totalQuant: state.totalQuant + 1,
+                    subTotal: state.subTotal + action.payload.price
             }
         case ADD_NAME:
             return {
                 ...state,
-                order: {
-                    ...state.order,
-                    name: action.name 
-                }
+                name: action.payload
             }
         case ADD_NOTES:
             return {
                 ...state,
-                order: {
-                    ...state.order,
-                    notes: action.notes
-                }
+                notes: action.payload
             }
         case SET_TIME:
             return {
                 ...state,
-                order: {
-                    ...state.order,
-                    time: action.time
-                }
+                time: action.payload
             }
         case EXIT_ORDER:
             return {
-                order: {
-                    location: '',
-                    food: {
-                        chicken: [],
-                        appetizers: [],
-                        rice: [],
-                        trotter: [],
-                        soups: [],
-                        sides: [],
-                    },
-                    address: {},
-                    name: '',
-                    notes: '',
-                    time: '',
-                    totalQuant: 0,
-                    subTotal: 0,
-                }
+                location: '',
+                food: {
+                    chicken: [],
+                    appetizers: [],
+                    rice: [],
+                    trotter: [],
+                    soups: [],
+                    sides: [],
+                },
+                address: {},
+                name: '',
+                notes: '',
+                time: '',
+                totalQuant: 0,
+                subTotal: 0,
             }
         default: 
             return { ...state }
