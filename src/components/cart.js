@@ -32,19 +32,19 @@ const Cart = (props) => {
         </div>
 
         <div className="ordering__cart_content">
+          {console.log(props.cart)}
             {props.cart.map(item => {
               return (
                 <>
                   <div className="ordering__cart_content-name">
                     <span className="ordering__cart_content-name_remove"
                     onClick={() => props.removeItem(item)}
-                    ><FontAwesomeIcon icon={faTimes} size='xs' /></span>    {item.item} x {item.quant}
+                    ><FontAwesomeIcon icon={faTimes} size='xs' /></span>    {item.size} {item.item} {item.type == 'chicken' ? ('(' + item.sauce + ')') : ''} x {item.quant}
                   </div>
                   <div className="ordering__cart_content-price">${(item.price * item.quant).toFixed(2)}</div>
                   <br />
-                </>
-              )
-            })}
+              </>
+              ) })}
         </div>
 
         <div className="ordering__cart_total">

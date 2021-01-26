@@ -51,23 +51,15 @@ class OrderingPage extends React.Component {
       ],
       order: {
         location: '',
-        food: {
-          chicken: [],
-          appetizers: [],
-          rice: [],
-          trotter: [],
-          soups: [],
-          sides: []  
-        },
         address: {},
         name: '',
         notes: '',
         time: '',
-        totalQuant: 0,
-        subTotal: 0, 
         activeLocation: 'selectedLocation',
         active: 'selectedOrder'
       },
+      chickenSizes: ['Small', 'Large'],
+      chickenPrices: [], 
       currentSel: {
         type: '',
         sauce: '',
@@ -185,6 +177,49 @@ class OrderingPage extends React.Component {
     );
   }
 
+  renderChickenSizes(type) {
+    this.setState({
+      ...this.state,
+      currentSel: {
+        ...this.state.currentSel,
+        type: 'chicken',
+        item: this.state.currentSel.item === type ? '' : type,
+        size: '',
+        active: 'selectedOrder'
+      },
+      chickenPrices: type == 'Whole' || type == 'Boneless' ? ['($9.95)', '($18.95)'] : ['($11.95)', '($20.95)']
+    })
+  }
+
+  saveChickenPrices(size) {
+    let price;
+    let menuSize;
+
+    if (this.state.currentSel.item == 'Whole' && size == 'Small' 
+    || this.state.currentSel.item == 'Boneless' && size == 'Small') {
+      price = 9.95
+    } else if (this.state.currentSel.item == 'Whole' && size == 'Large' 
+    || this.state.currentSel.item == 'Boneless' && size == 'Large') {
+      price = 18.95
+    } else if (this.state.currentSel.item == 'Wings' && size == 'Small'
+    || this.state.currentSel.item == 'Drumsticks' && size == 'Small') {
+      price = 11.95
+    } else if (this.state.currentSel.item == 'Wings' && size == 'Large' 
+    || this.state.currentSel.item == 'Drumsticks' && size == 'Large') {
+      price = 20.95
+    }
+
+    this.setState({
+      ...this.state,
+      currentSel: {
+        ...this.state.currentSel,
+          size: this.state.currentSel.size === size ? '' : size,
+          active: 'selectedOrder',
+          price: price
+      }
+    })
+  }
+
 
   renderChickenMenu(sauces, chickenItems) {
     const chickenTypes = ['Whole', 'Wings', 'Drumsticks', 'Boneless']
@@ -213,15 +248,7 @@ class OrderingPage extends React.Component {
               <span 
                 className={`ordering__container-menuContent ${active} col-lg-3`}
                 onClick={() => 
-                  this.setState({
-                    ...this.state,
-                    currentSel: {
-                      ...this.state.currentSel,
-                      type: 'chicken',
-                      item: this.state.currentSel.item === type ? '' : type,
-                      active: 'selectedOrder'
-                    }
-                  })
+                  this.renderChickenSizes(type)
                 }
               >
                 <span className='ordering__container-menuContent_text'>{type}</span>
@@ -245,19 +272,15 @@ class OrderingPage extends React.Component {
               if (strup === size) {
                 active = 'selectedOrder'
               }
+
             return (
               <span 
                 className={`ordering__container-menuContent ${active} col-lg-6`}
-                onClick={() => this.setState({
-                  ...this.state,
-                  currentSel: {
-                    ...this.state.currentSel,
-                      size: this.state.currentSel.size === size ? '' : size,
-                      active: 'selectedOrder'
-                  }
-                })}
+                onClick={() => 
+                  this.saveChickenPrices(size)
+              }
               >
-                <span className='ordering__container-menuContent_text'>{size}</span>
+                <span className='ordering__container-menuContent_text'>{size} {sizes.indexOf(size) === 0 ? this.state.chickenPrices[0] : this.state.chickenPrices[1] }</span>
               </span>
             )})}
           </div>
@@ -308,7 +331,7 @@ class OrderingPage extends React.Component {
               {
                 let active = '';
                 let strup = this.state.currentSel.sauce;
-                if (strup === sauce) {
+                if (strup === sauce.name) {
                   active = 'selectedLocation';
                 }
                 return (
@@ -318,7 +341,7 @@ class OrderingPage extends React.Component {
                     ...this.state,
                     currentSel: {
                       ...this.state.currentSel,
-                      sauce: this.state.currentSel.sauce === sauce ? '' : sauce,
+                      sauce: this.state.currentSel.sauce === sauce.name ? '' : sauce.name,
                       active: 'selectedLocation'
                     }
                   })}
@@ -354,6 +377,8 @@ class OrderingPage extends React.Component {
 
   addToCart() {
     if (this.state.currentSel.type === 'chicken') {
+
+
       this.props.addChicken(this.state.currentSel)
       this.resetCurrentSel()
     } else if (this.state.currentSel.type) {
@@ -380,6 +405,19 @@ class OrderingPage extends React.Component {
     // }
   }
 
+  saveOtherMenu(item) {
+    this.setState({
+      ...this.state,
+      currentSel: {
+        ...this.state.currentSel,
+        type: item.type,
+        item: this.state.currentSel.item === item.name ? '' : item.name,
+        price: item.price,
+        active: 'selectedLocation'
+      }
+    })
+  }
+
   renderOtherMenus(types) {
     return (
       <>
@@ -396,16 +434,7 @@ class OrderingPage extends React.Component {
                 return (
                   <div 
                     className={`ordering__container-other_button ${active}`}
-                    onClick={() => this.setState({
-                      ...this.state,
-                      currentSel: {
-                        ...this.state.currentSel,
-                        type: type.type,
-                        item: this.state.currentSel.item === type.name ? '' : type.name,
-                        price: type.price,
-                        active: 'selectedLocation'
-                      }
-                    })}
+                    onClick={() => this.saveOtherMenu(type)}
                   >
                     <div className='ordering__container-other_button_left'>
                       <span className='ordering__container-other_button_left-header'>
@@ -461,43 +490,38 @@ class OrderingPage extends React.Component {
       case 'SIDES':
         const sides = this.props.menu.items.filter(
           (item) => item.type === 'side'
-        );
-
-        const kimchism = {
-          name: 'kimchi (small)',
-          price: 1.00,
-          type: 'side'
-        }
-
-        const kimchilg = {
-          name: 'kimchi (large)',
-          price: 2.00,
-          type: 'side'
-        }
-
-        const dipsm = {
-          name: 'blue cheese / ranch (small)',
-          price: 0.50,
-          type: 'side',
-          description: 'please specify "Blue Cheese" or "Ranch" in the notes'
-        }
-
-        const diplg = {
-          name: 'blue cheese / ranch (large)',
-          price: 1.00,
-          type: 'side',
-          description: 'please specify "Blue Cheese" or "Ranch" in the notes'
-        }
-
-        const allSides = sides.filter(
+        ).filter(
           (item) => item.name !== 'kimchi' 
         ).filter( 
           (item) => item.name !== 'blue cheese / ranch'
-        )
-        
-        allSides.push(kimchism, kimchilg, dipsm, diplg)
+        );
 
-        return (this.renderOtherMenus(allSides))
+        const other = [
+          {
+            name: 'Small kimchi',
+            price: 1.00,
+            type: 'side',
+          },
+          {
+            name: 'Large kimchi',
+            price: 2.00,
+            type: 'side',
+          },
+          {
+            name: 'Small blue cheese / ranch',
+            price: 0.50,
+            type: 'side',
+            description: 'please specify "Blue Cheese" or "Ranch" in the notes',
+          },
+          {
+            name: 'Large blue cheese / ranch',
+            price: 1.00,
+            type: 'side',
+            description: 'please specify "Blue Cheese" or "Ranch" in the notes',
+          }
+        ];
+
+        return (this.renderOtherMenus(sides.concat(other)))
       default:
         return null;
     }
@@ -571,7 +595,7 @@ class OrderingPage extends React.Component {
       }
     })
   }
-
+ // LOOK INTO USING REDUX INSTEAD OF STATE TO SAVE NAME/NOTES/TIME
   renderPickUpForm() {
     const times = this.state.times
 

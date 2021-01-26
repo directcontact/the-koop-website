@@ -62,13 +62,25 @@ const ordering = (state = {
                 location: action.payload
             }
         case ADD_CHICKEN:
+            cartItems = state.cart.filter(item => item.item !== action.payload.item)
+            currentItem = state.cart.filter(item => item.item === action.payload.item)
+
+            if (currentItem.length > 0) {
+                currentItem = {...currentItem[0], quant: currentItem[0].quant + 1}
+            } else {
+                currentItem = {...action.payload, quant: 1}
+            }
+
             return {
                 ...state,
                 food: {
                     ...state.food,
-                    chicken: [...state.food.chicken, action.payload]
+                    chicken: [...state.food.chicken, action.payload],
                 },
-                totalQuant: state.totalQuant + 1
+                cart: [...cartItems, currentItem],
+                subTotal: state.subTotal + action.payload.price,
+                totalQuant: state.totalQuant + 1,
+                subTotal: state.subTotal + action.payload.price
                 // add PRICE TO SUBTOTAL!!
             }
         case ADD_ITEM:
@@ -81,7 +93,6 @@ const ordering = (state = {
                 currentItem = {...action.payload, quant: 1}
             }
 
-            console.log(action.payload)
             return {
                 ...state,
                 food: {
