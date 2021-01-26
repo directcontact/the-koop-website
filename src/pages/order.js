@@ -462,7 +462,42 @@ class OrderingPage extends React.Component {
         const sides = this.props.menu.items.filter(
           (item) => item.type === 'side'
         );
-        return (this.renderOtherMenus(sides))
+
+        const kimchism = {
+          name: 'kimchi (small)',
+          price: 1.00,
+          type: 'side'
+        }
+
+        const kimchilg = {
+          name: 'kimchi (large)',
+          price: 2.00,
+          type: 'side'
+        }
+
+        const dipsm = {
+          name: 'blue cheese / ranch (small)',
+          price: 0.50,
+          type: 'side',
+          description: 'please specify "Blue Cheese" or "Ranch" in the notes'
+        }
+
+        const diplg = {
+          name: 'blue cheese / ranch (large)',
+          price: 1.00,
+          type: 'side',
+          description: 'please specify "Blue Cheese" or "Ranch" in the notes'
+        }
+
+        const allSides = sides.filter(
+          (item) => item.name !== 'kimchi' 
+        ).filter( 
+          (item) => item.name !== 'blue cheese / ranch'
+        )
+        
+        allSides.push(kimchism, kimchilg, dipsm, diplg)
+
+        return (this.renderOtherMenus(allSides))
       default:
         return null;
     }
