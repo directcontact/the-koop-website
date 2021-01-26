@@ -64,7 +64,7 @@ const ordering = (state = {
         case ADD_CHICKEN:
             cartItems = state.cart.filter(item => item.item !== action.payload.item)
             currentItem = state.cart.filter(item => item.item === action.payload.item)
-
+            console.log(action.payload)
             if (currentItem.length > 0) {
                 currentItem = {...currentItem[0], quant: currentItem[0].quant + 1}
             } else {

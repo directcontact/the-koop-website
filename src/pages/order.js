@@ -413,6 +413,7 @@ class OrderingPage extends React.Component {
         type: item.type,
         item: this.state.currentSel.item === item.name ? '' : item.name,
         price: item.price,
+        size: item.size,
         active: 'selectedLocation'
       }
     })
@@ -443,7 +444,7 @@ class OrderingPage extends React.Component {
                       {type.description}
                     </div>
                     <div className='ordering__container-other_button_right'>
-                      ${type.price}
+                      ${type.price.toFixed(2)}
                     </div>
                   </div>
                 )
@@ -501,23 +502,27 @@ class OrderingPage extends React.Component {
             name: 'Small kimchi',
             price: 1.00,
             type: 'side',
+            size: 'Small'
           },
           {
             name: 'Large kimchi',
             price: 2.00,
             type: 'side',
+            size: 'Large'
           },
           {
             name: 'Small blue cheese / ranch',
             price: 0.50,
             type: 'side',
             description: 'please specify "Blue Cheese" or "Ranch" in the notes',
+            size: 'Small'
           },
           {
             name: 'Large blue cheese / ranch',
             price: 1.00,
             type: 'side',
             description: 'please specify "Blue Cheese" or "Ranch" in the notes',
+            size: 'Large'
           }
         ];
 
