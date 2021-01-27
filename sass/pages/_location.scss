@@ -7,6 +7,15 @@
   // background-color: #fefef1;
   color: $color-white;
 
+  &__img {
+    width: 30%;
+    position: absolute;
+    top: 110%;
+    bottom: 0;
+    left: 75%;
+    right: 0;
+  }
+
   &__page {
     background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
       url('../images/locations_page.jpg');

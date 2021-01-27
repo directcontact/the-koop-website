@@ -581,26 +581,7 @@ class OrderingPage extends React.Component {
     )
   }
 
-  setName(name) {
-    this.setState({
-      ...this.state,
-      order: {
-        ...this.state.order,
-        name
-      }
-    })
-  }
 
-  setNotes(notes) {
-    this.setState({
-      ...this.state,
-      order: {
-        ...this.state.order,
-        notes
-      }
-    })
-  }
- // LOOK INTO USING REDUX INSTEAD OF STATE TO SAVE NAME/NOTES/TIME
   renderPickUpForm() {
     const times = this.state.times
 
@@ -654,6 +635,7 @@ class OrderingPage extends React.Component {
                       <div 
                         className={`ordering__form-right_list--button ${active}`}
                         onClick={() => this.props.time === time ? this.props.setTime('') : this.props.setTime(time)}
+                        // value={this.props.time}
                       >
                         {time}
                       </div>

@@ -85,6 +85,7 @@ export default class LocationPage extends React.Component {
       <>
         <div className="location max-height">{this.renderSClocation()}</div>
         <div className="location max-height">{this.renderCHlocation()}</div>
+        <img className="location__img" src="/static/images/chick.png" />
       </>
     );
   }

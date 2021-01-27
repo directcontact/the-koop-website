@@ -19,7 +19,7 @@ const ChickenMenu = (props) => {
             transition={{ duration: 0.3, delay: 0.9 }}
             key={props.nav}
             className="menu__list-chicken--img"
-            src="/static/images/chick.png"
+            src="/static/images/chick2.png"
           />
         </div>
       </div>

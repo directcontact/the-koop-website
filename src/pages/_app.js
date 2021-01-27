@@ -1,8 +1,10 @@
 import App from 'next/app';
 import React from 'react';
-import { Router } from 'next/dist/client/router';
+import { Router as R } from 'next/dist/client/router';
+import Router from 'next/router';
 import NProgress from 'nprogress';
 import { motion, AnimatePresence } from 'framer-motion';
+import lscache from 'lscache';
 
 import withRedux from 'next-redux-wrapper';
 import { Provider } from 'react-redux';
@@ -22,15 +24,15 @@ import store from '../redux/store';
 NProgress.configure({ showSpinner: false });
 
 // Router will have these events that fire based on each page load, we can run NProgress based on them.
-Router.events.on('routeChangeStart', () => {
+R.events.on('routeChangeStart', () => {
   NProgress.start();
 });
 
-Router.events.on('routeChangeComplete', () => {
+R.events.on('routeChangeComplete', () => {
   NProgress.done();
 });
 
-Router.events.on('routeChangeError', () => {
+R.events.on('routeChangeError', () => {
   NProgress.done();
 });
 class MyApp extends App {
@@ -42,6 +44,22 @@ class MyApp extends App {
     }
 
     return { pageProps };
+  }
+
+  componentDidMount() {
+    this.checkAuthentication();
+  }
+
+  checkAuthentication() {
+    const loggedIn = lscache.get('login');
+
+    if (!loggedIn && Router.pathname.includes('admin')) {
+      Router.push('/admin/login');
+    }
+
+    if (Router.pathname.includes('login') && loggedIn) {
+      Router.push('/admin/incomplete');
+    }
   }
 
   getMainClass(path) {
@@ -86,14 +104,6 @@ class MyApp extends App {
     return mainClass;
   }
 
-  renderNavComponents() {
-    return (
-      <>
-        <Nav />
-      </>
-    );
-  }
-
   render() {
     const { Component, pageProps, router } = this.props;
 
@@ -105,7 +115,13 @@ class MyApp extends App {
           <AnimatePresence exitBeforeEnter>
             <Header />
 
-            {router.pathname.includes('admin') ? <AdminNav /> : router.pathname.includes('order') ? null : <Nav />}
+            {router.pathname.includes('admin') ? (
+              !router.pathname.includes('login') ? (
+                <AdminNav />
+              ) : null
+            ) : ( router.pathname.includes('order') ? null :
+              <Nav /> 
+            )}
 
             <div className="page-cover">
               <div className={`${mainClass}`}>
