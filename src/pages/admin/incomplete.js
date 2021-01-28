@@ -57,6 +57,7 @@ export async function getServerSideProps() {
       : process.env.PROD_URL;
   const key = process.env.API_KEY;
   const res = await fetch(`${url}/api/orders?key=${key}`);
+  console.log(res);
   const orders = await res.json();
   return {
     props: {

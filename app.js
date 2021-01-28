@@ -1,13 +1,13 @@
 const express = require('express');
 const next = require('next');
 const helmet = require('helmet');
-// const mongoose = require('mongoose');
 const dynamo = require('dynamodb');
-const Joi = require('joi');
-const bodyParser = require('body-parser');
 require('dotenv').config();
 
 const { emailSender } = require('./util/email');
+const { InitDB, AddDummyOrders, AddDummmyUser } = require('./util/init-dynamo');
+const { UserTable } = require('./models/user');
+const { OrderTable } = require('./models/order');
 
 const dev = process.env.NODE_ENV !== 'production';
 const server = next({ dev });
@@ -17,6 +17,13 @@ const API_KEY = process.env.API_KEY;
 const AWSDB_ACCESS_KEY = process.env.AWSDB_ACCESS_KEY;
 const AWSDB_SECRET_KEY = process.env.AWSDB_SECRET_KEY;
 
+dynamo.AWS.config.update({
+  accessKeyId: AWSDB_ACCESS_KEY,
+  secretAccessKey: AWSDB_SECRET_KEY,
+  region: 'us-east-1',
+});
+
+dynamo.log.level('info');
 server
   .prepare()
   .then(() => {
@@ -29,45 +36,28 @@ server
       app.use(morgan('common'));
     }
 
-    app.use(bodyParser.json());
+    app.use(express.json());
+    app.use(express.urlencoded({ extended: false }));
     app.use(
       helmet({
         contentSecurityPolicy: false,
       })
     );
 
-    dynamo.AWS.config.update({
-      accessKeyId: AWSDB_ACCESS_KEY,
-      secretAccessKey: AWSDB_SECRET_KEY,
-      region: 'us-east-1',
-    });
-
-    // const options = {
-    //   useNewUrlParser: true,
-    //   user: process.env.MONGO_ID,
-    //   pass: process.env.MONGO_PASS,
-    // };
-
-    // mongoose.connect(process.env.MONGO_URL, options);
-
-    // Connected handler
-    // mongoose.connection.on('connected', function (err) {
-    //   console.log('Connected to DB');
-    // });
-
-    // // Error handler
-    // mongoose.connection.on('error', function (err) {
-    //   console.log(err);
-    // });
-
-    app.post('/api/auth', (req, res) => {
+    app.post('/api/auth', async (req, res) => {
       const username = req.body.username;
       const password = req.body.password;
 
-      if (username === 'test' && password === 'test') {
-        res.sendStatus(200);
-      } else {
-        res.sendStatus(403);
+      const User = UserTable(dynamo);
+      const auth = await User.get(username);
+      const userPass = auth.get('password');
+
+      if (auth) {
+        if (password === userPass) {
+          res.sendStatus(200);
+        } else {
+          res.sendStatus(403);
+        }
       }
     });
 
@@ -80,83 +70,23 @@ server
     app.get('/api/orders', (req, res) => {
       const { key } = req.query;
       if (key === API_KEY) {
-        res.send([
-          {
-            id: 'dsafa',
-            name: 'Tom',
-            pickup: '16:30',
-            notes: 'Extra spicy',
-            items: [
-              {
-                name: 'spicy soy garlic small whole chicken',
-                quantity: 1,
-                price: 9.95,
-              },
-              {
-                name: 'extra spicy large wings chicken',
-                quantity: 1,
-                price: 20.95,
-              },
-            ],
-          },
-          {
-            id: 'khtyt',
-            name: 'Sharon',
-            pickup: '12:30',
-            notes: '',
-            items: [
-              {
-                name: 'daegi bulgogi',
-                quantity: 2,
-                price: 12.95,
-              },
-            ],
-          },
-          {
-            id: 'tryuyuyi',
-            name: 'Arnold',
-            pickup: '17:30',
-            notes: 'Extra spicy',
-            items: [
-              {
-                name: 'budae jigae',
-                quantity: 1,
-                price: 11.95,
-              },
-            ],
-          },
-          {
-            id: 'ncvmvn',
-            name: 'James',
-            pickup: '17:30',
-            notes: '',
-            items: [
-              {
-                name: 'spicy trotter',
-                quantity: 1,
-                price: 29.0,
-              },
-              {
-                name: 'gangjeong',
-                quantity: 1,
-                price: 22.95,
-              },
-              {
-                name: 'original trotter',
-                quantity: 2,
-                price: 27.0,
-              },
-              {
-                name: 'mackerel combo',
-                quantity: 3,
-                price: 10.95,
-              },
-            ],
-          },
-        ]);
+        const Order = OrderTable(dynamo);
+        Order.scan().exec((err, data) => {
+          if (err) {
+            res.sendStatus(500);
+          } else {
+            res.send(data.Items.map((model) => model.attrs));
+          }
+        });
       } else {
         res.sendStatus(403);
       }
+    });
+
+    app.get('/test/models', async (req, res) => {
+      await AddDummmyUser(dynamo);
+      await AddDummyOrders(dynamo);
+      res.send('Done!');
     });
 
     app.get('*', (req, res) => {
