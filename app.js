@@ -84,7 +84,7 @@ server
     });
 
     app.get('/test/models', async (req, res) => {
-      await AddDummmyUser(dynamo);
+      //await AddDummmyUser(dynamo);
       await AddDummyOrders(dynamo);
       res.send('Done!');
     });
