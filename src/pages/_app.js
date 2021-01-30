@@ -10,6 +10,7 @@ import withRedux from 'next-redux-wrapper';
 import { Provider } from 'react-redux';
 
 import 'bootstrap/dist/css/bootstrap-grid.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
 import '../../public/static/css/styles.css';
 import 'normalize.css/normalize.css';
 import 'nprogress/nprogress.css';
@@ -84,6 +85,11 @@ class MyApp extends App {
       case '/catering':
         mainClass = 'catering__page';
         break;
+      case '/order':
+        mainClass = 'ordering__page';
+        break;
+      case '/checkout':
+        mainClass = 'checkout__page';
       case '/login':
         mainClass = 'login__page';
         break;
@@ -115,8 +121,9 @@ class MyApp extends App {
               !router.pathname.includes('login') ? (
                 <AdminNav />
               ) : null
-            ) : (
-              <Nav />
+            ) : ( router.pathname.includes('order') ? null :
+              ( router.pathname.includes('checkout') ? null : <Nav /> 
+              )
             )}
 
             <div className="page-cover">
@@ -146,7 +153,7 @@ export function reportWebVitals(metric) {
   }
 }
 
-//export default MyApp;
+// export default MyApp;
 
 const makeStore = () => store;
 

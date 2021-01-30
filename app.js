@@ -4,6 +4,10 @@ const helmet = require('helmet');
 const dynamo = require('dynamodb');
 require('dotenv').config();
 
+const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY
+const stripe = require('stripe')(STRIPE_SECRET_KEY);
+const CHECKOUT_DOMAIN = 'http://localhost:3000/checkout';
+
 const { emailSender } = require('./util/email');
 const { InitDB, AddDummyOrders, AddDummmyUser } = require('./util/init-dynamo');
 const { UserTable } = require('./models/user');
@@ -88,6 +92,38 @@ server
       await AddDummyOrders(dynamo);
       res.send('Done!');
     });
+    // app.post('/create-checkout-session', async (req, res) => {
+    //   const session = await stripe.checkout.sessions.create({
+    //     payment_method_types: ['card'],
+    //     line_items: [
+    //       {
+    //         price_data: {
+    //           currency: 'usd',
+    //           product_data: {
+    //              name: 'Whole Chicken (soy garlic)'
+    //           },
+    //           unit_amount: 2095
+    //         },
+    //         quantity: 1
+    //       },
+    //       {
+    //         price_data: {
+    //           currency: 'usd',
+    //           product_data: {
+    //              name: 'kimchi pajeon'
+    //           },
+    //           unit_amount: 1095
+    //         },
+    //         quantity: 1
+    //       }
+    //     ],
+    //     mode: 'payment',
+    //     success_url: `${CHECKOUT_DOMAIN}?success=true`,
+    //     cancel_url: `${CHECKOUT_DOMAIN}?canceled=true`
+    //   })
+
+    // res.json({ id: session.id })
+    // })
 
     app.get('*', (req, res) => {
       return handle(req, res);

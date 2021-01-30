@@ -40,7 +40,7 @@ const Nav = () => {
         </div>
         <div className="col-md-2 nav__block">
           <div className="nav__icon">
-            <a className="btn u-margin-top-small">ORDER ONLINE</a>
+            <a href="/order" className="btn u-margin-top-small">ORDER ONLINE</a>
           </div>
         </div>
       </div>
