@@ -33,17 +33,19 @@ class IncompletePage extends React.Component {
           {this.props.orders.length} total
         </div>
         <form>
-          {this.props.orders.map((order, idx) => (
-            <>
-              <OrderItem key={order.id} order={order} />
-              {this.props.orders.length != idx + 1 ? (
-                <hr
-                  className="incomplete__divider"
-                  key={`${order.id}_divider`}
-                />
-              ) : null}
-            </>
-          ))}
+          {this.props.orders
+            ? this.props.orders.map((order, idx) => (
+                <>
+                  <OrderItem key={order.id} order={order} />
+                  {this.props.orders.length != idx + 1 ? (
+                    <hr
+                      className="incomplete__divider"
+                      key={`${order.id}_divider`}
+                    />
+                  ) : null}
+                </>
+              ))
+            : null}
         </form>
       </div>
     );
@@ -56,13 +58,18 @@ export async function getServerSideProps() {
       ? process.env.DEV_URL
       : process.env.PROD_URL;
   const key = process.env.API_KEY;
-  const res = await fetch(`${url}/api/orders?key=${key}`);
-  const orders = await res.json();
-  return {
-    props: {
-      orders,
-    },
-  };
+  try {
+    const res = await fetch(`${url}/api/orders?key=${key}`);
+    const orders = await res.json();
+    return {
+      props: {
+        orders,
+      },
+    };
+  } catch (e) {
+    console.log(e);
+    return null;
+  }
 }
 
 export default IncompletePage;
