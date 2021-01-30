@@ -1,31 +1,38 @@
 import App from 'next/app';
 import React from 'react';
-import { Router } from 'next/dist/client/router';
+import { Router as R } from 'next/dist/client/router';
+import Router from 'next/router';
 import NProgress from 'nprogress';
-import 'nprogress/nprogress.css';
-//import withRedux from 'next-redux-wrapper';
-import { motion, AnimatePresence, AnimateSharedLayout } from 'framer-motion';
-//import { Provider } from 'react-redux';
+import { motion, AnimatePresence } from 'framer-motion';
+import lscache from 'lscache';
+
+import withRedux from 'next-redux-wrapper';
+import { Provider } from 'react-redux';
 
 import 'bootstrap/dist/css/bootstrap-grid.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
 import '../../public/static/css/styles.css';
 import 'normalize.css/normalize.css';
+import 'nprogress/nprogress.css';
 
 import Nav from '../components/nav';
+import AdminNav from '../components/admin-nav';
 import Header from '../components/header';
-//import store from '../redux/store';
+import store from '../redux/store';
 
+// This is where we configure the loading bar at the top of the screen when we're moving to the next page.
 NProgress.configure({ showSpinner: false });
 
-Router.events.on('routeChangeStart', () => {
+// Router will have these events that fire based on each page load, we can run NProgress based on them.
+R.events.on('routeChangeStart', () => {
   NProgress.start();
 });
 
-Router.events.on('routeChangeComplete', () => {
+R.events.on('routeChangeComplete', () => {
   NProgress.done();
 });
 
-Router.events.on('routeChangeError', () => {
+R.events.on('routeChangeError', () => {
   NProgress.done();
 });
 class MyApp extends App {
@@ -39,12 +46,27 @@ class MyApp extends App {
     return { pageProps };
   }
 
+  componentDidMount() {
+    this.checkAuthentication();
+  }
+
+  checkAuthentication() {
+    const loggedIn = lscache.get('login');
+
+    if (!loggedIn && Router.pathname.includes('admin')) {
+      Router.push('/admin/login');
+    }
+
+    if (Router.pathname.includes('login') && loggedIn) {
+      Router.push('/admin/incomplete');
+    }
+  }
+
   getMainClass(path) {
     let mainClass = '';
     if (path.includes('admin')) {
       const params = path.split('/');
       path = `/${params[params.length - 1]}`;
-      console.log(path);
     }
 
     switch (path) {
@@ -63,8 +85,18 @@ class MyApp extends App {
       case '/catering':
         mainClass = 'catering__page';
         break;
+      case '/order':
+        mainClass = 'ordering__page';
+        break;
+      case '/checkout':
+        mainClass = 'checkout__page';
       case '/login':
         mainClass = 'login__page';
+        break;
+      case '/complete':
+      case '/incomplete':
+      case '/alert':
+        mainClass = 'incomplete__page';
         break;
       default:
         mainClass = 'main__page';
@@ -74,14 +106,6 @@ class MyApp extends App {
     return mainClass;
   }
 
-  renderNavComponents() {
-    return (
-      <>
-        <Nav />
-      </>
-    );
-  }
-
   render() {
     const { Component, pageProps, router } = this.props;
 
@@ -89,42 +113,35 @@ class MyApp extends App {
 
     return (
       <>
-        {
-          //<Provider store={store}>
-        }
-        <AnimateSharedLayout type="crossfade">
+        <Provider store={store}>
           <AnimatePresence exitBeforeEnter>
             <Header />
 
-            {router.pathname.includes('admin')
-              ? null
-              : this.renderNavComponents()}
+            {router.pathname.includes('admin') ? (
+              !router.pathname.includes('login') ? (
+                <AdminNav />
+              ) : null
+            ) : ( router.pathname.includes('order') ? null :
+              ( router.pathname.includes('checkout') ? null : <Nav /> 
+              )
+            )}
 
-            <motion.div
-              key={mainClass}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="page-cover"
-            >
+            <div className="page-cover">
               <div className={`${mainClass}`}>
                 <motion.div
-                  key={mainClass}
+                  key={router.route}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.3 }}
                   className="max-height"
                 >
-                  <Component {...pageProps} />
+                  <Component {...pageProps} key={router.route} />
                 </motion.div>
               </div>
-            </motion.div>
+            </div>
           </AnimatePresence>
-        </AnimateSharedLayout>
-        {
-          //</Provider>
-        }
+        </Provider>
       </>
     );
   }
@@ -136,7 +153,8 @@ export function reportWebVitals(metric) {
   }
 }
 
-// const makeStore = () => store;
+// export default MyApp;
 
-//export default withRedux(makeStore)(MyApp);
-export default MyApp;
+const makeStore = () => store;
+
+export default withRedux(makeStore)(MyApp);

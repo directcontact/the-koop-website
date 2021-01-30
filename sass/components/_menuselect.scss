@@ -1,0 +1,49 @@
+.menuselect {
+    // background-color: $color-white;
+    // opacity: 50%;
+    // color: $color-white;
+    padding: 0.5rem 2.5rem;
+    border-radius: 10rem;
+    border: none;
+    font-size: 2rem;
+    font-weight: 200;
+    transition: color 0.4s;
+
+    &__inactive {
+        background-color: $color-white;
+        opacity: 50%;
+        color: $color-black;
+    }
+
+    &__active {
+        background-color: $color-black;
+        opacity: 50%;
+        color: $color-white;
+        padding: 0.5rem 2.5rem;
+        border-radius: 10rem;
+        border: none;
+        font-size: 2rem;
+        font-weight: 200;
+        transition: color 0.4s;
+    }
+  
+    &:link,
+    &:visited {
+      color: $color-white;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    &:hover,
+    &:active {
+      text-decoration: none;
+      color: rgba($color-white, 0.5);
+      cursor: pointer;
+    }
+  
+    @include respond(phone) {
+      // width < 1200?
+      padding: 0.5rem 2rem;
+      font-size: 1rem;
+    }
+  }
+  

@@ -3,6 +3,11 @@ import dynamic from 'next/dynamic';
 
 const MapComponent = dynamic(() => import('../components/map'), {
   ssr: false,
+  loading: () => (
+    <div className="location__map-loading">
+      LOADING...
+    </div>
+  )
 });
 
 export default class LocationPage extends React.Component {
@@ -80,6 +85,7 @@ export default class LocationPage extends React.Component {
       <>
         <div className="location max-height">{this.renderSClocation()}</div>
         <div className="location max-height">{this.renderCHlocation()}</div>
+        <img className="location__img" src="/static/images/chick.png" />
       </>
     );
   }

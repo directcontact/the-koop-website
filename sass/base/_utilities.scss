@@ -96,3 +96,24 @@
 .text-center {
   text-align: center;
 }
+
+.active {
+  padding-bottom: 1px;
+  border-bottom: $color-white 4px solid;
+  & a::before {
+    height: 0px;
+    transition: none !important;
+  }
+}
+
+.selectedLocation {
+  background-color: $color-black !important;
+  opacity: 50% !important;
+  color: $color-white !important;
+}
+
+.selectedOrder {
+  color: $color-black !important;
+  opacity: 60% !important;
+  font-weight: 500 !important;
+}
