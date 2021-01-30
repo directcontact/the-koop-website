@@ -4,7 +4,7 @@
 
 We're employing what would be called a MENN stack or MongoDB, Express, NextJS, NodeJS.
 
-### Database: MongoDB
+### Database: DynamoDB
 
 ### Server: NodeJS
 
