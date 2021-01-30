@@ -88,6 +88,8 @@ class MyApp extends App {
       case '/order':
         mainClass = 'ordering__page';
         break;
+      case '/checkout':
+        mainClass = 'checkout__page';
       case '/login':
         mainClass = 'login__page';
         break;
@@ -120,7 +122,8 @@ class MyApp extends App {
                 <AdminNav />
               ) : null
             ) : ( router.pathname.includes('order') ? null :
-              <Nav /> 
+              ( router.pathname.includes('checkout') ? null : <Nav /> 
+              )
             )}
 
             <div className="page-cover">
