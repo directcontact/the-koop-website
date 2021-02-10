@@ -3,8 +3,8 @@ import Cart from '../components/cart';
 import Link from 'next/link';
 
 import { connect } from 'react-redux'
-import { addLocation, addChicken, addItem, addAppetizer, addRice, addTrotter,
-  addSoup, addSide, addName, addNotes, setTime } from '../redux/actions/ordering'
+import { addLocation, addChicken, addItem, addName, addNotes, 
+addEmail, setTime } from '../redux/actions/ordering'
 
 
 import fs from 'fs';
@@ -385,24 +385,6 @@ class OrderingPage extends React.Component {
       this.props.addItem(this.state.currentSel);
       this.resetCurrentSel();
     }
-    
-    // } else if (this.state.currentSel.type === 'appetizer') {
-    //   // this.props.addAppetizer(this.state.currentSel);
-    //   this.props.addItem(this.state.currentSel);
-    //   this.resetCurrentSel();
-    // } else if (this.state.currentSel.type === 'rice') {
-    //   this.props.addRice(this.state.currentSel);
-    //   this.resetCurrentSel();
-    // } else if (this.state.currentSel.type === 'trotter') {
-    //   this.props.addTrotter(this.state.currentSel);
-    //   this.resetCurrentSel();
-    // } else if (this.state.currentSel.type === 'soup') {
-    //   this.props.addSoup(this.state.currentSel);
-    //   this.resetCurrentSel();
-    // } else if (this.state.currentSel.type === 'side') {
-    //   this.props.addSide(this.state.currentSel);
-    //   this.resetCurrentSel();
-    // }
   }
 
   saveOtherMenu(item) {
@@ -595,19 +577,30 @@ class OrderingPage extends React.Component {
                   NAME FOR THE ORDER
                 </span>
                 <div className="ordering__form-left_input"> 
-                  <input type="text" placeholder="First and last name" style={{border: 0}}
+                  <input type="text" placeholder="First and last name" className="ordering__form-left_input__box"
                     value={this.props.name} 
                     onChange={(e) => this.props.addName(e.target.value)}
                     />
                 </div>
               </div>
-              <br /><br />
+              <div className="row">
+                <span className="ordering__form-header">
+                  EMAIL FOR THE ORDER
+                </span>
+                <div className="ordering__form-left_input"> 
+                  <input type="email" placeholder="e.g., email@email.com" className="ordering__form-left_input__box"
+                    value={this.props.email} 
+                    onChange={(e) => this.props.addEmail(e.target.value)}
+                    />
+                </div>
+              </div>
+              {/* <br /><br /> */}
               <div className="row">
                 <span className="ordering__form-header">
                   NOTES FOR THE ORDER
                 </span>
                 <div className="ordering__form-left_textarea">
-                  <textarea type="text" placeholder="e.g., Extra napkins pls" style={{border: 0}} 
+                  <textarea type="text" placeholder="e.g., Extra napkins pls" className="ordering__form-left_textarea__box" 
                     value={this.props.notes} 
                     onChange={(e) => this.props.addNotes(e.target.value)}/>
                 </div>
@@ -699,13 +692,9 @@ const mapDispatchToProps = {
   addLocation,
   addChicken, 
   addItem,
-  addAppetizer, 
-  addRice, 
-  addTrotter,
-  addSoup, 
-  addSide, 
   addName, 
   addNotes, 
+  addEmail,
   setTime
 }
 

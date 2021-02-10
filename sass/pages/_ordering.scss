@@ -577,7 +577,7 @@
       padding-left: 1rem;
 
       &_input {
-        width: 72%;
+        width: 77%;
         // height: 3rem;
         background-color: $color-white;
         padding: 1rem;
@@ -585,11 +585,18 @@
         color: $color-black;
         outline: none;
         border-radius: 1rem;
+
+        &__box {
+          width: 25rem;
+          border: none;
+          outline: none;
+        }
       }
 
+
       &_textarea {
-        width: 74%;
-        height: 21rem;
+        width: 77%;
+        height: 15rem;
         padding: 1rem;
         background-color: $color-white;
         opacity: 70%;
@@ -598,6 +605,13 @@
         border: none;
         border-radius: 1rem;
         overflow-y: auto;
+
+        &__box {
+          width: 25rem;
+          height: 12rem;
+          border: none;
+          outline: none;
+        }
       }
     }
 

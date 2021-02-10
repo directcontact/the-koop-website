@@ -2,13 +2,14 @@ import {
     ADD_LOCATION,
     ADD_CHICKEN,
     ADD_ITEM,
-    ADD_APPETIZER,
-    ADD_RICE,
-    ADD_TROTTER,
-    ADD_SOUP,
-    ADD_SIDE,
+    // ADD_APPETIZER,
+    // ADD_RICE,
+    // ADD_TROTTER,
+    // ADD_SOUP,
+    // ADD_SIDE,
     ADD_NAME,
     ADD_NOTES,
+    ADD_EMAIL,
     SET_TIME,
     EXIT_ORDER,
     REMOVE_ITEM
@@ -103,71 +104,71 @@ const ordering = (state = {
                 totalQuant: state.totalQuant + 1,
                 subTotal: state.subTotal + action.payload.price
             }
-        case ADD_APPETIZER:
-            cartItems = state.cart.filter(item => item.item !== action.payload.item)
-            currentItem = state.cart.filter(item => item.item === action.payload.item)
+        // case ADD_APPETIZER:
+        //     cartItems = state.cart.filter(item => item.item !== action.payload.item)
+        //     currentItem = state.cart.filter(item => item.item === action.payload.item)
 
-            if (currentItem.length > 0) {
-                currentItem = {...currentItem[0], quant: currentItem[0].quant + 1}
-            } else {
-                currentItem = {...action.payload, quant: 1}
-            }
+        //     if (currentItem.length > 0) {
+        //         currentItem = {...currentItem[0], quant: currentItem[0].quant + 1}
+        //     } else {
+        //         currentItem = {...action.payload, quant: 1}
+        //     }
 
-            return {
-                ...state,
-                food: {
-                    ...state.food,
-                    appetizers: [...state.food.appetizers, action.payload]
-                },
-                cart: [...cartItems, currentItem],
-                totalQuant: state.totalQuant + 1,
-                subTotal: state.subTotal + action.payload.price
-            }
+        //     return {
+        //         ...state,
+        //         food: {
+        //             ...state.food,
+        //             appetizers: [...state.food.appetizers, action.payload]
+        //         },
+        //         cart: [...cartItems, currentItem],
+        //         totalQuant: state.totalQuant + 1,
+        //         subTotal: state.subTotal + action.payload.price
+        //     }
             
-        case ADD_RICE:
-            return {
-                ...state,
-                food: {
-                    ...state.food,
-                    rice: [...state.food.rice, action.payload]
-                },
-                cart: [...state.cart, action.payload],
-                totalQuant: state.totalQuant + 1,
-                subTotal: state.subTotal + action.payload.price
-            }
-        case ADD_TROTTER:
-            return {
-                ...state,
-                food: {
-                    ...state.food,
-                    trotter: [...state.food.trotter, action.payload]
-                },
-                cart: [...state.cart, action.payload],
-                totalQuant: state.totalQuant + 1,
-                subTotal: state.subTotal + action.payload.price
-            }
-        case ADD_SOUP: 
-            return {
-                ...state,
-                food: {
-                    ...state.food,
-                    soups: [...state.food.soups, action.payload]
-                },
-                cart: [...state.cart, action.payload],
-                totalQuant: state.totalQuant + 1,
-                subTotal: state.subTotal + action.payload.price
-            }
-        case ADD_SIDE:
-            return {
-                ...state,
-                    food: {
-                        ...state.food,
-                        sides: [...state.food.sides, action.payload]
-                    },
-                    cart: [...state.cart, action.payload],
-                    totalQuant: state.totalQuant + 1,
-                    subTotal: state.subTotal + action.payload.price
-            }
+        // case ADD_RICE:
+        //     return {
+        //         ...state,
+        //         food: {
+        //             ...state.food,
+        //             rice: [...state.food.rice, action.payload]
+        //         },
+        //         cart: [...state.cart, action.payload],
+        //         totalQuant: state.totalQuant + 1,
+        //         subTotal: state.subTotal + action.payload.price
+        //     }
+        // case ADD_TROTTER:
+        //     return {
+        //         ...state,
+        //         food: {
+        //             ...state.food,
+        //             trotter: [...state.food.trotter, action.payload]
+        //         },
+        //         cart: [...state.cart, action.payload],
+        //         totalQuant: state.totalQuant + 1,
+        //         subTotal: state.subTotal + action.payload.price
+        //     }
+        // case ADD_SOUP: 
+        //     return {
+        //         ...state,
+        //         food: {
+        //             ...state.food,
+        //             soups: [...state.food.soups, action.payload]
+        //         },
+        //         cart: [...state.cart, action.payload],
+        //         totalQuant: state.totalQuant + 1,
+        //         subTotal: state.subTotal + action.payload.price
+        //     }
+        // case ADD_SIDE:
+        //     return {
+        //         ...state,
+        //             food: {
+        //                 ...state.food,
+        //                 sides: [...state.food.sides, action.payload]
+        //             },
+        //             cart: [...state.cart, action.payload],
+        //             totalQuant: state.totalQuant + 1,
+        //             subTotal: state.subTotal + action.payload.price
+        //     }
         case ADD_NAME:
             return {
                 ...state,
@@ -177,6 +178,11 @@ const ordering = (state = {
             return {
                 ...state,
                 notes: action.payload
+            }
+        case ADD_EMAIL:
+            return {
+                ...state,
+                email: action.payload
             }
         case SET_TIME:
             return {

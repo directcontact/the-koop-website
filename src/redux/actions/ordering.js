@@ -2,13 +2,14 @@ import {
     ADD_LOCATION,
     ADD_CHICKEN,
     ADD_ITEM,
-    ADD_APPETIZER,
-    ADD_RICE,
-    ADD_TROTTER,
-    ADD_SIDE,
-    ADD_SOUP,
+//     ADD_APPETIZER,
+//     ADD_RICE,
+//     ADD_TROTTER,
+//     ADD_SIDE,
+//     ADD_SOUP,
     ADD_NAME,
     ADD_NOTES,
+    ADD_EMAIL,
     SET_TIME,
     EXIT_ORDER,
     REMOVE_ITEM
@@ -34,40 +35,40 @@ export const addItem = (item) => ({
         payload: item
 })
 
-export const addAppetizer = (appetizer) => ({
+// export const addAppetizer = (appetizer) => ({
     
-        type: ADD_APPETIZER,
-        payload: appetizer, quant: 0
+//         type: ADD_APPETIZER,
+//         payload: appetizer, quant: 0
     
-})
+// })
 
-export const addRice = (rice) => ({
+// export const addRice = (rice) => ({
    
-        type: ADD_RICE,
-        payload: rice
+//         type: ADD_RICE,
+//         payload: rice
     
-})
+// })
 
-export const addTrotter = (trotter) => ({
+// export const addTrotter = (trotter) => ({
     
-        type: ADD_TROTTER,
-        payload: trotter
+//         type: ADD_TROTTER,
+//         payload: trotter
     
-})
+// })
 
-export const addSoup = (soup) => ({
+// export const addSoup = (soup) => ({
     
-        type: ADD_SOUP,
-        payload: soup
+//         type: ADD_SOUP,
+//         payload: soup
     
-})
+// })
 
-export const addSide = (side) => ({
+// export const addSide = (side) => ({
 
-        type: ADD_SIDE,
-        payload: side
+//         type: ADD_SIDE,
+//         payload: side
     
-})
+// })
 
 export const addName = (name) => ({
     
@@ -81,6 +82,12 @@ export const addNotes = (notes) => ({
         type: ADD_NOTES,
         payload: notes
     
+})
+
+export const addEmail = (email) => ({
+
+        type: ADD_EMAIL,
+        payload: email
 })
 
 export const setTime = (time) => ({
