@@ -222,6 +222,34 @@ h2 {
   opacity: 60% !important;
   font-weight: 500 !important; }
 
+.selectedNav {
+  color: #000000 !important;
+  opacity: 60% !important;
+  font-weight: 500 !important; }
+
+.fade-in {
+  animation: fadeIn ease 1s !important;
+  -webkit-animation: fadeIn ease 1s;
+  -moz-animation: fadeIn ease 1s; }
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@-moz-keyframes fadeIn {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
 .nav {
   color: #ffffff;
   position: absolute;
@@ -898,7 +926,8 @@ h2 {
     padding-top: 2rem;
     position: fixed !important;
     left: 5rem !important;
-    top: 2rem; }
+    top: 2rem;
+    transition: height 1s ease-in-out; }
     .ordering__container-header {
       display: flex;
       justify-content: left;

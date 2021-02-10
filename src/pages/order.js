@@ -86,13 +86,14 @@ class OrderingPage extends React.Component {
 
     return (
       <>
+      <div className="fade-in">
       <div className="row">
-        <div className="ordering__container-header">
+        <div className="ordering__container-header fade-in">
           PICK A LOCATION
         </div>
       </div>
       <div className="row">
-        <div className="ordering__container-content">
+        <div className="ordering__container-content fade-in">
 
         {locations.map((location) => {
           let active = '';
@@ -121,6 +122,7 @@ class OrderingPage extends React.Component {
             </div>
           )
         })}
+        </div>
         </div>
       </div>
       </>
@@ -153,7 +155,7 @@ class OrderingPage extends React.Component {
               let active = '';
               let strup = navActive.step.toUpperCase();
               if (strup === step) {
-                active = navActive.active
+                active = 'selectedNav'
               }
               return (
                 <li
@@ -521,8 +523,8 @@ class OrderingPage extends React.Component {
 
     return (
       <>
-        
-        <div className="ordering__menuNav row">
+        <div className="fade-in">
+        <div className="ordering__menuNav row fade-in">
             <ul className="ordering__menuNav-list u-margin-bottom-small">
             {menuItems.map((item, idx) => {
               let active = '';
@@ -550,14 +552,15 @@ class OrderingPage extends React.Component {
             })}
           </ul>
         </div>
-        <div className="row">
+        <div className="row fade-in">
           <AnimateSharedLayout>
             {this.renderMenuComponent(navActive)}
           </AnimateSharedLayout>
         </div>
-        <div className="row ordering__cartbutton"
+        <div className="row ordering__cartbutton fade-in"
           onClick={() => this.addToCart()}>
           <FontAwesomeIcon icon={faCartPlus} size='1x'/>
+        </div>
         </div>
       </>
     )
@@ -569,7 +572,8 @@ class OrderingPage extends React.Component {
 
     return (
       <>
-      <div className="ordering__container-content">
+      <div className="fade-in">
+      <div className="ordering__container-content fade-in">
         <div className="ordering__form col-md-12">
             <div className="ordering__form-left col-md-6">
               <div className="row">
@@ -639,8 +643,9 @@ class OrderingPage extends React.Component {
         </div>
       </div>
       
-      <div className="ordering__form-extra"><br />
+      <div className="ordering__form-extra fade-in"><br />
           Please allow up to 30-45 min for us to prepare your order.
+      </div>
       </div>
       </>
     )
