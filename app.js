@@ -2,10 +2,10 @@ const express = require('express');
 const next = require('next');
 const helmet = require('helmet');
 const dynamo = require('dynamodb');
+const uuid = require('uuid');
 require('dotenv').config();
 
-const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY
-const stripe = require('stripe')(STRIPE_SECRET_KEY);
+const Stripe = require('stripe');
 const CHECKOUT_DOMAIN = 'http://localhost:3000/checkout';
 
 const { emailSender } = require('./util/email');
@@ -47,6 +47,46 @@ server
         contentSecurityPolicy: false,
       })
     );
+
+    app.post('/process/stripe', async (req, res) => {
+      const cart = req.body.cart;
+      const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
+      // 1) Get the current checkout order
+      const orderId = uuid.v4();
+      const lineItems = cart.map((item) => {
+        // if (item.name.includes('chicken')) {
+        //   if (item.name.includes('whole')) {
+        //     const description = item.name.
+        //     const name =
+        //   }
+        // }
+        return {
+          name: `${item.item}`,
+          description: `${item.size} ${item.item} ${item.type
+            .charAt(0)
+            .toUpperCase()}`,
+          amount: item.price * 100,
+          currency: 'usd',
+          quantity: item.quant,
+        };
+      });
+      console.log(lineItems);
+      const url =
+        process.env.NODE_ENV !== 'production'
+          ? process.env.DEV_URL
+          : process.env.PROD_URL;
+      // 2) Create checkout session
+      const session = await stripe.checkout.sessions.create({
+        payment_method_types: ['card'],
+        success_url: url,
+        cancel_url: url,
+        // customer_email: req.user.email,
+        client_reference_id: orderId,
+        line_items: lineItems,
+      });
+
+      stripe.redirectToCheckout({ sessionId: session.id });
+    });
 
     app.post('/api/auth', async (req, res) => {
       const username = req.body.username;
