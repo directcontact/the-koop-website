@@ -26,7 +26,7 @@ const Nav = () => {
             </Link>
           </h2>
         </div>
-        <div className="col-md-8 nav__block">
+        <div className="col-md-10 nav__block">
           <ul className="list-inline nav__block-list">
             {pages.map((page) => (
               <NavItem
@@ -37,11 +37,6 @@ const Nav = () => {
               />
             ))}
           </ul>
-        </div>
-        <div className="col-md-2 nav__block">
-          <div className="nav__icon">
-            <a href="/order" className="btn u-margin-top-small">ORDER ONLINE</a>
-          </div>
         </div>
       </div>
     </>
