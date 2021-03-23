@@ -8,7 +8,7 @@
     "compile:sass": "node-sass sass/main.scss public/static/css/styles.css -w",
     "fix-dep": "yarn-audit-fix",
     "dev": "concurrently \"node-sass sass/main.scss public/static/css/styles.css -w\" \"node app\"",
-    "build": "next build",
+    "build": "node-sass sass/main.scss public/static/css/styles.css && next build",
     "start": "yarn run pm2"
   },
   "repository": "git+https://github.com/kimjeff49/the-koop-website.git",
