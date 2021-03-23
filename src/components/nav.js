@@ -31,7 +31,7 @@ const Nav = () => {
             {pages.map((page) => (
               <NavItem
                 page={page}
-                key={page.href}
+                key={`${page.href}mainnav`}
                 active={active}
                 setActive={setActive}
               />

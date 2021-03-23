@@ -69,7 +69,7 @@ export default class MenuPage extends React.Component {
   renderMenu() {
     const navActive = this.state.navActive;
     const navItems = this.state.navItems;
-
+    console.log(this.props);
     return (
       <>
         <div className="menu">

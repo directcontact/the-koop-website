@@ -87,11 +87,10 @@ class MyApp extends App {
 
     return (
       <>
+        <Header />
+        <Nav />
+        <MobileNav />
         <AnimatePresence exitBeforeEnter>
-          <Header />
-          <Nav />
-          <MobileNav />
-
           <div className="page-cover">
             <div className={`${mainClass}`}>
               <motion.div
