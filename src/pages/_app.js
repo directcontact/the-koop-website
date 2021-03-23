@@ -13,6 +13,7 @@ import 'nprogress/nprogress.css';
 
 import Nav from '../components/nav';
 import Header from '../components/header';
+import MobileNav from '../components/mobile-nav';
 
 // This is where we configure the loading bar at the top of the screen when we're moving to the next page.
 NProgress.configure({ showSpinner: false });
@@ -89,6 +90,7 @@ class MyApp extends App {
         <AnimatePresence exitBeforeEnter>
           <Header />
           <Nav />
+          <MobileNav />
 
           <div className="page-cover">
             <div className={`${mainClass}`}>

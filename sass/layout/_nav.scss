@@ -54,6 +54,11 @@
         position: relative;
         text-decoration: none;
 
+        @include respond(phone) {
+          font-size: 5rem;
+          color: $color-black;
+        }
+
         &::before {
           content: '';
           position: absolute;
@@ -64,11 +69,28 @@
           background-color: #fff;
           visibility: hidden;
           transition: all 0.3s ease-in-out;
+
+          @include respond(phone) {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 4px;
+            bottom: 0;
+            left: 0;
+            background-color: $color-black;
+            visibility: hidden;
+            transition: all 0.3s ease-in-out;
+          }
         }
 
         &:link,
         &:visited {
           color: $color-white;
+
+          @include respond(phone) {
+            font-size: 5rem;
+            color: $color-black;
+          }
         }
         &:hover,
         &:active {
@@ -78,6 +100,11 @@
             width: 100%;
           }
           color: $color-white;
+
+          @include respond(phone) {
+            font-size: 5rem;
+            color: $color-black;
+          }
         }
       }
     }

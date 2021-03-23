@@ -5,6 +5,13 @@
   flex-direction: column;
   color: $color-white;
 
+  @include respond(phone) {
+    // width < 1200?
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 0;
+  }
+
   &__page {
     background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
       url('../images/home_page.jpg');
@@ -15,6 +22,16 @@
     height: 100%;
     transition: height 0.66s ease-in-out;
     box-shadow: 0 0 30rem rgba(0, 0, 0, 1) inset;
+
+    @include respond(phone) {
+      background-image: url('../images/home_page.jpg');
+      background-color: $color-black;
+      background-size: auto 75%;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: top;
+      box-shadow: 0 0 10rem rgba(0, 0, 0, 1) inset;
+    }
   }
 
   & + .nav {
@@ -28,6 +45,11 @@
     flex-direction: column;
     padding: 5rem 5rem;
     margin-right: 10rem;
+    @include respond(phone) {
+      // width < 1200?
+      padding: 2.5rem 2.5rem;
+      margin-right: 0;
+    }
     &-header {
       font-size: 11.5rem;
       text-align: center;
@@ -43,7 +65,7 @@
 
       @include respond(phone) {
         // width < 1200?
-        font-size: 5rem;
+        font-size: 8rem;
       }
     }
 
@@ -62,7 +84,7 @@
       @include respond(phone) {
         // width < 1200?
         margin-bottom: 4rem;
-        font-size: 1.25rem;
+        font-size: 1.85rem;
       }
     }
   }
