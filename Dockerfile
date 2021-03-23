@@ -8,14 +8,14 @@ WORKDIR /usr/src/app
 
 # Installing dependencies
 COPY package*.json /usr/src/app/
-RUN yarn add
+RUN npm i
 
 # Copying source files
 COPY . /usr/src/app
 
 # Building app
-RUN yarn run build
+RUN npm run build
 EXPOSE 80
 
 # Running the app
-CMD "yarn" "start"
+CMD "npm" "start"

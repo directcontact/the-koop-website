@@ -32,12 +32,12 @@
     "imagemin-optipng": "^8.0.0",
     "leaflet": "^1.7.1",
     "lqip-loader": "^2.2.1",
-    "next": "^10.0.0",
+    "next": "^10.0.9",
     "next-images": "^1.6.2",
     "next-optimized-images": "^2.6.2",
     "normalize.css": "^8.0.1",
     "nprogress": "^0.2.0",
-    "pm2": "^4.5.0",
+    "pm2": "^4.5.5",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-leaflet": "^3.0.4"
@@ -46,7 +46,6 @@
     "concurrently": "^5.3.0",
     "morgan": "^1.10.0",
     "node-sass": "^5.0.0",
-    "nodemon": "^2.0.6",
-    "yarn-audit-fix": "^3.2.13"
+    "nodemon": "^2.0.6"
   }
 }
