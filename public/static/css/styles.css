@@ -161,6 +161,9 @@ h2 {
 .u-margin-top-huge {
   margin-top: 10rem !important; }
 
+.u-margin-left-medium {
+  margin-left: 4rem !important; }
+
 .u-padding-left-small {
   padding-left: 1.5rem !important; }
 
@@ -417,7 +420,7 @@ h2 {
       display: flex;
       align-items: flex-start;
       flex-direction: column;
-      padding: 5rem 10rem;
+      margin: 5rem 10rem;
       text-align: center;
       color: white;
       font-weight: 400;
@@ -425,7 +428,7 @@ h2 {
     .menu__header-pdf {
       display: flex;
       flex-direction: row;
-      padding: 5rem 10rem;
+      margin: 5rem 10rem;
       text-align: center;
       color: white;
       font-weight: 400;
@@ -525,7 +528,6 @@ h2 {
       .menu__nav-list--item {
         text-align: center;
         font-size: 2rem;
-        padding: 0 3rem;
         width: 20%;
         cursor: pointer;
         font-weight: 300;
@@ -709,10 +711,14 @@ h2 {
     background-attachment: fixed;
     height: 100%;
     transition: height 0.66s ease-in-out; }
-  .catering__header {
-    color: #ffffff;
-    font-weight: 400;
-    font-size: 3rem; }
+  .catering__container {
+    background-color: #ffffff;
+    padding: 5rem;
+    border-radius: 5rem; }
+    .catering__container-header {
+      color: #000000;
+      font-weight: 400;
+      font-size: 3rem; }
   .catering__btn {
     background-color: #f4c529;
     color: #000000;

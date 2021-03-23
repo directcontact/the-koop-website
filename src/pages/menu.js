@@ -69,7 +69,6 @@ export default class MenuPage extends React.Component {
   renderMenu() {
     const navActive = this.state.navActive;
     const navItems = this.state.navItems;
-    console.log(this.props);
     return (
       <>
         <div className="menu">
@@ -135,12 +134,20 @@ export default class MenuPage extends React.Component {
   }
 }
 
-export async function getStaticProps(ctx) {
+export async function getServerSideProps(context) {
   const file = fs.readFileSync('./public/static/data/items.json');
   const menu = JSON.parse(file);
+  const UA = context.req.headers['user-agent'];
+  const isMobile = Boolean(
+    UA.match(
+      /Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i
+    )
+  );
+
   return {
     props: {
       menu,
+      deviceType: isMobile ? 'mobile' : 'desktop',
     },
   };
 }

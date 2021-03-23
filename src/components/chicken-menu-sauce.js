@@ -18,7 +18,7 @@ const ChickenMenuSauce = (props) => {
         <div key={(idx + 1) * 2} className="menu__list-column col-md-12">
           {divs.map((item) => (
             <div
-              className="menuitem col-md-6 u-padding-left-medium u-padding-bottom-medium"
+              className="menuitem col-md-6 u-margin-left-medium u-margin-bottom-medium"
               key={item.name}
             >
               <div className="menuitem__header u-margin-bottom-small">

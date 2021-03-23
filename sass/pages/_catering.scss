@@ -15,10 +15,15 @@
     transition: height 0.66s ease-in-out;
   }
 
-  &__header {
-    color: $color-white;
-    font-weight: 400;
-    font-size: 3rem;
+  &__container {
+    background-color: $color-white;
+    padding: 5rem;
+    border-radius: 5rem;
+    &-header {
+      color: $color-black;
+      font-weight: 400;
+      font-size: 3rem;
+    }
   }
 
   &__btn {

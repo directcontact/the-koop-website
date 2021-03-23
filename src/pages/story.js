@@ -65,14 +65,6 @@ function StoryPage() {
           </div>
         </div>
       </div>
-      <div className="story max-height">
-        <div className="story__contact col-md-12">
-          <div className="story__text-column col-md-12">
-            <br />
-            <div className="story__text-title">CONTACT US</div>
-          </div>
-        </div>
-      </div>
     </>
   );
 }

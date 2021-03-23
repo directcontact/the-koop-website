@@ -1,10 +1,12 @@
 function CateringPage() {
   return (
     <div className="catering">
-      <div className="catering__header u-margin-bottom-medium">
-        How can we cater for you?
+      <div className="catering__container">
+        <div className="catering__container-header">
+          If you would like to receive catering, please contact your closest
+          Koop location!
+        </div>
       </div>
-      <div className="catering__btn">START CATERING</div>
     </div>
   );
 }

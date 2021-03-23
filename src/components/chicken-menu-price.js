@@ -18,20 +18,20 @@ const ChickenMenuSauce = (props) => {
       <h3 className="menu__list-header u-margin-bottom-medium">
         STEP ONE: CHOOSE YOUR TYPE OF CHICKEN
       </h3>
-      <div className="menu__list-yaxis col-md-12">
-        <div className="menu__list-yaxis--item col-md-4">Small</div>
-        <div className="menu__list-yaxis--item col-md-4">Large</div>
+      <div className="menu__list-yaxis col-sm-12">
+        <div className="menu__list-yaxis--item col-sm-6">Small</div>
+        <div className="menu__list-yaxis--item col-sm-6">Large</div>
       </div>
       {iterable.map((priceGroup) => {
         const small = priceGroup[1][0];
         const large = priceGroup[1][1];
 
         return (
-          <div className="menu__list-row col-md-12" key={priceGroup[0]}>
-            <div className="menu__list-row--item_header col-md-4">
+          <div className="menu__list-row col-sm-12" key={priceGroup[0]}>
+            <div className="menu__list-row--item_header col-sm-4">
               {priceGroup[0]}
             </div>
-            <div className="menu__list-row--item col-md-4">
+            <div className="menu__list-row--item col-sm-4">
               {`$${small.price}`}
               {small.units === 'g' ? (
                 <span className="menu__list-row--item_special">≈</span>
@@ -41,7 +41,7 @@ const ChickenMenuSauce = (props) => {
                 {small.units === 'P/C' ? ` ${small.units}` : small.units}
               </span>
             </div>
-            <div className="menu__list-row--item col-md-4">
+            <div className="menu__list-row--item col-sm-4">
               {`$${large.price}`}
               {large.units === 'g' ? (
                 <span className="menu__list-row--item_special">≈</span>
