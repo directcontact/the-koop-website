@@ -584,6 +584,7 @@ class OrderingPage extends React.Component {
                   <input type="text" placeholder="First and last name" className="ordering__form-left_input__box"
                     value={this.props.name} 
                     onChange={(e) => this.props.addName(e.target.value)}
+                    required
                     />
                 </div>
               </div>
@@ -595,6 +596,7 @@ class OrderingPage extends React.Component {
                   <input type="email" placeholder="e.g., email@email.com" className="ordering__form-left_input__box"
                     value={this.props.email} 
                     onChange={(e) => this.props.addEmail(e.target.value)}
+                    required
                     />
                 </div>
               </div>
@@ -606,7 +608,8 @@ class OrderingPage extends React.Component {
                 <div className="ordering__form-left_textarea">
                   <textarea type="text" placeholder="e.g., Extra napkins pls" className="ordering__form-left_textarea__box" 
                     value={this.props.notes} 
-                    onChange={(e) => this.props.addNotes(e.target.value)}/>
+                    onChange={(e) => this.props.addNotes(e.target.value)}
+                    required/>
                 </div>
               </div>
             </div>

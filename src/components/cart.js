@@ -39,7 +39,8 @@ const Cart = (props) => {
                   <div className="ordering__cart_content-name">
                     <span className="ordering__cart_content-name_remove"
                     onClick={() => props.removeItem(item)}
-                    ><FontAwesomeIcon icon={faTimes} size='xs' /></span>    {item.size} {item.item} {item.type == 'chicken' ? ('(' + item.sauce + ')') : ''} x {item.quant}
+                    ><FontAwesomeIcon icon={faTimes} size='xs' /></span>    
+                    {item.size} {item.item} {item.type == 'chicken' ? ('(' + item.sauce + ')') : ''} x {item.quant}
                   </div>
                   <div className="ordering__cart_content-price">${(item.price * item.quant).toFixed(2)}</div>
                   <br />

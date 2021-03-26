@@ -1,6 +1,6 @@
 .story {
   min-height: 75%;
-  overflow: hidden;
+  overflow: visible;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -95,7 +95,7 @@
     font-size: 7rem;
     justify-content: center;
     text-align: center;
-    padding-top: 40rem;
+    padding-top: 37rem;
     margin: 0 auto;
     &::selection {
       background: none;
@@ -115,7 +115,7 @@
   &__subheader {
     font-size: 1.5rem;
     text-align: center;
-    padding-bottom: 2rem;
+    // padding-bottom: 2rem;
     &::selection {
       background: none;
     }
