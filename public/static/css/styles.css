@@ -785,7 +785,7 @@ h2 {
     display: flex;
     flex-direction: column;
     align-content: center;
-    background-color: #FFF;
+    background-color: #fff;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -1185,7 +1185,7 @@ h2 {
       font-weight: 300; }
   .ordering__cartbutton {
     height: 5rem;
-    width: -50%;
+    width: 10%;
     display: flex;
     justify-content: center;
     font-size: 2.5rem;
