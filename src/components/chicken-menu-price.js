@@ -18,9 +18,10 @@ const ChickenMenuSauce = (props) => {
       <h3 className="menu__list-header u-margin-bottom-medium">
         STEP ONE: CHOOSE YOUR TYPE OF CHICKEN
       </h3>
-      <div className="menu__list-yaxis col-sm-12">
-        <div className="menu__list-yaxis--item col-sm-6">Small</div>
-        <div className="menu__list-yaxis--item col-sm-6">Large</div>
+      <div className="menu__list-yaxis col-md-12">
+        <div className="menu__list-yaxis--item col-md-4"></div>
+        <div className="menu__list-yaxis--item col-md-4">Small</div>
+        <div className="menu__list-yaxis--item col-md-4">Large</div>
       </div>
       {iterable.map((priceGroup) => {
         const small = priceGroup[1][0];

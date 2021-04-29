@@ -3,6 +3,7 @@ import fs from 'fs';
 
 import ChickenMenu from '../components/chicken-menu';
 import StandardMenu from '../components/standard-menu';
+import MobileMenuNav from '../components/mobile-menu-nav';
 
 export default class MenuPage extends React.Component {
   constructor() {
@@ -93,37 +94,43 @@ export default class MenuPage extends React.Component {
             </div>
           </div>
 
-          <div className="menu__nav">
-            <ul className="menu__nav-list u-margin-bottom-small">
-              {navItems.map((item) => {
-                let active = '';
-                let strup = navActive.item.toUpperCase();
-                if (strup === item) {
-                  active = navActive.active;
-                }
-                return (
-                  <li
-                    className={`menu__nav-list--item ${active}`}
-                    key={item}
-                    onClick={() =>
-                      this.setState({
-                        navActive: {
-                          item: item.toLowerCase(),
-                          active: 'selected',
-                        },
-                      })
+          {this.props.deviceType ? (
+            <MobileMenuNav navItems={this.state.navItems} />
+          ) : (
+            <>
+              <div className="menu__nav">
+                <ul className="menu__nav-list u-margin-bottom-small">
+                  {navItems.map((item) => {
+                    let active = '';
+                    let strup = navActive.item.toUpperCase();
+                    if (strup === item) {
+                      active = navActive.active;
                     }
-                  >
-                    {item}
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-          <hr className="solid u-margin-top-small" />
-          <div className="menu__container col-md-12">
-            {this.renderMenuComponent(navActive)}
-          </div>
+                    return (
+                      <li
+                        className={`menu__nav-list--item ${active}`}
+                        key={item}
+                        onClick={() =>
+                          this.setState({
+                            navActive: {
+                              item: item.toLowerCase(),
+                              active: 'selected',
+                            },
+                          })
+                        }
+                      >
+                        {item}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+              <hr className="solid u-margin-top-small" />
+              <div className="menu__container col-md-12 col-sm-12 col-12">
+                {this.renderMenuComponent(navActive)}
+              </div>
+            </>
+          )}
         </div>
       </>
     );
@@ -144,10 +151,12 @@ export async function getServerSideProps(context) {
     )
   );
 
+  console.log(isMobile);
+
   return {
     props: {
       menu,
-      deviceType: isMobile ? 'mobile' : 'desktop',
+      deviceType: isMobile,
     },
   };
 }

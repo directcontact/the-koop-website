@@ -10,6 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../public/static/css/styles.css';
 import 'normalize.css/normalize.css';
 import 'nprogress/nprogress.css';
+import 'react-dropdown/style.css';
 
 import Nav from '../components/nav';
 import Header from '../components/header';

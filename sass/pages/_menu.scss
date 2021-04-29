@@ -12,6 +12,16 @@
     height: 75%;
     min-height: 75%;
     transition: height 0.66s ease-in-out;
+
+    @include respond(phone) {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url('../images/menu_page.jpg');
+      background-color: $color-black;
+      background-size: auto 75%;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: top;
+    }
   }
 
   &__header {
@@ -20,6 +30,12 @@
     justify-content: space-between;
     flex-direction: row;
     height: 100%;
+
+    @include respond(phone) {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
     &-text {
       display: flex;
       align-items: flex-start;
@@ -67,6 +83,12 @@
     margin: 0 auto;
     min-height: 100%;
     transition: height 0.66s ease-in-out;
+
+    @include respond(phone) {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
   }
 
   &__list {

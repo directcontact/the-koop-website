@@ -348,7 +348,8 @@ h2 {
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    height: 100%;
+    height: 100vh;
+    min-height: 100vh;
     transition: height 0.66s ease-in-out;
     box-shadow: 0 0 30rem black inset; }
     @media only screen and (max-width: 37.5em) {
@@ -359,6 +360,8 @@ h2 {
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-position: top;
+        height: 100vh;
+        min-height: 100vh;
         box-shadow: 0 0 10rem black inset; } }
   .main + .nav {
     background-color: #000000; }
@@ -410,12 +413,25 @@ h2 {
     height: 75%;
     min-height: 75%;
     transition: height 0.66s ease-in-out; }
+    @media only screen and (max-width: 37.5em) {
+      .menu__page {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/menu_page.jpg");
+        background-color: #000000;
+        background-size: auto 75%;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: top; } }
   .menu__header {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
     flex-direction: row;
     height: 100%; }
+    @media only screen and (max-width: 37.5em) {
+      .menu__header {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; } }
     .menu__header-text {
       display: flex;
       align-items: flex-start;
@@ -454,6 +470,11 @@ h2 {
     margin: 0 auto;
     min-height: 100%;
     transition: height 0.66s ease-in-out; }
+    @media only screen and (max-width: 37.5em) {
+      .menu__container {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; } }
   .menu__list {
     padding: 0; }
     .menu__list-header {
@@ -812,29 +833,6 @@ h2 {
           color: rgba(0, 0, 0, 0.5);
           cursor: pointer; }
 
-.btn {
-  background-color: #e02c4b;
-  color: #ffffff;
-  padding: 1rem 3rem;
-  border-radius: 10rem;
-  border: none;
-  font-size: 2rem;
-  font-weight: 400;
-  transition: color 0.4s;
-  font-family: 'Oswald'; }
-  .btn:link, .btn:visited {
-    color: #ffffff;
-    text-decoration: none;
-    text-transform: uppercase; }
-  .btn:hover, .btn:active {
-    text-decoration: none;
-    color: rgba(255, 255, 255, 0.5);
-    cursor: pointer; }
-  @media only screen and (max-width: 37.5em) {
-    .btn {
-      padding: 0.5rem 2rem;
-      font-size: 1rem; } }
-
 .menuitem {
   display: flex;
   align-items: flex-start;
@@ -983,8 +981,8 @@ h2 {
       background-color: transparent;
       align-items: flex-end;
       justify-content: flex-start;
-      width: 100%;
-      height: 100%; }
+      width: 100vw;
+      height: 100vh; }
       .mobilenav-hamburger {
         z-index: 2000;
         margin: 2.25rem; }
