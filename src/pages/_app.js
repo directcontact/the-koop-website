@@ -1,7 +1,6 @@
 import App from 'next/app';
 import React from 'react';
 import { Router as R } from 'next/dist/client/router';
-import Router from 'next/router';
 import NProgress from 'nprogress';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -10,7 +9,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../public/static/css/styles.css';
 import 'normalize.css/normalize.css';
 import 'nprogress/nprogress.css';
-import 'react-dropdown/style.css';
 
 import Nav from '../components/nav';
 import Header from '../components/header';

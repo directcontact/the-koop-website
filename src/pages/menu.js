@@ -3,8 +3,12 @@ import fs from 'fs';
 
 import ChickenMenu from '../components/chicken-menu';
 import StandardMenu from '../components/standard-menu';
-import MobileMenuNav from '../components/mobile-menu-nav';
+import dynamic from 'next/dynamic';
 
+const MobileMenuNav = dynamic(() => import('../components/mobile-menu-nav'), {
+  ssr: false,
+  loading: () => <div className="location__map-loading">LOADING...</div>,
+});
 export default class MenuPage extends React.Component {
   constructor() {
     super();
@@ -95,7 +99,7 @@ export default class MenuPage extends React.Component {
           </div>
 
           {this.props.deviceType ? (
-            <MobileMenuNav navItems={this.state.navItems} />
+            <MobileMenuNav />
           ) : (
             <>
               <div className="menu__nav">

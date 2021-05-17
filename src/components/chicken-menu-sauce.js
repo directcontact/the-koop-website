@@ -30,6 +30,8 @@ const ChickenMenuSauce = (props) => {
                 objectFit={'cover'}
                 width={275}
                 height={275}
+                priority="true"
+                unoptimized="true"
                 loading="eager"
                 className="menuitem__img"
               />

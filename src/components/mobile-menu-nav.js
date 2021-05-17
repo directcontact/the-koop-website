@@ -1,16 +1,30 @@
 import { useState } from 'react';
-import Dropdown from 'react-dropdown';
+import Select from 'react-select';
 
 const MobileMenuNav = (props) => {
-  const options = props.navItems;
-  const defaultOption = options[0];
+  const navItemsOptions = [
+    'CHICKEN',
+    'APPETIZERS',
+    'RICE DISHES',
+    'TROTTER',
+    'SOUPS',
+    'SIDES',
+  ];
+  const options = navItemsOptions.map((option) => {
+    return {
+      label: option,
+      value: option,
+    };
+  });
   console.log(options);
+  const [selectedNav, selectedNavChanged] = useState(null);
 
   return (
-    <Dropdown
+    <Select
+      defaultValue={selectedNav}
+      onChange={selectedNavChanged}
       options={options}
-      value={defaultOption}
-      placeholder="Select an option"
+      instanceId="mobilenavmenu"
     />
   );
 };
